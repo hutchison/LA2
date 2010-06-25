@@ -1,0 +1,931 @@
+\documentclass[%
+a4paper,
+%empty,		% keine Seitenzahlen
+%a5paper,	% alle weiteren Papierformat einstellbar
+11pt,		% Schriftgröße (12pt, 11pt (Standard))
+%leqno,		% Nummerierung von Gleichungen links
+%fleqn,		% Ausgabe von Gleichungen linksbündig
+]
+{scrartcl}
+
+%% Deutsche Anpassungen 
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+\linespread{1.05}
+\usepackage[utf8]{inputenc}
+
+%obligatorischer Mathekram:
+\usepackage{amssymb,amstext,dsfont,trsym,pifont}
+\usepackage[sumlimits]{amsmath}
+\usepackage{eulervm}
+
+%nützlicher Mathekram:
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\off}{\text{off}\,}
+\newcommand{\rg}{\text{rg}\,}
+\newcommand{\Sp}{\text{Sp}\,}
+\newcommand{\charpol}{\text{charpol}\,}
+\newcommand{\id}{\text{id}\,}
+\newcommand{\TV}{\text{TV}}
+
+%nützliche Extras:
+\usepackage{array,
+hhline,
+longtable,
+tabularx,
+enumerate,
+%hyperref,
+color,
+setspace,
+booktabs,
+%cite,
+caption,
+%lineno,
+%lastpage,
+%algorithmic,
+%algorithm,
+ulem,
+}
+
+%schreibt "Algorithmus" statt "Algorithm":
+%\floatname{algorithm}{Algorithmus}
+
+%\usepackage{arydshln}
+
+\usepackage[amsmath,thmmarks,thref]{ntheorem}
+
+% meine Theoremdefinitionen:
+% +------------------------+
+
+% Definitionen:
+\theoremstyle{plain}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{}
+\theoremseparator{\ }
+%\theoremprework{\hfill \rule{0.5\textwidth}{1pt} \hspace*{0.25\textwidth} }
+%\theorempostwork{\rule}
+%\theoremindent2ex
+\newtheorem{mydef}{Definition}[section]
+
+%Sätze:
+\theoremstyle{plain}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{}
+\theoremsymbol{$\Box$}
+\newtheorem{mysatz}[mydef]{Satz}
+
+%Lemmata:
+\theoremstyle{plain}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{}
+\theoremsymbol{$\Box$}
+\newtheorem{mylemma}[mydef]{Lemma}
+
+%Bemerkungen:
+\theoremstyle{plain}
+\theoremheaderfont{\itshape}
+\theorembodyfont{}
+\theoremsymbol{}
+\newtheorem{mybem}[mydef]{Bemerkung}
+
+%Beispiele:
+\theoremstyle{plain}
+\theoremheaderfont{\itshape}
+\theorembodyfont{}
+\theoremsymbol{}
+\newtheorem*{mybsp}[mydef]{Beispiel}
+
+% Randverwaltung (entweder geometry oder =fullpage=)
+%\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm,includeheadfoot]{geometry}
+\usepackage[%cm,
+%headings,
+]{fullpage}
+
+% die fancy-Header:
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead{}
+\fancyfoot{}
+%\fancyhead[L]{}
+%\fancyhead[C]{}
+%\fancyhead[R]{\nouppercase \leftmark}
+%\fancyfoot[L]{}
+\fancyfoot[C]{\thepage}
+%\fancyfoot[OR]{\thepage}
+%\fancyfoot[LE]{\thepage}
+%Linie oben/unten
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+%kein Einrücken der Paragraphen
+\parindent 0pt
+
+%% Packages für Grafiken & Abbildungen
+%\usepackage{graphicx}
+%\usepackage{subfig}    %%Teilabbildungen in einer Abbildung
+\usepackage{tikz}      %%TeX ist kein Zeichenprogramm
+%\usepackage[all]{xy}
+%\usepackage{pst-all}
+
+\newcommand{\ora}{\overrightarrow}
+
+\begin{document}
+
+%\setcounter{section}{6}
+
+\section{Eigenwerte, Eigenvektoren} % (fold)
+\label{sec:Eigenwerte, Eigenvektoren}
+
+Zum Anfang eine ganz kurze Wiederholung zu linearen Abbildungen:
+
+$\alpha: V \mapsto V$ \hfill $\alpha$ ist eine lineare Abbildung eines $\K$-Vektorraumes $V$ in sich (Endomorphismus).
+\begin{align*}
+    \alpha(v_1 + v_2) & = \alpha(v_1) + \alpha(v_2) & \forall\, v_1,v_2 \in V\\
+    \alpha(\lambda \cdot v) & = \lambda \cdot \alpha(v) & \forall\, \lambda \in \K, v \in V
+\end{align*}
+
+\begin{mydef}
+    \textit{Eigenwert, Eigenvektor}
+
+    Sei $\alpha$ ein Endomorphismus des $\K$-VR $V$ und $\lambda \in \K$. $\lambda$ heißt \textbf{Eigenwert} von $\alpha$ genau dann, wenn ein Vektor $v$ aus $V \setminus \left\{ 0 \right\}$ existiert mit $\alpha(v) = \lambda v$. $v$ heißt dann \textbf{Eigenvektor} zu $\lambda$.
+\end{mydef}
+
+\textit{Beispiel:} $V = \R^2$
+\begin{enumerate}
+    \item $\qquad \alpha:\ (x,y) \mapsto (x+y,x+y)$
+        \begin{align*}
+            \alpha(x,y) & = \lambda(x,y)\\
+            (x+y,x+y) & = (\lambda x, \lambda y)\\
+            x+y & = \lambda x\\
+            x+y & = \lambda y\\
+            \uline{\lambda = 0} \Rightarrow y & = -x & v = (1,-1)\\
+            \alpha(1,-1) & = 0 \cdot (1,-1)\\
+            v & = t(1,-1)\\
+            \uline{\lambda = 2} \Rightarrow x & = y & v = (1,1)
+        \end{align*}
+
+        Man betrachte das homogene Gleichungssystem:
+        \begin{align*}
+            \begin{pmatrix}
+                1-\lambda & 1\\
+                1 & 1-\lambda
+            \end{pmatrix}
+        \end{align*}
+        Mittels der Berechnung der Determinante lassen sich alle Lösungen ermitteln.
+
+        Man betrachte nun die Abbildungsmatrix $A$ von $\alpha$:
+        \begin{align*}
+            A = 
+            \begin{pmatrix}
+                1 & 1\\
+                1 & 1
+            \end{pmatrix}
+        \end{align*}
+        \textit{Bonusfrage:} wie sieht $A^{100}$ aus?
+
+        Dazu betrachte man $A$ bzgl. der Eigenvektorbasis $\langle (1,1),(1,-1) \rangle$.
+        \begin{align*}
+            A' & =
+            \begin{pmatrix}
+                2 & 0\\
+                0 & 0
+            \end{pmatrix}\\
+            A' & = T^{-1} A T \qquad (T = \text{Transformationsmatrix})\\
+            \langle (1,0),(0,1) \rangle & \overset{T}{\to} \langle (1,1),(1,-1) \rangle\\
+            T & = 
+            \begin{pmatrix}
+                1 & 1\\
+                1 & -1
+            \end{pmatrix}\\
+        \end{align*}
+        \begin{align*}
+            A & = T A' T^{-1}\\
+            \uline{A^n} & = (T A' T^{-1})(T A' T^{-1}) \ldots (T A' T^{-1}) = \uuline{T {A'}^n T^{-1}}\\
+            & = -\frac{1}{2}
+            \begin{pmatrix}
+                1 & 1\\
+                1 & -1
+            \end{pmatrix}
+            \begin{pmatrix}
+                2^n & 0\\
+                0 & 0
+            \end{pmatrix}
+            \begin{pmatrix}
+                -1 & -1\\
+                -1 & 1
+            \end{pmatrix}
+            =
+            -\frac{1}{2}
+            \begin{pmatrix}
+                2^n & 0\\
+                2^n & 0
+            \end{pmatrix}
+            \begin{pmatrix}
+                -1 & -1\\
+                -1 & 1
+            \end{pmatrix}\\
+            & =
+            -\frac{1}{2}
+            \begin{pmatrix}
+                -2^n & -2^n\\
+                -2^n & -2^n
+            \end{pmatrix}
+            =
+            \uuline{
+            \begin{pmatrix}
+                2^{n-1} & 2^{n-1}\\
+                2^{n-1} & 2^{n-1}
+            \end{pmatrix}
+            }
+        \end{align*}
+    \item $\qquad\alpha(x,y) = (x+y,x-y)$
+        \begin{align*}
+            x+y & = \lambda x\\
+            x-y & = \lambda y
+        \end{align*}
+        \begin{align*}
+            \Rightarrow\ &
+            A = 
+            \underbrace{
+            \begin{pmatrix}
+                1-\lambda & 1\\
+                1 & -1-\lambda 
+            \end{pmatrix}}_{\text{Wann wird der Rang 1?}}
+        \end{align*}
+        Es existieren genau dann nichttriviale Lösungen, wenn $\rg(A)<2$ und dies ist genau dann der Fall, wenn $\det A=0$.
+        \begin{align*}
+            \Rightarrow \det A & = -(1-\lambda)(1+\lambda)-1 = -2+\lambda^2\\
+            \lambda^2 & = 2 \Rightarrow \lambda_{1,2} = \pm \sqrt{2}
+        \end{align*}
+\end{enumerate}
+\subsection{Bestimmung von Eigenwerten und Eigenvektoren} % (fold)
+\label{sub:Bestimmung von Eigenwerten und Eigenvektoren}
+$\alpha: V \to V$ und $\dim V = n$
+\begin{align*}
+    \alpha(v) = \lambda v \qquad & \Leftrightarrow \qquad \underbrace{A}_{\substack{\text{Darstellungsmatrix}\\ \text{von $\alpha$ bzgl. $B$}}} \cdot  v_{'B} = \lambda v_{'B}\\
+    & \Leftrightarrow 0 = \lambda \underbrace{E_n v_{'B}}_{v_{'B}} - Av_{'B} = (\lambda E_n - A)v_{'B} \tag{$\star$} \label{eqn:LambdaEMinusA}
+\end{align*}
+
+Da $v_{'B} \in V\setminus\left\{0\right\}$ sind nichttriviale Lösungen des homogenen Gleichungssystems (\ref{eqn:LambdaEMinusA}) gesucht. Diese existieren genau dann, wenn $\rg(\lambda E - A) < n$, d.h. genau dann, wenn $\det(\lambda E-A)=0$.
+
+\begin{mysatz}
+    Sei $\alpha$ ein Endomorphismus des $\K$-VR $V$, dann sind folgende Aussagen äquivalent:
+    \begin{enumerate}
+        \item $\lambda$ ist ein Eigenwert von $\alpha$
+        \item $\det(\lambda E - A) = 0$
+        \item $\rg(\lambda E - A) < n$
+        \item $\ker(\lambda E - A) \neq \left\{ 0 \right\}$
+    \end{enumerate}
+    \begin{align*}
+        \det &
+        \begin{pmatrix}
+            \lambda - a_{11} & -a_{12} & \dots & -a_{1n}\\
+            -a_{21} & \lambda - a_{22} & \dots & -a_{2n}\\
+            \vdots & & \ddots & \vdots\\
+            -a_{n1} & \dots & \dots & \lambda - a_{nn}
+        \end{pmatrix}
+        =
+        (\lambda - a_{11}) \ldots (\lambda - a_{nn}) + \ldots - \ldots\\
+        & = (-1)^n \lambda^n + (-1)^{n-1} (\Sp A)\lambda^{n-1} + \ldots + k_0\\
+        \Big( k_0 & = \det(0 \cdot E-A) = \det(-A) = (-1)^n \det A \Big)\\
+        & = \lambda^n - (\Sp A)\lambda^{n-1} + \ldots + (-1)^n \det A
+    \end{align*}
+\end{mysatz}
+
+\begin{mydef}
+    \textit{charakteristisches Polynom} $(\charpol)$
+    \begin{enumerate}
+        \item Sei $A$ eine $n \times n$-Matrix. Das $\charpol$ von $A$ ist das Polynom $\det(\lambda E-A) \in \K\left[ \lambda \right]$
+        \item Sei $\alpha$ ein Endomorphismus von $V$, dann ist das $\charpol \alpha$ das Polynom $\det(\lambda E-A)$, wobei $A$ die Darstellungsmatrix von $\alpha$ bzgl. Basis $B$ ist.
+    \end{enumerate}
+\end{mydef}
+
+\textit{Bemerkung:} Ähnliche Matrizen haben dasselbe $\charpol$.
+\begin{align*}
+    A' & = T^{-1}AT\\
+    \charpol A' & = \det(\lambda E - T^{-1}AT) = \det(T^{-1}\lambda ET - T^{-1}AT)\\
+    & = \det( T^{-1}(\lambda E - A) T )\\
+    & = \det( T^{-1}) \cdot \det(\lambda E - A) \cdot  \det(T)\\
+    & = \underbrace{\det( T^{-1}) \cdot \det(T)}_{=1} \cdot \det(\lambda E - A) = \charpol A
+\end{align*}
+Die Eigenwerte von $\alpha$ sind die Nullstellen des charakteristischen Polynoms.\\
+
+\textit{Beispiel:} $\qquad V=\R^2 \qquad A = \begin{pmatrix}
+    1 & -1\\
+    1 & 1
+\end{pmatrix}$
+\begin{align*}
+    \charpol A = \det
+    \begin{pmatrix}
+        \lambda - 1 & -1\\
+        -1 & \lambda - 1
+    \end{pmatrix}
+    & = \lambda^2 -2 \lambda + 2\\
+    \lambda_{1,2} & = 1 \pm \sqrt{1-2} \notin \R\\
+    & \Rightarrow \text{keine Eigenwerte}
+\end{align*}
+
+\textit{Anmerkung:}
+Für die Fälle $n=2$ und $n=3$ existieren Formeln für das charakteristische Polynom:
+\begin{align*}
+    p(\lambda) & = \lambda^2 - \Sp A\, \lambda  + \det A & (n=2)\\
+    p(\lambda) & = -\lambda^3 + \Sp A\, \lambda^2 - k_1 + \det A & (n=3)\\
+    k_1 \text{ ist für } A & = 
+    \begin{pmatrix}
+        a & b & c\\
+        d & e & f\\
+        g & h & j
+    \end{pmatrix}
+    \text{ definiert als }
+    k_1 = 
+    \begin{vmatrix}
+        a & b\\
+        d & e
+    \end{vmatrix}
+    +
+    \begin{vmatrix}
+        a & c\\
+        g & j
+    \end{vmatrix}
+    +
+    \begin{vmatrix}
+        e & f\\
+        h & j
+    \end{vmatrix}
+\end{align*}
+
+%\newpage
+
+\textit{Anmerkung:}
+\textsc{Horner}-Schema:
+\begin{itemize}
+    \item[Vor.:] Polynom $f(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0$
+    \item[Bsp.:] $f(x) = 2x^4 + x^3 -3x -34$
+\end{itemize}
+\begin{itemize}
+    \item \textit{Berechne} $f(-1)$!
+
+        Für das \textsc{Horner}-Schema benötigt man eine kleine Tabelle mit 3 Zeilen und $n+2$ Spalten, wobei $n$ der Grad des Polynoms ist.
+        \begin{enumerate}
+            \item In die Kopfzeile schreibt man alle Koeffizienten des Polynoms; in das 1. Feld der 2. Zeile den zu berechnenden Wert:
+                \begin{center}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       &       &       &       &       \\\hline
+                        \phantom{$-1$}
+                    \end{tabular}
+                \end{center}
+            \item Das 2. Feld der 2. Zeile bleibt leer. Darunter jedoch (2. Feld, 3. Zeile) schreibt man den Wert, der in der 1. Zeile steht (also $2$).
+                \begin{center}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       &       &       &       &       \\\hline
+                        & $2$
+                    \end{tabular}
+                \end{center}
+            \item Nun multipliziert man den eben eingetragenen Wert mit der Zahl ganz links (also dem zu berechnenden Argument) und trägt ihn das Feld darüber rechts ein.
+                \begin{center}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       & $-2$  &       &       &       \\\hline
+                        & $2$
+                    \end{tabular}
+                \end{center}
+            \item Jetzt addiert man die Werte der 3. Spalte und trägt das Ergebnis in das unterste Feld ein.
+                \begin{center}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       & $-2$  &       &       &       \\\hline
+                        & $2$   & $-1$
+                    \end{tabular}
+                \end{center}
+            \item Dieses Prinzip führt man bis zum Ende durch (mit dem Wert ganz links multiplizieren; in das Feld rechts darüber eintragen; summieren).
+                \begin{center}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       & $-2$  & $1$   &       &       \\\hline
+                        & $2$   & $-1$
+                    \end{tabular}
+                    $\Rightarrow \ldots \Rightarrow$
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       & $-2$  & $1$   & $-1$  & $4$   \\\hline
+                        & $2$   & $-1$  & $1$   & $-4$  & \framebox{$-30$}
+                    \end{tabular}
+                \end{center}
+            \item[$\Rightarrow$] Der eingerahmte Wert ist der gesuchte Funktionswert.
+        \end{enumerate}
+    \item \textit{Polynomdivision}
+
+        Angenommen man hat durch Ausprobieren herausgefunden, dass $f(2)=0$ gilt und möchte jetzt das Polynom zerlegen.
+        \begin{enumerate}
+            \item Dazu schaut man sich das ausgefüllte \textsc{Horner}-Schema an:
+                \begin{center}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $2$     &       & $4 $  & $10$  & $20$  & $34$   \\\hline
+                        & $2$   & $5$   & $10$  & $17$  & $0$
+                    \end{tabular}
+                \end{center}
+            \item Die Einträge der letzten Zeile bilden die Koeffizienten des Restpolynoms.
+            \item[$\Rightarrow$] Insgesamt gilt also:
+                \begin{align*}
+                    f(x) = (x-2)(2x^3+5x^2+10x+17)
+                \end{align*}
+        \end{enumerate}
+\end{itemize}
+
+%\newpage
+
+\begin{mydef} \textit{Eigenraum}
+
+    Sei $\alpha: V \to V$ ein Endomorphismus und $\lambda \in \K$ ein Eigenwert von $\alpha$, dann heißt
+
+    $E(\lambda) = \left\{ v \in V\ |\ \alpha(v) = \lambda v \right\}$ \textbf{Eigenraum} zum Eigenwert $\lambda$.
+\end{mydef}
+
+\textit{Bemerkung:}
+\begin{itemize}
+    \item $E(\lambda)$ ist die Menge aller Eigenvektoren von $\lambda$ und $0$.
+    \item $E(\lambda) = \ker(\lambda \id - \alpha)$ \hfill da $ \alpha(v) = \lambda v \Leftrightarrow 0 = \lambda \id v - \alpha(v) = (\lambda \id - \alpha) v$
+\end{itemize}
+
+\begin{mydef} \textit{Diagonalmatrix, diagonalisierbar}
+
+    Eine $n \times n$ Matrix heißt Diagonalmatrix genau dann, wenn $a_{ij}=0$ für alle $i \neq j; i,j \in \left\{ 1,\dots,n \right\}$. Man nennt $A$ diagonalisierbar genau dann, wenn $A$ zu einer Diagonalmatrix ähnlich ist.
+    Ein Endomorphismus $\alpha$ heißt diagonalisierbar, genau dann, wenn eine Basis $B$ von $V$ existiert, sodass die Abbildungsmatrix eine Diagonalmatrix ist.
+\end{mydef}
+
+\textit{Bemerkung:} $\alpha$ ist diagonalisierbar genau dann, wenn eine Basis aus Eigenvektoren existiert.
+
+% subsection Bestimmung von Eigenwerten und Eigenvektoren (end)
+
+% section Eigenwerte, Eigenvektoren (end)
+
+\newpage
+
+\setcounter{section}{3}
+
+\section{Orthogonale Räume und orthogonale Abbildungen} % (fold)
+
+\begin{mydef}
+    Bilinearform
+\end{mydef}
+
+\begin{mydef}
+    orthogonal, ausgeartet
+\end{mydef}
+
+\begin{mylemma}
+    Sei $(\cdot,\cdot)$ eine Bilinearform \dots 
+\end{mylemma}
+
+\begin{mysatz}
+    Euklidische Norm
+
+    Durch $\| v \| := \sqrt{\langle v,v \rangle}$ wird in einem euklidischen Vektorraum $V$ über $\R$ eine Norm definiert.
+
+    \textit{Beweis:} 1.,2.,3. folgen unmittelbar aus der Definition. 4. folgt aus dem folgenden Satz:
+\end{mysatz}
+
+\begin{mysatz}
+    Cauchy-Schwarzsche-Ungleichung
+
+    $V$ sei ein euklidischer Vektorraum, dann gilt
+    \begin{align*}
+        \forall v,w \in V: \quad \left| \langle v,w \rangle \right| \leq \| v \| \cdot \| w \| \qquad \left( \text{ bzw. } {\left\langle v,w \right\rangle}^2 \leq \left\langle v,v \right\rangle \cdot \left\langle w,w \right\rangle \right)
+    \end{align*}
+    \textit{Beweis:}
+    \begin{itemize}
+        \item $w=0 \Rightarrow$ Ungleichung gilt.
+        \item $w \neq 0 \Rightarrow \text{sei } k := \frac{\langle v,w \rangle}{\langle w,w \rangle}$
+            \begin{align*}
+                0 & \leq \left\langle v-kw, v-kw \right\rangle = \left\langle v,v \right\rangle -2k \left\langle v,w \right\rangle +k^2 \left\langle w,w \right\rangle\\
+                & = \left\langle v,v \right\rangle -2 \frac{ \left\langle v,w \right\rangle^2 }{\left\langle w,w \right\rangle } + \frac{ \left\langle v,w \right\rangle^2 }{\left\langle w,w \right\rangle^2} \cdot \left\langle w,w \right\rangle\\
+                & = \left\langle v,v \right\rangle - \frac{ \left\langle v,w \right\rangle^2 }{ \left\langle w,w \right\rangle }\\
+                \Rightarrow & \left\langle v,w \right\rangle^2 \leq \left\langle v,v \right\rangle \cdot \left\langle w,w \right\rangle 
+            \end{align*}
+    \end{itemize}
+\end{mysatz}
+Damit kann die 4. Normeigenschaft bewiesen werden:
+\begin{align*}
+    \left( \| v \| + \| w \| \right)^2 & = \| v \|^2 +2 \| v \| \cdot \| w \| + \| w \|^2 \geq \| v \|^2 + 2 \left| \left\langle v,w \right\rangle  \right| + \| w \|^2\\
+    & \geq \| v \|^2 + 2 \left\langle v,w \right\rangle + \| w \|^2 = \left\langle v+w,v+w \right\rangle = \| v+w \|^2
+\end{align*}
+Darüber hinaus ergibt sich $\forall v,w \in V\setminus\left\{ 0 \right\}:$
+\begin{align*}
+    \frac{| \left\langle v,w \right\rangle |}{\|v\| \cdot \|w\|} \leq 1 \Rightarrow -1 \leq \frac{| \left\langle v,w \right\rangle |}{\|v\| \cdot \|w\|} \leq 1 \Rightarrow \exists!\ \phi \in \left[ 0, \pi \right] \quad \text{mit } \cos \phi = \frac{\left\langle v,w \right\rangle}{\|v\| \cdot \|w\|}
+\end{align*}
+$\Rightarrow$ Definition des Winkels zwischen Vektoren $v,w \in V\setminus\left\{ 0 \right\}$
+
+Der Winkel $\phi$ zwischen zwei Vektoren $v,w \in V\setminus\left\{ 0 \right\}$ ist derjenige eindeutig bestimmte Wert $\phi$ aus dem Intervall $\left[ 0,\pi \right]$ für den gilt
+\begin{align*}
+    \cos \phi = \frac{\left\langle v,w \right\rangle}{\|v\| \cdot \|w\|}
+\end{align*}
+
+\newpage
+
+Im $\R^2,\R^3$ mit Standardskalarprodukt ist $\| v \|$ und $\sphericalangle (v,w)$ Länge und Winkel im elementargeometrischen Sinne
+\begin{center}
+    \begin{tikzpicture}%[>=angle 90]
+        \draw[help lines] (0,0) grid (4,3);
+        \draw[dotted] (0,0) -- (3,3);
+        \draw[>=latex,->] (0,0) -- (2,2);
+        \draw[>=latex,->] (0,0) -- (4.5,0);
+        \draw (1,0) arc (0:45:1cm);
+        \draw (0.6,0.2) node[scale=0.5] {$\sphericalangle(v,w)$};
+        \draw (2+0.5,-0.2) node {$v$};
+        \draw (1-0.2,1+0.2) node {$w$};
+        \draw (2,2) -- (2,0);
+        \draw (4.5,0) -- (2.25,2.25);
+        \draw (2.2,0) arc (0:90:0.2cm);
+        \draw (2.075,0.075) node {$\cdot$};
+        \draw (2.1,2.1) arc (215:315:0.2cm);
+    \end{tikzpicture}
+\end{center}
+blabla
+
+% section blabla (end)
+
+\newpage
+
+\section{Affine und Euklidische (Punkt-)Räume} % (fold)
+\label{sec:Affine und Euklidische (Punkt-)Räume}
+
+\begin{mydef}
+    Affiner Raum
+\end{mydef}
+
+\begin{mybem}
+    \begin{itemize}
+        \item $\mathcal{A}_n = \left\{ P +_A V \right\} = \left\{ P +_A v \mid v \in V \right\}$
+    \end{itemize}
+\end{mybem}
+
+\begin{mysatz}
+    Eigenschaften
+
+    Für alle $P,Q,R,S \in \mathcal{A}_n$ und  für alle $v,w \in V$ gilt:
+\end{mysatz}
+
+\begin{mysatz}
+    Koordinatentransformation
+\end{mysatz}
+
+\begin{mydef}
+    Affiner Teilraum
+\end{mydef}
+
+\begin{mysatz}
+    \ \\
+    Seien $T_1 = \left\{ P+U \right\}$ und $T_2 = \left\{ Q+U \right\}$ affine Teilräume eines affinen Raumes $\mathcal{A}_n$ mit Vektorraum $V$.
+\end{mysatz}
+
+\begin{mysatz}
+    Schnitte
+\end{mysatz}
+
+\begin{mylemma}
+    kleinster Teilraum
+\end{mylemma}
+
+\begin{mydef}
+    Punkte in allgemeiner Lage
+\end{mydef}
+
+\begin{mydef}
+    Summe von Teilräumen
+\end{mydef}
+
+\begin{mysatz}
+    Dimensionssatz
+\end{mysatz}
+
+\begin{mydef}
+    Parallelität
+\end{mydef}
+
+\begin{mydef}
+    Strecke, Strahl, Mittelpunkt
+\end{mydef}
+
+\begin{mydef}
+    Teilverhältnis
+\end{mydef}
+
+\begin{mysatz}
+    Seitenhalbierende
+\end{mysatz}
+
+\begin{mysatz}
+    Strahlensatz (\textsc{Thales})
+\end{mysatz}
+
+\newpage
+
+\begin{mysatz}
+    Satz von \textsc{Menelaos} (70? - 140?)
+
+    \begin{minipage}{0.45\textwidth}
+        Gegeben sei ein Dreieck $ABC$ und eine Gerade $G$, die nicht durch einen Eckpunkt geht. Seien $A'$ der Schnittpunkt von $G$ mit $G(BC)$, $B'$ der Schnittpunkt von $G$ mit $G(AC)$ und $C'$ der Schnittpunkt von $G$ mit $G(AB)$, dann gilt
+    \end{minipage}
+    \begin{minipage}{0.55\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw (0,0) coordinate(as) node[anchor=east] {$A'$};
+                \draw (1,1) coordinate(c) node[anchor=south east] {$C$};
+                \draw (3,3) coordinate(b) node[anchor=south] {$B$};
+                \draw (4,1) coordinate(a) node[anchor=north west] {$A$};
+                \draw (2.5,1) coordinate(bs) node[anchor=north] {$B'$};
+                \draw (3.74,1.5) coordinate(cs) node[anchor=south west] {$C'$};
+                \fill (as) circle (1pt);
+                \fill (c) circle (1pt);
+                \fill (b) circle (1pt);
+                \fill (a) circle (1pt);
+                \fill (bs) circle (1pt);
+                \fill (cs) circle (1pt);
+                \draw (a) -- (b) -- (c) -- (a);
+                \draw[dashed] (as) -- (c);
+                \draw (as) -- (bs) -- (cs);
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{align*}
+        \underbrace{\TV(A,B;C')}_{v}
+        \cdot
+        \underbrace{\TV(B,C;A')}_{w}
+        \cdot
+        \underbrace{\TV(C,A;B')}_{u}
+        = 1
+    \end{align*}
+    \textit{Beweis:}
+    \begin{align*}
+        \ora{AC'} & = v \cdot \ora{BC'} = \frac{v}{v-1} \ora{AB}\\
+        \ora{BA'} & = w \cdot \ora{CA'} = \frac{w}{w-1} \ora{BC}\\
+        \ora{CB'} & = u \cdot \ora{AB'} = \frac{u}{u-1} \ora{CA}\\
+        \ora{AB} & =\ : c\\
+        \ora{AC} & =\ : b\\
+        \ora{AC'} & = \frac{v}{v-1} c\\
+        \ora{AB'} & = \frac{-1}{u-1} b\\
+        \ora{AA'} & = \ora{AB} + \ora{BA'} = c + \frac{w}{w-1} \ora{BC}\\
+        \frac{w}{w-1} b & - \frac{1}{w-1} c = c + \frac{w}{w-1} \left( b-c \right)\\
+        \ora{A'B'} & = \ora{A'A} + \ora{AB'} = \frac{-w}{w-1} b + \frac{1}{w-1} c - \frac{1}{u-1} b\\
+        \ora{A'C'} & = \ora{A'A} + \ora{AC'} = \frac{-w}{w-1} b + \frac{1}{w-1} c + \frac{v}{v-1} c
+    \end{align*}
+    weil $A',B',C' \in G \Rightarrow \exists !\ \lambda :\ \lambda \ora{A'B'} = \ora{A'C'}$
+    \begin{align*}
+        \lambda \left( \frac{1}{w-1}c - \frac{w}{w-1}b - \frac{1}{u-1}b \right) & = \frac{1}{w-1}c - \frac{w}{w-1}b + \frac{v}{v-1}c\\
+        \left( -\frac{w \lambda}{w-1} - \frac{\lambda}{u-1} + \frac{w}{w-1} \right)b & + \left( \frac{\lambda}{w-1} - \frac{1}{w-1} - \frac{v}{v-1} \right)c = 0
+    \end{align*}
+    da $b,c$ linear unabhängig sind:
+    \begin{align*}
+        \frac{\lambda}{w-1} - \frac{1}{w-1} - \frac{v}{v-1} = 0 \Rightarrow \lambda = \left( \frac{v}{v-1} + \frac{1}{w-1} \right)(w-1) = \frac{v(w-1)}{v-1} +1
+    \end{align*}
+    Da auch der andere Koeffizient 0 ist, muss gelten:
+    \begin{align*}
+        0 & = - \frac{w \left( \frac{v(w-1)}{v-1} + 1 \right)}{w-1} - \frac{\frac{v(w-1)}{v-1}+1}{u-1} + \frac{w}{w-1}\\
+        0 & = - \frac{w(v(w-1))+ v-1}{w-1} - \frac{v(w-1)+v-1}{u-1} + \frac{w(v-1)}{w-1}\\
+        0 & = - \frac{w(vw-1)}{w-1} - \frac{vw-1}{u-1} + \frac{vw-w}{w-1}\\
+        0 & = -w(vw-1)(u-1) - (vw-1)(w-1) + (vw-w)(u-1)\\
+        0 & = -uvw^2+vw^2+uw-w-vw^2+vw+w-1+uvw-vw-uw+w\\
+        0 & = uvw(1-w)+(w-1)\\
+        1 & = uvw
+    \end{align*}
+\end{mysatz}
+
+\begin{mysatz}
+    Satz von \textsc{Ceva}\footnote{Giovanni Ceva, * 7. Dezember 1647 in Mailand; $\dagger$ 15. Juni 1734 in Mantua}
+
+    \begin{minipage}{0.45\textwidth}
+        Schneiden sich die 3 Ecktransversalen eines Dreiecks $ABC$ in einem Punkt $P$ und seien $A',B',C'$ wie oben, dann gilt
+    \end{minipage}
+    \begin{minipage}{0.55\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                %\draw[help lines] (0,0) grid (3,3);
+                \draw (0,0) coordinate(c) node[anchor=south east] {$C$};
+                \draw (2,2) coordinate(b) node[anchor=south] {$B$};
+                \draw (3,0) coordinate(a) node[anchor=north west] {$A$};
+                \draw (2.5,1) coordinate(cs) node[anchor=south west] {$C'$};
+                \draw (2,0.8) coordinate(p) node[anchor=south west] {$P$};
+                \draw (4/3,4/3) coordinate(as) node[anchor=east] {$A'$};
+                \draw (2,0) coordinate(bs) node[anchor=north] {$B'$};
+                \fill (c) circle (1pt);
+                \fill (b) circle (1pt);
+                \fill (a) circle (1pt);
+                \fill (cs) circle (1pt);
+                \fill (p) circle (1pt);
+                \fill (as) circle (1pt);
+                \fill (bs) circle (1pt);
+                \draw (a) -- (b) -- (c) -- (a);
+                \draw (c) -- (cs);
+                \draw (a) -- (as);
+                \draw (b) -- (bs);
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{align*}
+        \TV(A,B;C') \cdot \TV(B,C;A') \cdot \TV(C,A;B') = 1
+    \end{align*}
+    \textit{Beweis:} Übungsaufgabe
+\end{mysatz}
+\begin{mysatz}
+    Satz von \textsc{Pappos} (um 300, Alexandria)
+
+    \begin{minipage}{0.45\textwidth}
+        $G,G'$ verschiedene Geraden in einer affinen Ebene und $P_1,P_2,P_3 \in G$ und $P'_1,P'_2,P'_3 \in G'$, dann gilt:
+    \end{minipage}
+    \begin{minipage}{0.55\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                %\draw[help lines] (0,0) grid (4,3);
+                \draw (0,0) coordinate(p3s) node[anchor=north] {$P'_3$};
+                \draw (0,1) coordinate(p1) node[anchor=south] {$P_1$};
+                \draw (1.5,0) coordinate(p2s) node[anchor=north] {$P'_2$};
+                \draw (3.5,0) coordinate(p1s) node[anchor=north] {$P'_1$};
+                \draw (3.5,1.7) coordinate(p3) node[anchor=south] {$P_3$};
+                \draw (20/13,17/13) coordinate(p2) node[anchor=south] {$P_2$};
+                \fill (p3s) circle (1pt);
+                \fill (p1) circle (1pt);
+                \fill (p2s) circle (1pt);
+                \fill (p1s) circle (1pt);
+                \fill (p3) circle (1pt);
+                \fill (p2) circle (1pt);
+                \draw (-0.3,0) -- (p3s) -- (p2s) -- (p1s) -- (3.8,0);
+                \draw (-0.3,0.94) -- (p1) -- (p3) -- (3.8,1.76);
+                \draw[dotted] (p1) -- (p3s);
+                \draw[dotted] (p3) -- (p1s);
+                \draw[dotted] (p1) -- (p2s);
+                \draw[dotted] (p2) -- (p1s);
+                \draw[color=blue,thick] (p2) -- (p3s);
+                \draw[color=blue,thick] (p2s) -- (p3);
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{align*}
+        G(P_1 P'_3) \parallel G(P_3 P'_1) \ \wedge \ G(P_1 P'_2) \parallel G(P_2 P'_1) \quad \Rightarrow \quad G(P_2 P'_3) \parallel G(P_3 P'_2)
+    \end{align*}
+    \textit{Beweis:}
+    \begin{enumerate}
+        \item[1. Fall:] $G \cap G' = \emptyset$
+            \begin{align*}
+                \TV(P1,P3;O) \quad & = \quad \TV(P'_3,P'_1;O) & \text{{(Strahlensatz)}}\\
+                \ora{P_1 O} = k \cdot \ora{P_3 O} \quad & \wedge \quad \ora{P'_3 O} = k \cdot \ora{P'_1 O}\\
+                \TV(P1,P2;O) \quad & = \quad \TV(P'_2,P'_1;O)\\
+                \ora{P_1 O} = l \cdot \ora{P_2 O} \quad & \wedge \quad \ora{P'_2 O} = l \cdot \ora{P'_1 O}
+            \end{align*}
+            \begin{align*}
+                \ora{P_3 O} = \frac{l}{k}  \cdot \ora{P_2 O} \quad & \phantom{\wedge} \quad \ora{P'_2 O} = \frac{l}{k} \cdot \ora{P'_3 O}\\
+                \TV(P_3,P_2;O) \quad & = \quad \TV(P'_2,P'_3;O) & \Rightarrow \text{Behauptung}
+            \end{align*}
+        \item[2. Fall:] $G \parallel G'$
+            \begin{align*}
+                \ora{P_1P_3} = \lambda \ora{P'_3 P'_1}  \quad & \wedge \quad \ora{P_1 P'_3} = \mu \ora{P_3 P'_1}\\
+                & \Rightarrow \quad \lambda = \mu = 1 & \left( \ora{P_1P_3} = \ora{P_1P'_3} + \ora{P'_3 P'_1} + \ora{P'_1 P_3} \right)
+                \intertext{analog gilt:}
+                \ora{P_1P_2} = \ora{P'_2 P'_1} \quad & \wedge \quad \ora{P_1 P'_2} = \ora{P_2 P_1}\\
+                \Rightarrow \quad \uwave{\ora{P_2 P_3}} = \ora{P_2 P_1} + \ora{P_1 P_3} & = \ora{P'_1 P'_2} + \ora{P_3 P'_1} = \uwave{\ora{P'_2 P_3}}
+            \end{align*}
+    \end{enumerate}
+\end{mysatz}
+
+\begin{mydef}
+    Euklidischer Punktraum
+
+    Ein affiner Raum heißt euklidisch, wenn der zugehörige Vektorraum euklidisch ist.
+\end{mydef}
+
+\begin{mydef}
+    Abstand
+
+    Seien $P$ und $Q$ Punkte des euklidischen Punktraumes $\mathcal{A}_n$, dann heißt
+    \begin{align*}
+        d(P,Q) := \sqrt{\left\langle \ora{PQ}, \ora{PQ} \right\rangle}
+    \end{align*}
+    Abstand der Punkte $P,Q$. Seien $M_1$ und $M_2$ Punktmengen, dann ist
+    \begin{align*}
+        d(M_1,M_2) := \inf\limits_{x,y} \big\{ d(x,y) \mid x \in M_1, y \in M_2 \big\}
+    \end{align*}
+    (Falls $M_1,M_2$ affine Teilräume sind, definiert sich der Abstand durch das Minimum)
+\end{mydef}
+
+\begin{mysatz}
+    Für den Abstand von Punkten gelten folgende Eigenschaften:
+    \begin{itemize}
+        \item[(i)] $d(P,Q) = d(Q,P)$
+        \item[(ii)] $d(P,Q) \geq 0$
+        \item[(iii)] $d(P,Q) = 0 \Leftrightarrow P = Q$
+        \item[(iv)] $d(P,Q) \leq d(P,R) + d(R,Q)$
+    \end{itemize}
+    \textit{Beweis:} siehe Norm.
+\end{mysatz}
+
+\begin{mylemma}
+    \textsc{Hesse}sche Form (1811 - 1874)
+
+    Sei $G$ eine Gerade mit $G = \left\{ X : X = P+t \cdot a \right\}$ in der Ebene $\mathcal{A}_2$ und $n$ der Stellungsvektor der Geraden, d.h. $\left\langle n,a \right\rangle=0$, dann gilt
+    \begin{align*}
+        \left\langle \ora{PX} , n \right\rangle = 0 \Leftrightarrow X \in G
+    \end{align*}
+    \textit{Beweis:}
+    \begin{align*}
+        \left\langle n \right\rangle^{\bot} = \left\langle a \right\rangle \Rightarrow \left\langle \ora{PX} , n \right\rangle = 0 \Leftrightarrow \ora{PX} = \lambda a \Rightarrow X = P + \lambda a \in G
+    \end{align*}
+\end{mylemma}
+\textit{Bemerkung:} \textsc{Hesse}sche Normalform: $n_0 = \frac{n}{\| n \|}$ und $\left\langle \ora{PX} , n_0 \right\rangle = 0$
+
+\textit{Beispiel:}
+\begin{align*}
+    X =
+    \begin{pmatrix}
+        1\\2
+    \end{pmatrix}
+    + t
+    \begin{pmatrix}
+        3\\4
+    \end{pmatrix}
+    \qquad n =
+    \begin{pmatrix}
+        -4\\3
+    \end{pmatrix}\\
+    \left.
+    \begin{matrix}
+        \left\langle
+        \begin{pmatrix}
+            x-1\\y-2
+        \end{pmatrix}
+        ,
+        \begin{pmatrix}
+            -4\\3
+        \end{pmatrix}
+        \right\rangle
+        & =0\\
+        -4x+3y-2 & =0
+    \end{matrix}
+    \right\}
+    \text{HF}\\
+    -\frac{4}{5} x + \frac{3}{5} y - \frac{2}{5} = 0 \Rightarrow \text{HNF}
+\end{align*}
+\begin{mylemma}
+    Abstand: Punkt-Gerade $\big( d(Q,G) \big)$\\
+
+    \begin{minipage}{0.6\textwidth}
+        Sei $G = \left\{ X : X = P+t \cdot a \right\}$ eine Gerade und $Q$ ein Punkt, dann ist
+        \begin{align*}
+            d(Q,G) = \left| \left\langle \ora{PQ} , n_0 \right\rangle \right|
+        \end{align*}
+        wobei $n_0$ der normierte Stellungsvektor von $G$ ist.
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                %\draw[help lines] (0,0) grid (4,3);
+                \draw (0,0) coordinate(p) node[anchor=north west] {$P$};
+                \draw (1.5,1) coordinate(qs) node[anchor=north west] {$Q^*$};
+                \draw (3,2) coordinate(g) node[anchor=west] {$G$};
+                \draw (0.5,2.5) coordinate(q) node[anchor=south] {$Q$};
+                \fill (p) circle (1pt);
+                \fill (qs) circle (1pt);
+                \fill (q) circle (1pt);
+                \draw (-0.5,-1/3) -- (p) -- (qs) -- (3,6/3);
+                \draw[color=blue,thick] (q) -- (qs);
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+
+    \textit{Beweis:}
+    \begin{align*}
+        \ora{QQ^*} & \bot a\\
+        \ora{Q^*Q} & = \lambda \cdot n_0 \qquad \Rightarrow \qquad \left| \ora{QQ^*} \right| = \left| \lambda \right|\\
+        \ora{PQ} & = \ora{PQ^*}  + \ora{Q^*Q}\\
+        \left\langle \ora{PQ^*} , n_0 \right\rangle & = 0\\
+        \left\langle \ora{PQ} , n_0 \right\rangle & = \underbrace{\left\langle \ora{PQ^*} , n_0 \right\rangle}_{0} + \left\langle \lambda \cdot n_0, n_0 \right\rangle = \lambda\\
+        & \Rightarrow \left\langle \ora{PQ} , n_0 \right\rangle = \lambda \quad \text{und} \quad |\lambda| = d(Q,G)
+    \end{align*}
+\end{mylemma}
+\textit{Beispiel:}
+\begin{align*}
+    G & : -\frac{4x}{5} + \frac{3y}{5} - \frac{2}{5} = 0\\
+    d & \left(
+    \begin{pmatrix}
+        2\\3
+    \end{pmatrix}
+    ,G
+    \right)
+    =
+    \left| -\frac{8}{5} + \frac{9}{5} - \frac{2}{5}  \right| = \frac{1}{5}
+\end{align*}
+
+\begin{mylemma}
+    
+\end{mylemma}
+
+% section Affine und Euklidische (Punkt-)Räume (end)
+
+
+\end{document}
