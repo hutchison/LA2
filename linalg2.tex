@@ -5,6 +5,7 @@ a4paper,
 11pt,		% Schriftgröße (12pt, 11pt (Standard))
 %leqno,		% Nummerierung von Gleichungen links
 %fleqn,		% Ausgabe von Gleichungen linksbündig
+twoside,
 ]
 {scrartcl}
 
@@ -30,6 +31,12 @@ a4paper,
 \newcommand{\charpol}{\text{charpol}\,}
 \newcommand{\id}{\text{id}\,}
 \newcommand{\TV}{\text{TV}}
+\newcommand{\ora}{\overrightarrow}
+%Borners Kommandos:
+\newcommand{\mata}{\left(\begin{matrix}}
+\newcommand{\mate}{\end{matrix}\right)}
+\newcommand{\la}{\lambda_1}
+\newcommand{\lb}{\lambda_2}
 
 %nützliche Extras:
 \usepackage{array,
@@ -105,22 +112,22 @@ ulem,
 ]{fullpage}
 
 % die fancy-Header:
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-
-\fancyhead{}
-\fancyfoot{}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyhf{}
+%
+%\fancyhead{}
+%\fancyfoot{}
 %\fancyhead[L]{}
 %\fancyhead[C]{}
 %\fancyhead[R]{\nouppercase \leftmark}
 %\fancyfoot[L]{}
-\fancyfoot[C]{\thepage}
+%\fancyfoot[C]{\thepage}
 %\fancyfoot[OR]{\thepage}
 %\fancyfoot[LE]{\thepage}
 %Linie oben/unten
-\renewcommand{\headrulewidth}{0.0pt}
-\renewcommand{\footrulewidth}{0.0pt}
+%\renewcommand{\headrulewidth}{0.0pt}
+%\renewcommand{\footrulewidth}{0.0pt}
 
 %kein Einrücken der Paragraphen
 \parindent 0pt
@@ -132,427 +139,420 @@ ulem,
 %\usepackage[all]{xy}
 %\usepackage{pst-all}
 
-\newcommand{\ora}{\overrightarrow}
 
 \begin{document}
 
 %\setcounter{section}{6}
 
-\section{Eigenwerte, Eigenvektoren} % (fold)
-\label{sec:Eigenwerte, Eigenvektoren}
+%\section{Eigenwerte, Eigenvektoren} % (fold)
+%\label{sec:Eigenwerte, Eigenvektoren}
+%
+%Zum Anfang eine ganz kurze Wiederholung zu linearen Abbildungen:
+%
+%$\alpha: V \mapsto V$ \hfill $\alpha$ ist eine lineare Abbildung eines $\K$-Vektorraumes $V$ in sich (Endomorphismus).
+%\begin{align*}
+%    \alpha(v_1 + v_2) & = \alpha(v_1) + \alpha(v_2) & \forall\, v_1,v_2 \in V\\
+%    \alpha(\lambda \cdot v) & = \lambda \cdot \alpha(v) & \forall\, \lambda \in \K, v \in V
+%\end{align*}
+%
+%\begin{mydef} Eigenwert, Eigenvektor
+%
+%    Sei $\alpha$ ein Endomorphismus des $\K$-VR $V$ und $\lambda \in \K$. $\lambda$ heißt \textbf{Eigenwert} von $\alpha$ genau dann, wenn ein Vektor $v$ aus $V \setminus \left\{ 0 \right\}$ existiert mit $\alpha(v) = \lambda v$. $v$ heißt dann \textbf{Eigenvektor} zu $\lambda$.
+%\end{mydef}
+%
+%\textit{Beispiel:} $V = \R^2$
+%\begin{enumerate}
+%    \item $\qquad \alpha:\ (x,y) \mapsto (x+y,x+y)$
+%        \begin{align*}
+%            \alpha(x,y) & = \lambda(x,y)\\
+%            (x+y,x+y) & = (\lambda x, \lambda y)\\
+%            x+y & = \lambda x\\
+%            x+y & = \lambda y\\
+%            \uline{\lambda = 0} \Rightarrow y & = -x & v = (1,-1)\\
+%            \alpha(1,-1) & = 0 \cdot (1,-1)\\
+%            v & = t(1,-1)\\
+%            \uline{\lambda = 2} \Rightarrow x & = y & v = (1,1)
+%        \end{align*}
+%
+%        Man betrachte das homogene Gleichungssystem:
+%        \begin{align*}
+%            \begin{pmatrix}
+%                1-\lambda & 1\\
+%                1 & 1-\lambda
+%            \end{pmatrix}
+%        \end{align*}
+%        Mittels der Berechnung der Determinante lassen sich alle Lösungen ermitteln.
+%
+%        Man betrachte nun die Abbildungsmatrix $A$ von $\alpha$:
+%        \begin{align*}
+%            A = 
+%            \begin{pmatrix}
+%                1 & 1\\
+%                1 & 1
+%            \end{pmatrix}
+%        \end{align*}
+%        \textit{Bonusfrage:} wie sieht $A^{100}$ aus?
+%
+%        Dazu betrachte man $A$ bzgl. der Eigenvektorbasis $\langle (1,1),(1,-1) \rangle$.
+%        \begin{align*}
+%            A' & =
+%            \begin{pmatrix}
+%                2 & 0\\
+%                0 & 0
+%            \end{pmatrix}\\
+%            A' & = T^{-1} A T \qquad (T = \text{Transformationsmatrix})\\
+%            \langle (1,0),(0,1) \rangle & \overset{T}{\to} \langle (1,1),(1,-1) \rangle\\
+%            T & = 
+%            \begin{pmatrix}
+%                1 & 1\\
+%                1 & -1
+%            \end{pmatrix}\\
+%        \end{align*}
+%        \begin{align*}
+%            A & = T A' T^{-1}\\
+%            \uline{A^n} & = (T A' T^{-1})(T A' T^{-1}) \ldots (T A' T^{-1}) = \uuline{T {A'}^n T^{-1}}\\
+%            & = -\frac{1}{2}
+%            \begin{pmatrix}
+%                1 & 1\\
+%                1 & -1
+%            \end{pmatrix}
+%            \begin{pmatrix}
+%                2^n & 0\\
+%                0 & 0
+%            \end{pmatrix}
+%            \begin{pmatrix}
+%                -1 & -1\\
+%                -1 & 1
+%            \end{pmatrix}
+%            =
+%            -\frac{1}{2}
+%            \begin{pmatrix}
+%                2^n & 0\\
+%                2^n & 0
+%            \end{pmatrix}
+%            \begin{pmatrix}
+%                -1 & -1\\
+%                -1 & 1
+%            \end{pmatrix}\\
+%            & =
+%            -\frac{1}{2}
+%            \begin{pmatrix}
+%                -2^n & -2^n\\
+%                -2^n & -2^n
+%            \end{pmatrix}
+%            =
+%            \uuline{
+%            \begin{pmatrix}
+%                2^{n-1} & 2^{n-1}\\
+%                2^{n-1} & 2^{n-1}
+%            \end{pmatrix}
+%            }
+%        \end{align*}
+%    \item $\qquad\alpha(x,y) = (x+y,x-y)$
+%        \begin{align*}
+%            x+y & = \lambda x\\
+%            x-y & = \lambda y
+%        \end{align*}
+%        \begin{align*}
+%            \Rightarrow\ &
+%            A = 
+%            \underbrace{
+%            \begin{pmatrix}
+%                1-\lambda & 1\\
+%                1 & -1-\lambda 
+%            \end{pmatrix}}_{\text{Wann wird der Rang 1?}}
+%        \end{align*}
+%        Es existieren genau dann nichttriviale Lösungen, wenn $\rg(A)<2$ und dies ist genau dann der Fall, wenn $\det A=0$.
+%        \begin{align*}
+%            \Rightarrow \det A & = -(1-\lambda)(1+\lambda)-1 = -2+\lambda^2\\
+%            \lambda^2 & = 2 \Rightarrow \lambda_{1,2} = \pm \sqrt{2}
+%        \end{align*}
+%\end{enumerate}
+%\subsection{Bestimmung von Eigenwerten und Eigenvektoren} % (fold)
+%\label{sub:Bestimmung von Eigenwerten und Eigenvektoren}
+%$\alpha: V \to V$ und $\dim V = n$
+%\begin{align*}
+%    \alpha(v) = \lambda v \qquad & \Leftrightarrow \qquad \underbrace{A}_{\substack{\text{Darstellungsmatrix}\\ \text{von $\alpha$ bzgl. $B$}}} \cdot  v_{'B} = \lambda v_{'B}\\
+%    & \Leftrightarrow 0 = \lambda \underbrace{E_n v_{'B}}_{v_{'B}} - Av_{'B} = (\lambda E_n - A)v_{'B} \tag{$\star$} \label{eqn:LambdaEMinusA}
+%\end{align*}
+%
+%Da $v_{'B} \in V\setminus\left\{0\right\}$ sind nichttriviale Lösungen des homogenen Gleichungssystems (\ref{eqn:LambdaEMinusA}) gesucht. Diese existieren genau dann, wenn $\rg(\lambda E - A) < n$, d.h. genau dann, wenn $\det(\lambda E-A)=0$.
+%
+%\begin{mysatz}
+%    Sei $\alpha$ ein Endomorphismus des $\K$-VR $V$, dann sind folgende Aussagen äquivalent:
+%    \begin{enumerate}
+%        \item $\lambda$ ist ein Eigenwert von $\alpha$
+%        \item $\det(\lambda E - A) = 0$
+%        \item $\rg(\lambda E - A) < n$
+%        \item $\ker(\lambda E - A) \neq \left\{ 0 \right\}$
+%    \end{enumerate}
+%    \begin{align*}
+%        \det &
+%        \begin{pmatrix}
+%            \lambda - a_{11} & -a_{12} & \dots & -a_{1n}\\
+%            -a_{21} & \lambda - a_{22} & \dots & -a_{2n}\\
+%            \vdots & & \ddots & \vdots\\
+%            -a_{n1} & \dots & \dots & \lambda - a_{nn}
+%        \end{pmatrix}
+%        =
+%        (\lambda - a_{11}) \ldots (\lambda - a_{nn}) + \ldots - \ldots\\
+%        & = (-1)^n \lambda^n + (-1)^{n-1} (\Sp A)\lambda^{n-1} + \ldots + k_0\\
+%        \Big( k_0 & = \det(0 \cdot E-A) = \det(-A) = (-1)^n \det A \Big)\\
+%        & = \lambda^n - (\Sp A)\lambda^{n-1} + \ldots + (-1)^n \det A
+%    \end{align*}
+%\end{mysatz}
+%
+%\begin{mydef}
+%    \textit{charakteristisches Polynom} $(\charpol)$
+%    \begin{enumerate}
+%        \item Sei $A$ eine $n \times n$-Matrix. Das $\charpol$ von $A$ ist das Polynom $\det(\lambda E-A) \in \K\left[ \lambda \right]$
+%        \item Sei $\alpha$ ein Endomorphismus von $V$, dann ist das $\charpol \alpha$ das Polynom $\det(\lambda E-A)$, wobei $A$ die Darstellungsmatrix von $\alpha$ bzgl. Basis $B$ ist.
+%    \end{enumerate}
+%\end{mydef}
+%
+%\textit{Bemerkung:} Ähnliche Matrizen haben dasselbe $\charpol$.
+%\begin{align*}
+%    A' & = T^{-1}AT\\
+%    \charpol A' & = \det(\lambda E - T^{-1}AT) = \det(T^{-1}\lambda ET - T^{-1}AT)\\
+%    & = \det( T^{-1}(\lambda E - A) T )\\
+%    & = \det( T^{-1}) \cdot \det(\lambda E - A) \cdot  \det(T)\\
+%    & = \underbrace{\det( T^{-1}) \cdot \det(T)}_{=1} \cdot \det(\lambda E - A) = \charpol A
+%\end{align*}
+%Die Eigenwerte von $\alpha$ sind die Nullstellen des charakteristischen Polynoms.\\
+%
+%\textit{Beispiel:} $\qquad V=\R^2 \qquad A = \begin{pmatrix}
+%    1 & -1\\
+%    1 & 1
+%\end{pmatrix}$
+%\begin{align*}
+%    \charpol A = \det
+%    \begin{pmatrix}
+%        \lambda - 1 & -1\\
+%        -1 & \lambda - 1
+%    \end{pmatrix}
+%    & = \lambda^2 -2 \lambda + 2\\
+%    \lambda_{1,2} & = 1 \pm \sqrt{1-2} \notin \R\\
+%    & \Rightarrow \text{keine Eigenwerte}
+%\end{align*}
+%
+%\textit{Anmerkung:}
+%Für die Fälle $n=2$ und $n=3$ existieren Formeln für das charakteristische Polynom:
+%\begin{align*}
+%    p(\lambda) & = \lambda^2 - \Sp A\, \lambda  + \det A & (n=2)\\
+%    p(\lambda) & = -\lambda^3 + \Sp A\, \lambda^2 - k_1 + \det A & (n=3)\\
+%    k_1 \text{ ist für } A & = 
+%    \begin{pmatrix}
+%        a & b & c\\
+%        d & e & f\\
+%        g & h & j
+%    \end{pmatrix}
+%    \text{ definiert als }
+%    k_1 = 
+%    \begin{vmatrix}
+%        a & b\\
+%        d & e
+%    \end{vmatrix}
+%    +
+%    \begin{vmatrix}
+%        a & c\\
+%        g & j
+%    \end{vmatrix}
+%    +
+%    \begin{vmatrix}
+%        e & f\\
+%        h & j
+%    \end{vmatrix}
+%\end{align*}
+%
+%%\newpage
+%
+%\textit{Anmerkung:}
+%\textsc{Horner}-Schema:
+%\begin{itemize}
+%    \item[Vor.:] Polynom $f(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0$
+%    \item[Bsp.:] $f(x) = 2x^4 + x^3 -3x -34$
+%\end{itemize}
+%\begin{itemize}
+%    \item \textit{Berechne} $f(-1)$!
+%
+%        Für das \textsc{Horner}-Schema benötigt man eine kleine Tabelle mit 3 Zeilen und $n+2$ Spalten, wobei $n$ der Grad des Polynoms ist.
+%        \begin{enumerate}
+%            \item In die Kopfzeile schreibt man alle Koeffizienten des Polynoms; in das 1. Feld der 2. Zeile den zu berechnenden Wert:
+%                \begin{center}
+%                    \begin{tabular}{c|ccccc}
+%                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+%                        $-1$    &       &       &       &       &       \\\hline
+%                        \phantom{$-1$}
+%                    \end{tabular}
+%                \end{center}
+%            \item Das 2. Feld der 2. Zeile bleibt leer. Darunter jedoch (2. Feld, 3. Zeile) schreibt man den Wert, der in der 1. Zeile steht (also $2$).
+%                \begin{center}
+%                    \begin{tabular}{c|ccccc}
+%                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+%                        $-1$    &       &       &       &       &       \\\hline
+%                        & $2$
+%                    \end{tabular}
+%                \end{center}
+%            \item Nun multipliziert man den eben eingetragenen Wert mit der Zahl ganz links (also dem zu berechnenden Argument) und trägt ihn das Feld darüber rechts ein.
+%                \begin{center}
+%                    \begin{tabular}{c|ccccc}
+%                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+%                        $-1$    &       & $-2$  &       &       &       \\\hline
+%                        & $2$
+%                    \end{tabular}
+%                \end{center}
+%            \item Jetzt addiert man die Werte der 3. Spalte und trägt das Ergebnis in das unterste Feld ein.
+%                \begin{center}
+%                    \begin{tabular}{c|ccccc}
+%                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+%                        $-1$    &       & $-2$  &       &       &       \\\hline
+%                        & $2$   & $-1$
+%                    \end{tabular}
+%                \end{center}
+%            \item Dieses Prinzip führt man bis zum Ende durch (mit dem Wert ganz links multiplizieren; in das Feld rechts darüber eintragen; summieren).
+%                \begin{center}
+%                    \begin{tabular}{c|ccccc}
+%                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+%                        $-1$    &       & $-2$  & $1$   &       &       \\\hline
+%                        & $2$   & $-1$
+%                    \end{tabular}
+%                    $\Rightarrow \ldots \Rightarrow$
+%                    \begin{tabular}{c|ccccc}
+%                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+%                        $-1$    &       & $-2$  & $1$   & $-1$  & $4$   \\\hline
+%                        & $2$   & $-1$  & $1$   & $-4$  & \framebox{$-30$}
+%                    \end{tabular}
+%                \end{center}
+%            \item[$\Rightarrow$] Der eingerahmte Wert ist der gesuchte Funktionswert.
+%        \end{enumerate}
+%    \item \textit{Polynomdivision}
+%
+%        Angenommen man hat durch Ausprobieren herausgefunden, dass $f(2)=0$ gilt und möchte jetzt das Polynom zerlegen.
+%        \begin{enumerate}
+%            \item Dazu schaut man sich das ausgefüllte \textsc{Horner}-Schema an:
+%                \begin{center}
+%                    \begin{tabular}{c|ccccc}
+%                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+%                        $2$     &       & $4 $  & $10$  & $20$  & $34$   \\\hline
+%                        & $2$   & $5$   & $10$  & $17$  & $0$
+%                    \end{tabular}
+%                \end{center}
+%            \item Die Einträge der letzten Zeile bilden die Koeffizienten des Restpolynoms.
+%            \item[$\Rightarrow$] Insgesamt gilt also:
+%                \begin{align*}
+%                    f(x) = (x-2)(2x^3+5x^2+10x+17)
+%                \end{align*}
+%        \end{enumerate}
+%\end{itemize}
+%
+%%\newpage
+%
+%\begin{mydef} \textit{Eigenraum}
+%
+%    Sei $\alpha: V \to V$ ein Endomorphismus und $\lambda \in \K$ ein Eigenwert von $\alpha$, dann heißt
+%
+%    $E(\lambda) = \left\{ v \in V\ |\ \alpha(v) = \lambda v \right\}$ \textbf{Eigenraum} zum Eigenwert $\lambda$.
+%\end{mydef}
+%
+%\textit{Bemerkung:}
+%\begin{itemize}
+%    \item $E(\lambda)$ ist die Menge aller Eigenvektoren von $\lambda$ und $0$.
+%    \item $E(\lambda) = \ker(\lambda \id - \alpha)$ \hfill da $ \alpha(v) = \lambda v \Leftrightarrow 0 = \lambda \id v - \alpha(v) = (\lambda \id - \alpha) v$
+%\end{itemize}
+%
+%\begin{mydef} \textit{Diagonalmatrix, diagonalisierbar}
+%
+%    Eine $n \times n$ Matrix heißt Diagonalmatrix genau dann, wenn $a_{ij}=0$ für alle $i \neq j; i,j \in \left\{ 1,\dots,n \right\}$. Man nennt $A$ diagonalisierbar genau dann, wenn $A$ zu einer Diagonalmatrix ähnlich ist.
+%    Ein Endomorphismus $\alpha$ heißt diagonalisierbar, genau dann, wenn eine Basis $B$ von $V$ existiert, sodass die Abbildungsmatrix eine Diagonalmatrix ist.
+%\end{mydef}
+%
+%\textit{Bemerkung:} $\alpha$ ist diagonalisierbar genau dann, wenn eine Basis aus Eigenvektoren existiert.
+%
+%% subsection Bestimmung von Eigenwerten und Eigenvektoren (end)
+%
+%% section Eigenwerte, Eigenvektoren (end)
 
-Zum Anfang eine ganz kurze Wiederholung zu linearen Abbildungen:
-
-$\alpha: V \mapsto V$ \hfill $\alpha$ ist eine lineare Abbildung eines $\K$-Vektorraumes $V$ in sich (Endomorphismus).
-\begin{align*}
-    \alpha(v_1 + v_2) & = \alpha(v_1) + \alpha(v_2) & \forall\, v_1,v_2 \in V\\
-    \alpha(\lambda \cdot v) & = \lambda \cdot \alpha(v) & \forall\, \lambda \in \K, v \in V
-\end{align*}
-
-\begin{mydef}
-    \textit{Eigenwert, Eigenvektor}
-
-    Sei $\alpha$ ein Endomorphismus des $\K$-VR $V$ und $\lambda \in \K$. $\lambda$ heißt \textbf{Eigenwert} von $\alpha$ genau dann, wenn ein Vektor $v$ aus $V \setminus \left\{ 0 \right\}$ existiert mit $\alpha(v) = \lambda v$. $v$ heißt dann \textbf{Eigenvektor} zu $\lambda$.
-\end{mydef}
-
-\textit{Beispiel:} $V = \R^2$
-\begin{enumerate}
-    \item $\qquad \alpha:\ (x,y) \mapsto (x+y,x+y)$
-        \begin{align*}
-            \alpha(x,y) & = \lambda(x,y)\\
-            (x+y,x+y) & = (\lambda x, \lambda y)\\
-            x+y & = \lambda x\\
-            x+y & = \lambda y\\
-            \uline{\lambda = 0} \Rightarrow y & = -x & v = (1,-1)\\
-            \alpha(1,-1) & = 0 \cdot (1,-1)\\
-            v & = t(1,-1)\\
-            \uline{\lambda = 2} \Rightarrow x & = y & v = (1,1)
-        \end{align*}
-
-        Man betrachte das homogene Gleichungssystem:
-        \begin{align*}
-            \begin{pmatrix}
-                1-\lambda & 1\\
-                1 & 1-\lambda
-            \end{pmatrix}
-        \end{align*}
-        Mittels der Berechnung der Determinante lassen sich alle Lösungen ermitteln.
-
-        Man betrachte nun die Abbildungsmatrix $A$ von $\alpha$:
-        \begin{align*}
-            A = 
-            \begin{pmatrix}
-                1 & 1\\
-                1 & 1
-            \end{pmatrix}
-        \end{align*}
-        \textit{Bonusfrage:} wie sieht $A^{100}$ aus?
-
-        Dazu betrachte man $A$ bzgl. der Eigenvektorbasis $\langle (1,1),(1,-1) \rangle$.
-        \begin{align*}
-            A' & =
-            \begin{pmatrix}
-                2 & 0\\
-                0 & 0
-            \end{pmatrix}\\
-            A' & = T^{-1} A T \qquad (T = \text{Transformationsmatrix})\\
-            \langle (1,0),(0,1) \rangle & \overset{T}{\to} \langle (1,1),(1,-1) \rangle\\
-            T & = 
-            \begin{pmatrix}
-                1 & 1\\
-                1 & -1
-            \end{pmatrix}\\
-        \end{align*}
-        \begin{align*}
-            A & = T A' T^{-1}\\
-            \uline{A^n} & = (T A' T^{-1})(T A' T^{-1}) \ldots (T A' T^{-1}) = \uuline{T {A'}^n T^{-1}}\\
-            & = -\frac{1}{2}
-            \begin{pmatrix}
-                1 & 1\\
-                1 & -1
-            \end{pmatrix}
-            \begin{pmatrix}
-                2^n & 0\\
-                0 & 0
-            \end{pmatrix}
-            \begin{pmatrix}
-                -1 & -1\\
-                -1 & 1
-            \end{pmatrix}
-            =
-            -\frac{1}{2}
-            \begin{pmatrix}
-                2^n & 0\\
-                2^n & 0
-            \end{pmatrix}
-            \begin{pmatrix}
-                -1 & -1\\
-                -1 & 1
-            \end{pmatrix}\\
-            & =
-            -\frac{1}{2}
-            \begin{pmatrix}
-                -2^n & -2^n\\
-                -2^n & -2^n
-            \end{pmatrix}
-            =
-            \uuline{
-            \begin{pmatrix}
-                2^{n-1} & 2^{n-1}\\
-                2^{n-1} & 2^{n-1}
-            \end{pmatrix}
-            }
-        \end{align*}
-    \item $\qquad\alpha(x,y) = (x+y,x-y)$
-        \begin{align*}
-            x+y & = \lambda x\\
-            x-y & = \lambda y
-        \end{align*}
-        \begin{align*}
-            \Rightarrow\ &
-            A = 
-            \underbrace{
-            \begin{pmatrix}
-                1-\lambda & 1\\
-                1 & -1-\lambda 
-            \end{pmatrix}}_{\text{Wann wird der Rang 1?}}
-        \end{align*}
-        Es existieren genau dann nichttriviale Lösungen, wenn $\rg(A)<2$ und dies ist genau dann der Fall, wenn $\det A=0$.
-        \begin{align*}
-            \Rightarrow \det A & = -(1-\lambda)(1+\lambda)-1 = -2+\lambda^2\\
-            \lambda^2 & = 2 \Rightarrow \lambda_{1,2} = \pm \sqrt{2}
-        \end{align*}
-\end{enumerate}
-\subsection{Bestimmung von Eigenwerten und Eigenvektoren} % (fold)
-\label{sub:Bestimmung von Eigenwerten und Eigenvektoren}
-$\alpha: V \to V$ und $\dim V = n$
-\begin{align*}
-    \alpha(v) = \lambda v \qquad & \Leftrightarrow \qquad \underbrace{A}_{\substack{\text{Darstellungsmatrix}\\ \text{von $\alpha$ bzgl. $B$}}} \cdot  v_{'B} = \lambda v_{'B}\\
-    & \Leftrightarrow 0 = \lambda \underbrace{E_n v_{'B}}_{v_{'B}} - Av_{'B} = (\lambda E_n - A)v_{'B} \tag{$\star$} \label{eqn:LambdaEMinusA}
-\end{align*}
-
-Da $v_{'B} \in V\setminus\left\{0\right\}$ sind nichttriviale Lösungen des homogenen Gleichungssystems (\ref{eqn:LambdaEMinusA}) gesucht. Diese existieren genau dann, wenn $\rg(\lambda E - A) < n$, d.h. genau dann, wenn $\det(\lambda E-A)=0$.
-
-\begin{mysatz}
-    Sei $\alpha$ ein Endomorphismus des $\K$-VR $V$, dann sind folgende Aussagen äquivalent:
-    \begin{enumerate}
-        \item $\lambda$ ist ein Eigenwert von $\alpha$
-        \item $\det(\lambda E - A) = 0$
-        \item $\rg(\lambda E - A) < n$
-        \item $\ker(\lambda E - A) \neq \left\{ 0 \right\}$
-    \end{enumerate}
-    \begin{align*}
-        \det &
-        \begin{pmatrix}
-            \lambda - a_{11} & -a_{12} & \dots & -a_{1n}\\
-            -a_{21} & \lambda - a_{22} & \dots & -a_{2n}\\
-            \vdots & & \ddots & \vdots\\
-            -a_{n1} & \dots & \dots & \lambda - a_{nn}
-        \end{pmatrix}
-        =
-        (\lambda - a_{11}) \ldots (\lambda - a_{nn}) + \ldots - \ldots\\
-        & = (-1)^n \lambda^n + (-1)^{n-1} (\Sp A)\lambda^{n-1} + \ldots + k_0\\
-        \Big( k_0 & = \det(0 \cdot E-A) = \det(-A) = (-1)^n \det A \Big)\\
-        & = \lambda^n - (\Sp A)\lambda^{n-1} + \ldots + (-1)^n \det A
-    \end{align*}
-\end{mysatz}
-
-\begin{mydef}
-    \textit{charakteristisches Polynom} $(\charpol)$
-    \begin{enumerate}
-        \item Sei $A$ eine $n \times n$-Matrix. Das $\charpol$ von $A$ ist das Polynom $\det(\lambda E-A) \in \K\left[ \lambda \right]$
-        \item Sei $\alpha$ ein Endomorphismus von $V$, dann ist das $\charpol \alpha$ das Polynom $\det(\lambda E-A)$, wobei $A$ die Darstellungsmatrix von $\alpha$ bzgl. Basis $B$ ist.
-    \end{enumerate}
-\end{mydef}
-
-\textit{Bemerkung:} Ähnliche Matrizen haben dasselbe $\charpol$.
-\begin{align*}
-    A' & = T^{-1}AT\\
-    \charpol A' & = \det(\lambda E - T^{-1}AT) = \det(T^{-1}\lambda ET - T^{-1}AT)\\
-    & = \det( T^{-1}(\lambda E - A) T )\\
-    & = \det( T^{-1}) \cdot \det(\lambda E - A) \cdot  \det(T)\\
-    & = \underbrace{\det( T^{-1}) \cdot \det(T)}_{=1} \cdot \det(\lambda E - A) = \charpol A
-\end{align*}
-Die Eigenwerte von $\alpha$ sind die Nullstellen des charakteristischen Polynoms.\\
-
-\textit{Beispiel:} $\qquad V=\R^2 \qquad A = \begin{pmatrix}
-    1 & -1\\
-    1 & 1
-\end{pmatrix}$
-\begin{align*}
-    \charpol A = \det
-    \begin{pmatrix}
-        \lambda - 1 & -1\\
-        -1 & \lambda - 1
-    \end{pmatrix}
-    & = \lambda^2 -2 \lambda + 2\\
-    \lambda_{1,2} & = 1 \pm \sqrt{1-2} \notin \R\\
-    & \Rightarrow \text{keine Eigenwerte}
-\end{align*}
-
-\textit{Anmerkung:}
-Für die Fälle $n=2$ und $n=3$ existieren Formeln für das charakteristische Polynom:
-\begin{align*}
-    p(\lambda) & = \lambda^2 - \Sp A\, \lambda  + \det A & (n=2)\\
-    p(\lambda) & = -\lambda^3 + \Sp A\, \lambda^2 - k_1 + \det A & (n=3)\\
-    k_1 \text{ ist für } A & = 
-    \begin{pmatrix}
-        a & b & c\\
-        d & e & f\\
-        g & h & j
-    \end{pmatrix}
-    \text{ definiert als }
-    k_1 = 
-    \begin{vmatrix}
-        a & b\\
-        d & e
-    \end{vmatrix}
-    +
-    \begin{vmatrix}
-        a & c\\
-        g & j
-    \end{vmatrix}
-    +
-    \begin{vmatrix}
-        e & f\\
-        h & j
-    \end{vmatrix}
-\end{align*}
-
+%\setcounter{section}{3}
+%
+%\section{Orthogonale Räume und orthogonale Abbildungen} % (fold)
+%
+%\begin{mydef}
+%    Bilinearform
+%\end{mydef}
+%
+%\begin{mydef}
+%    orthogonal, ausgeartet
+%\end{mydef}
+%
+%\begin{mylemma}
+%    Sei $(\cdot,\cdot)$ eine Bilinearform \dots 
+%\end{mylemma}
+%
+%\begin{mysatz}
+%    Euklidische Norm
+%
+%    Durch $\| v \| := \sqrt{\langle v,v \rangle}$ wird in einem euklidischen Vektorraum $V$ über $\R$ eine Norm definiert.
+%
+%    \textit{Beweis:} 1.,2.,3. folgen unmittelbar aus der Definition. 4. folgt aus dem folgenden Satz:
+%\end{mysatz}
+%
+%\begin{mysatz}
+%    Cauchy-Schwarzsche-Ungleichung
+%
+%    $V$ sei ein euklidischer Vektorraum, dann gilt
+%    \begin{align*}
+%        \forall v,w \in V: \quad \left| \langle v,w \rangle \right| \leq \| v \| \cdot \| w \| \qquad \left( \text{ bzw. } {\left\langle v,w \right\rangle}^2 \leq \left\langle v,v \right\rangle \cdot \left\langle w,w \right\rangle \right)
+%    \end{align*}
+%    \textit{Beweis:}
+%    \begin{itemize}
+%        \item $w=0 \Rightarrow$ Ungleichung gilt.
+%        \item $w \neq 0 \Rightarrow \text{sei } k := \frac{\langle v,w \rangle}{\langle w,w \rangle}$
+%            \begin{align*}
+%                0 & \leq \left\langle v-kw, v-kw \right\rangle = \left\langle v,v \right\rangle -2k \left\langle v,w \right\rangle +k^2 \left\langle w,w \right\rangle\\
+%                & = \left\langle v,v \right\rangle -2 \frac{ \left\langle v,w \right\rangle^2 }{\left\langle w,w \right\rangle } + \frac{ \left\langle v,w \right\rangle^2 }{\left\langle w,w \right\rangle^2} \cdot \left\langle w,w \right\rangle\\
+%                & = \left\langle v,v \right\rangle - \frac{ \left\langle v,w \right\rangle^2 }{ \left\langle w,w \right\rangle }\\
+%                \Rightarrow & \left\langle v,w \right\rangle^2 \leq \left\langle v,v \right\rangle \cdot \left\langle w,w \right\rangle 
+%            \end{align*}
+%    \end{itemize}
+%\end{mysatz}
+%Damit kann die 4. Normeigenschaft bewiesen werden:
+%\begin{align*}
+%    \left( \| v \| + \| w \| \right)^2 & = \| v \|^2 +2 \| v \| \cdot \| w \| + \| w \|^2 \geq \| v \|^2 + 2 \left| \left\langle v,w \right\rangle  \right| + \| w \|^2\\
+%    & \geq \| v \|^2 + 2 \left\langle v,w \right\rangle + \| w \|^2 = \left\langle v+w,v+w \right\rangle = \| v+w \|^2
+%\end{align*}
+%Darüber hinaus ergibt sich $\forall v,w \in V\setminus\left\{ 0 \right\}:$
+%\begin{align*}
+%    \frac{| \left\langle v,w \right\rangle |}{\|v\| \cdot \|w\|} \leq 1 \Rightarrow -1 \leq \frac{| \left\langle v,w \right\rangle |}{\|v\| \cdot \|w\|} \leq 1 \Rightarrow \exists!\ \phi \in \left[ 0, \pi \right] \quad \text{mit } \cos \phi = \frac{\left\langle v,w \right\rangle}{\|v\| \cdot \|w\|}
+%\end{align*}
+%$\Rightarrow$ Definition des Winkels zwischen Vektoren $v,w \in V\setminus\left\{ 0 \right\}$
+%
+%Der Winkel $\phi$ zwischen zwei Vektoren $v,w \in V\setminus\left\{ 0 \right\}$ ist derjenige eindeutig bestimmte Wert $\phi$ aus dem Intervall $\left[ 0,\pi \right]$ für den gilt
+%\begin{align*}
+%    \cos \phi = \frac{\left\langle v,w \right\rangle}{\|v\| \cdot \|w\|}
+%\end{align*}
+%
 %\newpage
+%
+%Im $\R^2,\R^3$ mit Standardskalarprodukt ist $\| v \|$ und $\sphericalangle (v,w)$ Länge und Winkel im elementargeometrischen Sinne
+%\begin{center}
+%    \begin{tikzpicture}%[>=angle 90]
+%        \draw[help lines] (0,0) grid (4,3);
+%        \draw[dotted] (0,0) -- (3,3);
+%        \draw[>=latex,->] (0,0) -- (2,2);
+%        \draw[>=latex,->] (0,0) -- (4.5,0);
+%        \draw (1,0) arc (0:45:1cm);
+%        \draw (0.6,0.2) node[scale=0.5] {$\sphericalangle(v,w)$};
+%        \draw (2+0.5,-0.2) node {$v$};
+%        \draw (1-0.2,1+0.2) node {$w$};
+%        \draw (2,2) -- (2,0);
+%        \draw (4.5,0) -- (2.25,2.25);
+%        \draw (2.2,0) arc (0:90:0.2cm);
+%        \draw (2.075,0.075) node {$\cdot$};
+%        \draw (2.1,2.1) arc (215:315:0.2cm);
+%    \end{tikzpicture}
+%\end{center}
 
-\textit{Anmerkung:}
-\textsc{Horner}-Schema:
-\begin{itemize}
-    \item[Vor.:] Polynom $f(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0$
-    \item[Bsp.:] $f(x) = 2x^4 + x^3 -3x -34$
-\end{itemize}
-\begin{itemize}
-    \item \textit{Berechne} $f(-1)$!
-
-        Für das \textsc{Horner}-Schema benötigt man eine kleine Tabelle mit 3 Zeilen und $n+2$ Spalten, wobei $n$ der Grad des Polynoms ist.
-        \begin{enumerate}
-            \item In die Kopfzeile schreibt man alle Koeffizienten des Polynoms; in das 1. Feld der 2. Zeile den zu berechnenden Wert:
-                \begin{center}
-                    \begin{tabular}{c|ccccc}
-                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
-                        $-1$    &       &       &       &       &       \\\hline
-                        \phantom{$-1$}
-                    \end{tabular}
-                \end{center}
-            \item Das 2. Feld der 2. Zeile bleibt leer. Darunter jedoch (2. Feld, 3. Zeile) schreibt man den Wert, der in der 1. Zeile steht (also $2$).
-                \begin{center}
-                    \begin{tabular}{c|ccccc}
-                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
-                        $-1$    &       &       &       &       &       \\\hline
-                        & $2$
-                    \end{tabular}
-                \end{center}
-            \item Nun multipliziert man den eben eingetragenen Wert mit der Zahl ganz links (also dem zu berechnenden Argument) und trägt ihn das Feld darüber rechts ein.
-                \begin{center}
-                    \begin{tabular}{c|ccccc}
-                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
-                        $-1$    &       & $-2$  &       &       &       \\\hline
-                        & $2$
-                    \end{tabular}
-                \end{center}
-            \item Jetzt addiert man die Werte der 3. Spalte und trägt das Ergebnis in das unterste Feld ein.
-                \begin{center}
-                    \begin{tabular}{c|ccccc}
-                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
-                        $-1$    &       & $-2$  &       &       &       \\\hline
-                        & $2$   & $-1$
-                    \end{tabular}
-                \end{center}
-            \item Dieses Prinzip führt man bis zum Ende durch (mit dem Wert ganz links multiplizieren; in das Feld rechts darüber eintragen; summieren).
-                \begin{center}
-                    \begin{tabular}{c|ccccc}
-                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
-                        $-1$    &       & $-2$  & $1$   &       &       \\\hline
-                        & $2$   & $-1$
-                    \end{tabular}
-                    $\Rightarrow \ldots \Rightarrow$
-                    \begin{tabular}{c|ccccc}
-                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
-                        $-1$    &       & $-2$  & $1$   & $-1$  & $4$   \\\hline
-                        & $2$   & $-1$  & $1$   & $-4$  & \framebox{$-30$}
-                    \end{tabular}
-                \end{center}
-            \item[$\Rightarrow$] Der eingerahmte Wert ist der gesuchte Funktionswert.
-        \end{enumerate}
-    \item \textit{Polynomdivision}
-
-        Angenommen man hat durch Ausprobieren herausgefunden, dass $f(2)=0$ gilt und möchte jetzt das Polynom zerlegen.
-        \begin{enumerate}
-            \item Dazu schaut man sich das ausgefüllte \textsc{Horner}-Schema an:
-                \begin{center}
-                    \begin{tabular}{c|ccccc}
-                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
-                        $2$     &       & $4 $  & $10$  & $20$  & $34$   \\\hline
-                        & $2$   & $5$   & $10$  & $17$  & $0$
-                    \end{tabular}
-                \end{center}
-            \item Die Einträge der letzten Zeile bilden die Koeffizienten des Restpolynoms.
-            \item[$\Rightarrow$] Insgesamt gilt also:
-                \begin{align*}
-                    f(x) = (x-2)(2x^3+5x^2+10x+17)
-                \end{align*}
-        \end{enumerate}
-\end{itemize}
-
-%\newpage
-
-\begin{mydef} \textit{Eigenraum}
-
-    Sei $\alpha: V \to V$ ein Endomorphismus und $\lambda \in \K$ ein Eigenwert von $\alpha$, dann heißt
-
-    $E(\lambda) = \left\{ v \in V\ |\ \alpha(v) = \lambda v \right\}$ \textbf{Eigenraum} zum Eigenwert $\lambda$.
-\end{mydef}
-
-\textit{Bemerkung:}
-\begin{itemize}
-    \item $E(\lambda)$ ist die Menge aller Eigenvektoren von $\lambda$ und $0$.
-    \item $E(\lambda) = \ker(\lambda \id - \alpha)$ \hfill da $ \alpha(v) = \lambda v \Leftrightarrow 0 = \lambda \id v - \alpha(v) = (\lambda \id - \alpha) v$
-\end{itemize}
-
-\begin{mydef} \textit{Diagonalmatrix, diagonalisierbar}
-
-    Eine $n \times n$ Matrix heißt Diagonalmatrix genau dann, wenn $a_{ij}=0$ für alle $i \neq j; i,j \in \left\{ 1,\dots,n \right\}$. Man nennt $A$ diagonalisierbar genau dann, wenn $A$ zu einer Diagonalmatrix ähnlich ist.
-    Ein Endomorphismus $\alpha$ heißt diagonalisierbar, genau dann, wenn eine Basis $B$ von $V$ existiert, sodass die Abbildungsmatrix eine Diagonalmatrix ist.
-\end{mydef}
-
-\textit{Bemerkung:} $\alpha$ ist diagonalisierbar genau dann, wenn eine Basis aus Eigenvektoren existiert.
-
-% subsection Bestimmung von Eigenwerten und Eigenvektoren (end)
-
-% section Eigenwerte, Eigenvektoren (end)
-
-\newpage
-
-\setcounter{section}{3}
-
-\section{Orthogonale Räume und orthogonale Abbildungen} % (fold)
-
-\begin{mydef}
-    Bilinearform
-\end{mydef}
-
-\begin{mydef}
-    orthogonal, ausgeartet
-\end{mydef}
-
-\begin{mylemma}
-    Sei $(\cdot,\cdot)$ eine Bilinearform \dots 
-\end{mylemma}
-
-\begin{mysatz}
-    Euklidische Norm
-
-    Durch $\| v \| := \sqrt{\langle v,v \rangle}$ wird in einem euklidischen Vektorraum $V$ über $\R$ eine Norm definiert.
-
-    \textit{Beweis:} 1.,2.,3. folgen unmittelbar aus der Definition. 4. folgt aus dem folgenden Satz:
-\end{mysatz}
-
-\begin{mysatz}
-    Cauchy-Schwarzsche-Ungleichung
-
-    $V$ sei ein euklidischer Vektorraum, dann gilt
-    \begin{align*}
-        \forall v,w \in V: \quad \left| \langle v,w \rangle \right| \leq \| v \| \cdot \| w \| \qquad \left( \text{ bzw. } {\left\langle v,w \right\rangle}^2 \leq \left\langle v,v \right\rangle \cdot \left\langle w,w \right\rangle \right)
-    \end{align*}
-    \textit{Beweis:}
-    \begin{itemize}
-        \item $w=0 \Rightarrow$ Ungleichung gilt.
-        \item $w \neq 0 \Rightarrow \text{sei } k := \frac{\langle v,w \rangle}{\langle w,w \rangle}$
-            \begin{align*}
-                0 & \leq \left\langle v-kw, v-kw \right\rangle = \left\langle v,v \right\rangle -2k \left\langle v,w \right\rangle +k^2 \left\langle w,w \right\rangle\\
-                & = \left\langle v,v \right\rangle -2 \frac{ \left\langle v,w \right\rangle^2 }{\left\langle w,w \right\rangle } + \frac{ \left\langle v,w \right\rangle^2 }{\left\langle w,w \right\rangle^2} \cdot \left\langle w,w \right\rangle\\
-                & = \left\langle v,v \right\rangle - \frac{ \left\langle v,w \right\rangle^2 }{ \left\langle w,w \right\rangle }\\
-                \Rightarrow & \left\langle v,w \right\rangle^2 \leq \left\langle v,v \right\rangle \cdot \left\langle w,w \right\rangle 
-            \end{align*}
-    \end{itemize}
-\end{mysatz}
-Damit kann die 4. Normeigenschaft bewiesen werden:
-\begin{align*}
-    \left( \| v \| + \| w \| \right)^2 & = \| v \|^2 +2 \| v \| \cdot \| w \| + \| w \|^2 \geq \| v \|^2 + 2 \left| \left\langle v,w \right\rangle  \right| + \| w \|^2\\
-    & \geq \| v \|^2 + 2 \left\langle v,w \right\rangle + \| w \|^2 = \left\langle v+w,v+w \right\rangle = \| v+w \|^2
-\end{align*}
-Darüber hinaus ergibt sich $\forall v,w \in V\setminus\left\{ 0 \right\}:$
-\begin{align*}
-    \frac{| \left\langle v,w \right\rangle |}{\|v\| \cdot \|w\|} \leq 1 \Rightarrow -1 \leq \frac{| \left\langle v,w \right\rangle |}{\|v\| \cdot \|w\|} \leq 1 \Rightarrow \exists!\ \phi \in \left[ 0, \pi \right] \quad \text{mit } \cos \phi = \frac{\left\langle v,w \right\rangle}{\|v\| \cdot \|w\|}
-\end{align*}
-$\Rightarrow$ Definition des Winkels zwischen Vektoren $v,w \in V\setminus\left\{ 0 \right\}$
-
-Der Winkel $\phi$ zwischen zwei Vektoren $v,w \in V\setminus\left\{ 0 \right\}$ ist derjenige eindeutig bestimmte Wert $\phi$ aus dem Intervall $\left[ 0,\pi \right]$ für den gilt
-\begin{align*}
-    \cos \phi = \frac{\left\langle v,w \right\rangle}{\|v\| \cdot \|w\|}
-\end{align*}
-
-\newpage
-
-Im $\R^2,\R^3$ mit Standardskalarprodukt ist $\| v \|$ und $\sphericalangle (v,w)$ Länge und Winkel im elementargeometrischen Sinne
-\begin{center}
-    \begin{tikzpicture}%[>=angle 90]
-        \draw[help lines] (0,0) grid (4,3);
-        \draw[dotted] (0,0) -- (3,3);
-        \draw[>=latex,->] (0,0) -- (2,2);
-        \draw[>=latex,->] (0,0) -- (4.5,0);
-        \draw (1,0) arc (0:45:1cm);
-        \draw (0.6,0.2) node[scale=0.5] {$\sphericalangle(v,w)$};
-        \draw (2+0.5,-0.2) node {$v$};
-        \draw (1-0.2,1+0.2) node {$w$};
-        \draw (2,2) -- (2,0);
-        \draw (4.5,0) -- (2.25,2.25);
-        \draw (2.2,0) arc (0:90:0.2cm);
-        \draw (2.075,0.075) node {$\cdot$};
-        \draw (2.1,2.1) arc (215:315:0.2cm);
-    \end{tikzpicture}
-\end{center}
-blabla
-
-% section blabla (end)
-
-\newpage
+\input{kap1}
 
 \section{Affine und Euklidische (Punkt-)Räume} % (fold)
 \label{sec:Affine und Euklidische (Punkt-)Räume}
