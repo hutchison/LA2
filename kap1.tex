@@ -4,273 +4,487 @@ Sei $V$ ein $n$-dimensionaler Vektorraum über dem Körper $\K$.
 
 %---------------------------------------------Definition 1.3------------------------------------------------
 %----------------------------------------Eigenwert, Eigenvektor---------------------------------------------
+\begin{mydef} \textit{Eigenwert und Eigenvektor}
 
-\begin{mydef} Eigenwert und Eigenvektor \par
     Sei $\alpha$ ein Endomorphismus des $\K$-VR V und $\lambda\in \K$. $\lambda$ heißt genau dann Eigenwert von $\alpha$, wenn ein Vektor $v\in 
     V\backslash\lbrace0\rbrace$ existiert mit
-    \begin{equation*}
+    \begin{align*}
         \alpha(v) = \lambda v
-    \end{equation*}
+    \end{align*}
     Der Vektor $v$ heißt dann Eigenvektor zum Eigenwert $\lambda$.
 \end{mydef}
 
 %-----------------------------------------------Beispiel---------------------------------------------------
-
-%\begin{bsp} \qquad \par
 \textit{Beispiel:}
-    Gegeben Sei $V=\R^2$ und der Endomorphismus $\alpha:(x,y)\mapsto (x+y,x+y)$. \par
-    $\qquad \Rightarrow \alpha(x,y)=(x+y,x+y) = \lambda(x,y)=(\lambda x,\lambda y)$ \par
-    $\begin{array}{ccccrccc}
-        \qquad\qquad &\lambda=0 & \Rightarrow & y= & -x & \Rightarrow & v= &\langle \mata1\\-1\mate \rangle \\
-        \qquad\qquad &\lambda=2 & \Rightarrow & y= &  x & \Rightarrow & v= &\langle \mata1\\ 1\mate \rangle
-    \end{array}$ \par
-    Bezüglich der Standardbasis des $\R^2$ hat $\alpha$ die Abbilungsmatrix $A=\mata1&1\\1&1\mate$, bzgl. der Basis $\langle(1,1),(1,-1)\rangle$ die 
-    Abbildungsmatrix $D=\mata2&0\\0&0\mate$. Dann nennt man $A$ ähnlich zu $D$, denn $A'=T^{-1}AT$, wobei $T$ die Matrix des Basiswechsels ist.
-%\end{bsp}
+
+Sei $V=\R^2$ und der Endomorphismus $\alpha:(x,y)\mapsto (x+y,x+y)$.
+\begin{align*}
+    \Rightarrow \quad & \alpha(x,y)=(x+y,x+y) = \lambda(x,y)=(\lambda x,\lambda y)\\
+    & \begin{array}{cccrccc}
+        \lambda=0 & \Rightarrow & y= & -x & \Rightarrow & v= &\langle \begin{pmatrix}1\\-1\end{pmatrix} \rangle \\
+        \lambda=2 & \Rightarrow & y= &  x & \Rightarrow & v= &\langle \begin{pmatrix}1\\ 1\end{pmatrix} \rangle
+    \end{array}
+\end{align*}
+Bezüglich der Standardbasis des $\R^2$ hat $\alpha$ die Abbildungsmatrix $A=\begin{pmatrix}1&1\\1&1\end{pmatrix}$, bzgl. der Basis $\langle(1,1),(1,-1)\rangle$ die
+Abbildungsmatrix $D=\begin{pmatrix}2&0\\0&0\end{pmatrix}$. Dann nennt man $A$ ähnlich zu $D$, denn $A'=T^{-1}AT$, wobei $T$ die Matrix des Basiswechsels ist.\\
+
+Bonusfrage: wie sieht $A^{n}$ aus?
+
+Dazu betrachte man $A$ bzgl. der Eigenvektorbasis $\left\langle (1,1),(1,-1) \right\rangle$:
+\begin{align*}
+    A' & =
+    \begin{pmatrix}
+        2 & 0\\
+        0 & 0
+    \end{pmatrix}\\
+    A' & = T^{-1} A T\\
+    \langle (1,0),(0,1) \rangle & \overset{T}{\to} \langle (1,1),(1,-1) \rangle\\
+    T & = 
+    \begin{pmatrix}
+        1 & 1\\
+        1 & -1
+    \end{pmatrix}
+    \intertext{Und nun wird die $n$-te Potenz berechnet:}
+    A & = T A' T^{-1}\\
+    \uline{A^n} & = (T A' T^{-1})(T A' T^{-1}) \ldots (T A' T^{-1}) = \uuline{T {A'}^n T^{-1}}\\
+    & = -\frac{1}{2}
+    \begin{pmatrix}
+        1 & 1\\
+        1 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+        2^n & 0\\
+        0 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        -1 & -1\\
+        -1 & 1
+    \end{pmatrix}
+    =
+    -\frac{1}{2}
+    \begin{pmatrix}
+        2^n & 0\\
+        2^n & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        -1 & -1\\
+        -1 & 1
+    \end{pmatrix}\\
+    & =
+    -\frac{1}{2}
+    \begin{pmatrix}
+        -2^n & -2^n\\
+        -2^n & -2^n
+    \end{pmatrix}
+    =
+    \uuline{
+    \begin{pmatrix}
+        2^{n-1} & 2^{n-1}\\
+        2^{n-1} & 2^{n-1}
+    \end{pmatrix}
+    }
+\end{align*}
+
+\newpage
 
 %----------------------------------------------------------------------------------------------------------
 %-----------------------------------------------Satz 1.2---------------------------------------------------
 %----------------------------------------------------------------------------------------------------------
-\begin{mysatz} \qquad \par
+\begin{mysatz}\ \\
     Sei $\alpha$ ein Endomorphismus von $V$, dann sind folgende Aussagen äqiuvalent
-    \begin{itemize}
-        \item [1.] $\lambda$ ist Eigenwert von $\alpha$
-        \item [2.] $\det(\lambda \mbox{ id}_v-\alpha)=0$
-        \item [3.] rg$(\lambda \mbox{ id}_v-\alpha)<n$
-        \item [4.] $\ker(\lambda \mbox{ id}_v-\alpha) \neq \lbrace 0 \rbrace$
-    \end{itemize}
+    \begin{enumerate}
+        \item $\lambda$ ist Eigenwert von $\alpha$
+        \item $\det(\lambda \id_V-\alpha)=0$
+        \item rg$(\lambda \id_V-\alpha)<n$
+        \item $\ker(\lambda \id_V-\alpha) \neq \left\{ 0 \right\}$
+    \end{enumerate}
 \end{mysatz}
-
 
 %---------------------------------------------Definition 1.3------------------------------------------------
 %----------------------------------------charakteristisches Polynom-----------------------------------------
-\begin{mydef}\label{charpol} \textit{charakteristisches Polynom} \par
-    \begin{itemize}
-        \item[ 1.]Sei $A$ eine $n\times n$-Matrix. Das charakteristische Polynom von $A$ (charpol $A$) ist das Polynom 
-            \begin{equation*}
+\begin{mydef}\label{charpol} \textit{charakteristisches Polynom}
+    \begin{enumerate}
+        \item Sei $A$ eine $n\times n$-Matrix. Das charakteristische Polynom von $A$ (charpol $A$) ist das Polynom
+            \begin{align*}
                 \det(\lambda\cdot E-A)\in \K[\lambda].
-            \end{equation*}
-        \item[ 2.]Sei $\alpha$ ein Endomorphismus von $V$. Das charakteristische Polynom von $\alpha$ ist charpol $\alpha$=charpol $A$, wobei $A$ die 
-            Darstellungsmatrix von $\alpha$ bzgl. einer Basis von $V$ ist.
-    \end{itemize}
+            \end{align*}
+        \item Sei $\alpha$ ein Endomorphismus von $V$. Das charakteristische Polynom von $\alpha$ ist charpol $\alpha=\charpol A$, wobei $A$ die Darstellungsmatrix von $\alpha$ bzgl. einer Basis von $V$ ist.
+    \end{enumerate}
 \end{mydef}
 
 %-----------------------------------------------Bemerkung---------------------------------------------------
-%\begin{bem}\qquad \par
 \textit{Bemerkung:}
-    \begin{enumerate}
-        \item Die Eigenwerte von $\alpha$ sind die Nullstellen des charakteristischen Polynoms.
-        \item Ähnliche Matrizen haben dasselbe charpol
-            \begin{eqnarray*}
-                \mbox{charpol }A' &=& \det(\lambda E-T^{-1}AT) = \det(T^{-1}\lambda ET-T^{-1}AT)=\det(T^{-1}(\lambda E-A)T)\\
-                &=& \det(T^{-1}) \cdot \det(\lambda E-A) \cdot \det(T) = \det(\lambda E-A)\\
-                &=& \mbox{charpol }A
-            \end{eqnarray*}
-    \end{enumerate}
-%\end{bem}
+\begin{enumerate}
+    \item Die Eigenwerte von $\alpha$ sind die Nullstellen des charakteristischen Polynoms.
+    \item Ähnliche Matrizen haben dasselbe charpol
+        \begin{eqnarray*}
+            \charpol A' &=& \det(\lambda E-T^{-1}AT) = \det(T^{-1}\lambda ET-T^{-1}AT)=\det(T^{-1}(\lambda E-A)T)\\
+            &=& \det(T^{-1}) \cdot \det(\lambda E-A) \cdot \det(T) = \det(\lambda E-A)\\
+            &=& \charpol A
+        \end{eqnarray*}
+\end{enumerate}
+
+\textit{Beispiel:} $V = \R^2$
+\begin{align*}
+    A & =
+    \begin{pmatrix}
+        1 & -1\\
+        1 & 1
+    \end{pmatrix}\\
+    \charpol A & = \det
+    \begin{pmatrix}
+        \lambda - 1 & -1\\
+        -1 & \lambda - 1
+    \end{pmatrix}
+    = \lambda^2 -2 \lambda + 2\\
+    \lambda_{1,2} & = 1 \pm \sqrt{1-2} \notin \R\\
+    & \Rightarrow \text{keine Eigenwerte}
+\end{align*}
+
+\textit{Anmerkung:}
+
+Für die Fälle $n=2$ und $n=3$ existieren Formeln für das charakteristische Polynom:
+\begin{align*}
+    p(\lambda) & = \lambda^2 - \left( \Sp A \right) \lambda  + \det A & (n=2)\\
+    p(\lambda) & = -\lambda^3 + \left( \Sp A \right) \lambda^2 - k_1 + \det A & (n=3)\\
+    k_1 \text{ ist für } A & = 
+    \begin{pmatrix}
+        a & b & c\\
+        d & e & f\\
+        g & h & j
+    \end{pmatrix}
+    \text{ definiert als }
+    k_1 = 
+    \begin{vmatrix}
+        a & b\\
+        d & e
+    \end{vmatrix}
+    +
+    \begin{vmatrix}
+        a & c\\
+        g & j
+    \end{vmatrix}
+    +
+    \begin{vmatrix}
+        e & f\\
+        h & j
+    \end{vmatrix}
+\end{align*}
+
+\newpage
+
+\textit{Anmerkung:}
+\textsc{Horner}-Schema\footnote{William George Horner, * 1786 in Bristol; $\dagger$ 22. September 1837 in Bath, englischer Mathematiker}
+\begin{itemize}
+    \item[Vor.:] Polynom $f(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0$
+    \item[Bsp.:] $f(x) = 2x^4 + x^3 -3x -34$
+\end{itemize}
+\begin{itemize}
+    \item \textit{Berechne} $f(-1)$!
+
+        Für das \textsc{Horner}-Schema benötigt man eine kleine Tabelle mit 3 Zeilen und $n+2$ Spalten, wobei $n$ der Grad des Polynoms ist.
+        \begin{enumerate}
+            \item In die Kopfzeile schreibt man alle Koeffizienten des Polynoms; in das 1. Feld der 2. Zeile den zu berechnenden Wert:
+
+                \hspace{3cm}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       &       &       &       &       \\\hline
+                        \phantom{$-1$}
+                    \end{tabular}
+            \item Das 2. Feld der 2. Zeile bleibt leer. Darunter jedoch (2. Feld, 3. Zeile) schreibt man den Wert, der in der 1. Zeile steht (also $2$).
+
+                \hspace{3cm}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       &       &       &       &       \\\hline
+                        & $2$
+                    \end{tabular}
+                \hspace{2cm}
+                $\downarrow$
+            \item Nun multipliziert man den eben eingetragenen Wert mit der Zahl ganz links (also dem zu berechnenden Argument) und trägt ihn das Feld rechts darüber ein.
+
+                \hspace{3cm}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       & $-2$  &       &       &       \\\hline
+                        & $2$
+                    \end{tabular}
+                \hspace{1.3cm}
+                $\cdot (-1) \quad \nearrow$
+            \item Jetzt addiert man die Werte der 3. Spalte und trägt das Ergebnis in das unterste Feld ein.
+
+                \hspace{3cm}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       & $-2$  &       &       &       \\\hline
+                        & $2$   & $-1$
+                    \end{tabular}
+                \hspace{1.5cm}
+                $+ \quad \downarrow$
+            \item Dieses Prinzip führt man bis zum Ende durch (mit dem Wert ganz links multiplizieren; in das Feld rechts darüber eintragen; summieren).
+                \begin{center}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       & $-2$  & $1$   &       &       \\\hline
+                        & $2$   & $-1$
+                    \end{tabular}
+                    $\Rightarrow \ldots \Rightarrow$
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $-1$    &       & $-2$  & $1$   & $-1$  & $4$   \\\hline
+                        & $2$   & $-1$  & $1$   & $-4$  & \framebox{$-30$}
+                    \end{tabular}
+                \end{center}
+            \item[$\Rightarrow$] Der eingerahmte Wert ist der gesuchte Funktionswert.
+        \end{enumerate}
+    \item \textit{Polynomdivision}
+
+        Angenommen man hat durch Ausprobieren herausgefunden, dass $f(2)=0$ gilt und möchte jetzt das Polynom zerlegen.
+        \begin{enumerate}
+            \item Dazu schaut man sich das ausgefüllte \textsc{Horner}-Schema an:
+                \begin{center}
+                    \begin{tabular}{c|ccccc}
+                        & $2$   & $1$   & $0$   & $-3$  & $-34$ \\\hline
+                        $2$     &       & $4 $  & $10$  & $20$  & $34$   \\\hline
+                        & $2$   & $5$   & $10$  & $17$  & $0$
+                    \end{tabular}
+                \end{center}
+            \item Die Einträge der letzten Zeile bilden die Koeffizienten des Restpolynoms.
+            \item[$\Rightarrow$] Insgesamt gilt also:
+                \begin{align*}
+                    f(x) = (x-2)(2x^3+5x^2+10x+17)
+                \end{align*}
+        \end{enumerate}
+\end{itemize}
+
 
 %---------------------------------------------Definition 1.4------------------------------------------------
 %------------------------------------------------Eigenraum--------------------------------------------------
-\begin{mydef}\label{eigenraum} \textit{Eigenraum} \par
+\begin{mydef}\label{eigenraum} \textit{Eigenraum}
+
     Sei $\alpha:V\to V$ ein Endomorphismus und $\lambda \in \K$ ein Eigenwert von $\alpha$, dann heißt
-    \begin{equation*}
-        E(\lambda) = \lbrace v\in V | \alpha(v)=\lambda v \rbrace
-    \end{equation*}
+    \begin{align*}
+        E(\lambda) = \left\{ v\in V \mid \alpha(v)=\lambda v \right\}
+    \end{align*}
     der Eigenraum zum Eigenwert $\lambda$.
 \end{mydef}
 
 %-----------------------------------------------Bemerkung---------------------------------------------------
-%\begin{bem} \qquad \par
 \textit{Bemerkung:}
-    \begin{enumerate}
-        \item $E(\lambda)$ ist die Menge aller EV von $\lambda$ und $0$
-        \item $E(\lambda) = \ker(\lambda\mbox{ id}_v-\alpha) )$
-        \item $E(\lambda)\leq V$
-    \end{enumerate}
-%\end{bem}
-
+\begin{enumerate}
+    \item $E(\lambda)$ ist die Menge aller EV von $\lambda$ und $0$
+    \item $E(\lambda) = \ker(\lambda\id_V-\alpha) )$
+    \item $E(\lambda)\leq V$
+\end{enumerate}
 
 %---------------------------------------------Definition 1.5------------------------------------------------
 %------------------------------------Diagonalmatrix, diagonalisierbar---------------------------------------
-\begin{mydef} \textit{Diagonalmatrix, diagonalisierbar} \par
-    Eine $n\times n$-Matrix $A$ heißt Diagonalmatrix, wenn $a_{ij}=0$ für $i\neq j, \ i,j=1,\ldots,n$ gilt. \par \medskip
-    Man nennt die Matrix $A$ genau dann diagonalisierbar, wenn $A$ zu einer Diagonalmatrix ähnlich ist. \par \medskip
-    Ein Endomorphismus $\alpha$ heißt genau dann diagonalisierbar, wenn eine Basis $B$ von $V$ existiert, bzgl. der die Abbildungsmatrix eine 
-    Diagonalmatrix ist.
+\begin{mydef} \textit{Diagonalmatrix, diagonalisierbar}
+
+    Eine $n\times n$-Matrix $A$ heißt Diagonalmatrix, wenn $a_{ij}=0$ für $i\neq j; \ i,j=1,\ldots,n$ gilt.
+
+    Man nennt die Matrix $A$ genau dann diagonalisierbar, wenn $A$ zu einer Diagonalmatrix ähnlich ist.
+
+    Ein Endomorphismus $\alpha$ heißt genau dann diagonalisierbar, wenn eine Basis $B$ von $V$ existiert, bzgl. der die Abbildungsmatrix eine Diagonalmatrix ist.
 \end{mydef}
 
 %-----------------------------------------------Bemerkung---------------------------------------------------
-
-%\begin{bem} \qquad \par
 \textit{Bemerkung:}
-    Der Endomorphismus $\alpha$ ist genau dann diagonalisierbar, wenn es eine Basis von $V$ gibt, welche aus Eigenvektoren von $\alpha$ besteht. Die 
-    verschiedenen Einträge auf der Diagonalen sind dann genau di Eigenwerte von $\alpha$.
-%\end{bem}
+
+Der Endomorphismus $\alpha$ ist genau dann diagonalisierbar, wenn es eine Basis von $V$ gibt, welche aus Eigenvektoren von $\alpha$ besteht. Die verschiedenen Einträge auf der Diagonalen sind dann genau di Eigenwerte von $\alpha$.\\
 
 %-----------------------------------------------Beispiel---------------------------------------------------
-%\begin{bsp} \qquad \par
 \textit{Beispiel:}
-    Gegeben sei $V=\R^3$ und ein Endomrophismus in $V$, welcher bzgl. der Standardbasis die folgende Abbildungsmatrix besitzt.
-    \begin{equation*}
-        A=\mata4&0&2\\-6&1&-4\\-6&0&-3\mate. \mbox{ Nach \ref{charpol} ist dann charpol }A=\det(\lambda E-A)=(\lambda-1)^2\cdot \lambda 
-    \end{equation*}
-    Demnach sind nach (TODO)%\ref{eigenraum}
-    \begin{eqnarray*}
-        E(\la)&=&\ker(\la E-A)=\ker\mata-3&0&-2\\6&0&4\\6&0&4\mate=\langle \mata0\\1\\0\mate,\mata-2\\0\\3\mate \rangle \\
-        E(\lb)&=&\ker(\lb E-A)=\ker\mata-4&0&-2\\6&-1&4\\6&0&3\mate =\langle \mata1\\-2\\-2\mate \rangle
-    \end{eqnarray*}
-    Die Eigenräume zu den Eigenwerten $\la=1$ und $\lb=0$. Demnach ist die Matrix $A$ ähnlich zu der Matrix
-    \begin{equation*}
-        A'=\mata1&0&0\\0&1&0\\0&0&0\mate \qquad \mbox{ mit }\qquad A'=T^{-1}\cdot A\cdot T\qquad \mbox{ und }\qquad T=\mata0&-2&1\\1&0&-2\\0&3&-2\mate
-    \end{equation*}
-    In der Transformationsmatrix $T$ stehen spaltenweise die Eigenvektoren.
 
-%\end{bsp}
+Gegeben sei $V=\R^3$ und ein Endomorphismus in $V$, welcher bzgl. der Standardbasis die folgende Abbildungsmatrix besitzt:
+\begin{align*}
+    A =
+    \begin{pmatrix}
+        4 & 0 & 2\\
+        -6 & 1 & -4\\
+        -6 & 0 & -3
+    \end{pmatrix}
+\end{align*}
+Nach \ref{charpol} ist dann $\charpol A = \det(\lambda E-A)=(\lambda-1)^2\cdot \lambda$. Demnach sind nach \ref{eigenraum}
+\begin{eqnarray*}
+    E(\la) & = & \ker(\la E-A) = \ker
+    \begin{pmatrix}
+        -3 & 0 & -2\\
+        6 & 0 & 4\\
+        6 & 0 & 4
+    \end{pmatrix}
+    = \langle
+    \begin{pmatrix}
+        0\\1\\0
+    \end{pmatrix}
+    ,
+    \begin{pmatrix}
+        -2\\0\\3
+    \end{pmatrix}
+    \rangle\\
+    E(\lb) & = & \ker (\lb E-A) = \ker
+    \begin{pmatrix}
+        -4 & 0 & -2\\
+        6 & -1 & 4\\
+        6 & 0 & 3
+    \end{pmatrix}
+    = \langle
+    \begin{pmatrix}
+        1\\-2\\-2
+    \end{pmatrix}
+    \rangle
+\end{eqnarray*}
+Die Eigenräume zu den Eigenwerten $\la=1$ und $\lb=0$.
+
+Demnach ist die Matrix $A$ ähnlich zu der Matrix
+\begin{align*}
+    A' =
+    \begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 0
+    \end{pmatrix}
+    \qquad \mbox{ mit } \qquad 
+    A' = T^{-1} \cdot A \cdot T \qquad \mbox{ und } \qquad
+    T =
+    \begin{pmatrix}
+        0 & -2 & 1\\
+        1 & 0 & -2\\
+        0 & 3 & -2
+    \end{pmatrix}
+\end{align*}
+In der Transformationsmatrix $T$ stehen spaltenweise die Eigenvektoren.\\
 
 %-----------------------------------------------Bemerkung---------------------------------------------------
-%\begin{bem}\qquad \par
 \textit{Bemerkung:}
-    Die Summe der Eigenwerte einer Matrix (mit der Vielfachheit genommen) entspricht der Spur der Matrix. Sei $A\in \R^{n \times n}$ ähnlich zu der 
-    Matrix $D=T^{-1}AT$ dann ist $D$ eine Diagonalmatrix und es gilt
-    \begin{equation*}
-        Sp D = Sp(T^{-1}(AT))=Sp(T^{-1}TA)=Sp(A)
-    \end{equation*} 
+
+Die Summe der Eigenwerte einer Matrix (mit der Vielfachheit genommen) entspricht der Spur der Matrix. Sei $A\in \R^{n \times n}$ ähnlich zu der 
+Matrix $D=T^{-1}AT$ dann ist $D$ eine Diagonalmatrix und es gilt
+\begin{align*}
+    Sp D = Sp(T^{-1}(AT))=Sp(T^{-1}TA)=Sp(A)
+\end{align*}
 %\end{bem}
 %-----------------------------------------------Lemma 1.6---------------------------------------------------
 %-----------------------------------------------------------------------------------------------------------
-\begin{mylemma}\label{lemdiag} \qquad \par
+\begin{mylemma}\label{lemdiag}\ \\
     Seien $v_1,\ldots,v_s$ Eigenvektoren zu verschiedenen Eigenwerten $\lambda_1,\ldots,\lambda_s$ eines Endomorphimus $\alpha$ von $V$. Dann ist
-    \begin{equation*}
+    \begin{align*}
         \sum_{i=1}^s v_i \neq 0
-    \end{equation*}
+    \end{align*}
 
-\textit{Beweis:}
-%\begin{bew}
-    Induktion über $s$. Klar für $s=1$, da per Definition $0$ kein Eigenvektor ist. Sei $s>1$ und $w_i=(\lambda_s-\lambda_i)\cdot v_i$ für $i=1,\ldots,s-1$. Dann ist $w_i$ ebenfalls ein Eigenvektor zum Eigenwert $\lambda_i$, denn
-    \begin{equation*}
+    \textit{Beweis:}
+    Induktion über $s$.
+    
+    Klar für $s=1$, da per Definition $0$ kein Eigenvektor ist.
+    
+    Sei $s>1$ und $w_i=(\lambda_s-\lambda_i)\cdot v_i$ für $i=1,\ldots,s-1$. Dann ist $w_i$ ebenfalls ein Eigenvektor zum Eigenwert $\lambda_i$, denn
+    \begin{align*}
         \alpha(w_i)=\alpha((\lambda_s-\lambda_i)\cdot v_i)=(\lambda_s-\lambda_i)\cdot \alpha(v_i)= \lambda_i\cdot (\lambda_s-\lambda_i)\cdot v_i
-    \end{equation*}
+    \end{align*}
     Nun folgt für den Induktionsschritt
-    \begin{equation*}
-        (\lambda_s\mbox{ id}_v - \alpha)\cdot \sum_{i=1}^s v_i = \sum_{i=1}^s (\lambda_s\mbox{ id}_v - \alpha)\cdot v_i
+    \begin{align*}
+        (\lambda_s\id_V - \alpha)\cdot \sum_{i=1}^s v_i = \sum_{i=1}^s (\lambda_s\id_v - \alpha)\cdot v_i
         =\sum_{i=1}^{s-1} (\lambda_s-\lambda_i)\cdot v_i = \sum_{i=1}^{s-1} w_i \neq 0
-    \end{equation*}
-%\end{bew}
+    \end{align*}
 \end{mylemma}
-
 
 %----------------------------------------------------------------------------------------------------------
 %-----------------------------------------------Satz 1.7---------------------------------------------------
 %----------------------------------------------------------------------------------------------------------
-\begin{mysatz} \qquad \par
-    Sei $\alpha$ ein Endomorphismus von $V$ und $\lambda_1,\ldots,\lambda_s$ verschiedene Eigenwerte von $\alpha$ in $\K$. Für $j=1,\ldots,s$ sei $
-    d_j=\dim E(\lambda_j)$. Dann gilt:
+\begin{mysatz}\ \\
+    Sei $\alpha$ ein Endomorphismus von $V$ und $\lambda_1,\ldots,\lambda_s$ verschiedene Eigenwerte von $\alpha$ in $\K$. Für $j=1,\ldots,s$ sei $d_j=\dim E(\lambda_j)$. Dann gilt:
     \begin{enumerate}
-        \item $\displaystyle{\sum_{j=1}^s d_j \leq n}$
-        \item $\displaystyle{\sum_{j=1}^s d_j = n \Leftrightarrow \alpha}$ ist diagonalisierbar
+        \item $\sum\limits_{j=1}^s d_j \leq n$
+        \item $\sum\limits_{j=1}^s d_j = n \Leftrightarrow \alpha$ ist diagonalisierbar.
     \end{enumerate}
 
-%\begin{bew} \par
-\textit{Beweis:}
+    \textit{Beweis:}
     \begin{enumerate}
-        \item Sei für $j=1,\ldots,s$ $\lbrace b_{ji}|i=1,\ldots,d_j \rbrace$ eine Basis von $E(\lambda_j)$. Dann ist die Vereinigung aller Basen 
-            $\lbrace b_{ji}|=1,\ldots,s; i=1,\ldots,d_j \rbrace$ linear unabhängig, denn wenn
-            \begin{equation*}
-                0=\sum_{j,i} k_{ji}b_{ji} = \sum_{j=1}^s v_j, \quad \mbox{wobei} \quad v_j=\sum_j k_{ji}b_{ji} 
-            \end{equation*}
-            und (für festes $j$) nicht alle $k_{ji}=0$, dann ist $v_j\neq0$, also ein Eigenvektor zu $\lambda_j$, was aber \ref{lemdiag} 
-            widerspricht. Dann folgt auch schon die Behauptung, denn
-            \begin{equation*}
-                n\geq |\lbrace b_{ji}|=1,\ldots,s; i=1,\ldots,d_j \rbrace|=\sum_{j=1}^s d_j
-            \end{equation*}
-        \item In diesem Fall existiert eine Basis $\lbrace b_{ji}|=1,\ldots,s; i=1,\ldots,d_j \rbrace$, die nur Eigenvektoren enthält. Damit ist 
-            $\alpha$ diagonalisierbar. Sei umgekehrt $\alpha$ diagonalisierbar. Dann ist $\lbrace b_{ji}|i=1,\ldots,d_j \rbrace$ eine Basis von 
-            $E(\lambda_j)$. Damit folgt die Behauptung.
+        \item Sei für $j=1,\ldots,s: \left\{ b_{ji} \mid i=1,\ldots,d_j \right\}$ eine Basis von $E(\lambda_j)$. Dann ist die Vereinigung aller Basen $\left\{ b_{ji}|=1,\ldots,s; i=1,\ldots,d_j \right\}$ linear unabhängig, denn wenn
+            \begin{align*}
+                0 = \sum_{j,i} k_{ji}b_{ji} = \sum_{j=1}^s v_j, \quad \mbox{wobei} \quad v_j = \sum_j k_{ji} b_{ji}
+            \end{align*}
+            und (für festes $j$) nicht alle $k_{ji}=0$, dann ist $v_j \neq 0$, also ein Eigenvektor zu $\lambda_j$, was aber \ref{lemdiag} widerspricht. Dann folgt auch schon die Behauptung, denn
+            \begin{align*}
+                n & \geq \left|\left\{ b_{ji} \mid j = 1,\ldots,s;\ i=1,\ldots,d_j \right\} \right| = \sum_{j=1}^s d_j
+            \end{align*}
+        \item In diesem Fall existiert eine Basis $\left\{ b_{ji} \mid =1,\ldots,s;\ i=1,\ldots,d_j \right\}$, die nur Eigenvektoren enthält. Damit ist $\alpha$ diagonalisierbar. Sei umgekehrt $\alpha$ diagonalisierbar. Dann ist $\left\{ b_{ji} \mid i=1,\ldots,d_j \right\}$ eine Basis von $E(\lambda_j)$. Damit folgt die Behauptung.
     \end{enumerate}
-%\end{bew}
 \end{mysatz}
 
+\newpage
+
 %-----------------------------------------------Bemerkung---------------------------------------------------
-%\begin{bem} \qquad \par
 \textit{Bemerkung:}
-    Sind die Eigenwerte eines Endomorphismus $\alpha$ alle verschieden, dann ist $\alpha$ diagonalisierbar. Die Umkehrung gilt im Allgemeinen nicht! 
-    \par\medskip
-    $\alpha$ ist diagonalisierbar, wenn das charpol vollständig in Linearfaktoren zerfällt und \par $\dim E(\lambda_i)=$ Vielfachheit der Nullstelle 
-    $\lambda_i$ in charpol $\alpha$. \par \medskip
-    Falls $\alpha$ diagonalisierbar ist, so ist $\displaystyle{V=\sum_{i=1}^s E(\lambda_i)}$\par
-    $\qquad \Rightarrow E(\lambda_i) \cap E(\lambda_j) = \lbrace 0 \rbrace \quad i\neq j$
-%\end{bem}
+
+Sind die Eigenwerte eines Endomorphismus $\alpha$ alle verschieden, dann ist $\alpha$ diagonalisierbar.
+\begin{center}
+Die Umkehrung gilt im Allgemeinen nicht!
+\end{center}
+$\alpha$ ist diagonalisierbar, wenn das charpol vollständig in Linearfaktoren zerfällt und $\dim E(\lambda_i)=$ Vielfachheit der Nullstelle 
+$\lambda_i$ in charpol $\alpha$ ist.
+
+Falls $\alpha$ diagonalisierbar ist, so ist $V=\sum\limits_{i=1}^s E(\lambda_i) \quad \Rightarrow \quad E\left( \lambda_i \right) \cap E \left( \lambda_j \right) = \left\{ 0 \right\} \quad i \neq j$
 
 %---------------------------------------------Definition 1.8------------------------------------------------
 %----------------------------------------direkte Summe, Projektion------------------------------------------
-\begin{mydef} \textit{Direkte Summe, Projektion} \par
-    Sei $V$ ein Vektorraum über $\K$ und $U_1,\ldots,U_s$ Unterräume von $V$. Man nennt $V$ die direkte Summe der $U_i$ genau dann, wenn jeder Vektor 
-    $v$ aus $V$ sich eindeutig als Summe
-    \begin{equation*}
+\begin{mydef} \textit{Direkte Summe, Projektion}
+
+    Sei $V$ ein Vektorraum über $\K$ und $U_1,\ldots,U_s$ Unterräume von $V$. Man nennt $V$ die direkte Summe der $U_i$ genau dann, wenn jeder Vektor $v$ aus $V$ sich eindeutig als Summe
+    \begin{align*}
         v=\sum_{i=1}^s u_i \qquad \mbox{ mit } u_i\in U_i
-    \end{equation*}
-    darstellen lässt. (Bez. $V=U_1\oplus\ldots\oplus U_s$)\par \medskip
-    Wenn $\displaystyle{V=\sum_{i=1}^s \oplus U_i}$, dann sei $\pi_i:V\rightarrow U_i$ definiert durch
-    \begin{equation*}
-        \pi_i\left(\sum_{j=1}^s u_j\right) = u_i
-    \end{equation*}
+    \end{align*}
+    darstellen lässt (Bezeichnung: $V = U_1 \oplus \ldots \oplus U_s$).
+
+    Wenn $V = \sum\limits_{i=1}^s \oplus U_i$, dann sei $\pi_i:V\rightarrow U_i$ definiert durch
+    \begin{align*}
+        \pi_i \left( \sum_{j=1}^s u_j \right) = u_i
+    \end{align*}
     Man nennt $\pi_i$ die Projektion von $V$ auf $U_i$.
 \end{mydef}
 
-
 %-----------------------------------------------Bemerkung---------------------------------------------------
-
-%\begin{bem}\qquad \par
 \textit{Bemerkung:}
-    \begin{itemize}
-        \item [1.]Der Durchschnitt zweier Unterräume einer direkten Summe ist stets trivial \par $\rightarrow U_i\cap U_j=\lbrace0\rbrace$ für $i\neq j$.
-        \item [2.]$\displaystyle{\dim V=\sum_{i=1}^s\dim U_i}$.
-        \item [3.]Eine Summe aus Unterräumen heiß direkt, wenn sich die Unterräume paarweise trivial schneiden.
-        \item [4.]Die Sume von Eigenräumen zu verschiedenen Eigenwerten ist direkt.
-        \item [5.]$\alpha$ ist genau dann diagonalisierbar, wenn $V$ die direkte Summe der Eigenräume $E(\lambda_i)$ zu den verschiedenen Eigenwerten 
-            $\lambda_i$ ist.
-        \item [6.]$\pi_i$ ist ein Epimorphismus (surektive lineare Abbildung).
-    \end{itemize}
-%\end{bem}
+\begin{enumerate}
+    \item Der Durchschnitt zweier Unterräume einer direkten Summe ist stets trivial:
+        \begin{align*}
+            U_i \cap U_j = \left\{  0 \right\} \mbox{ für } i \neq j
+        \end{align*}
+    \item $\dim V=\sum\limits_{i=1}^s\dim U_i$
+    \item Eine Summe aus Unterräumen heiß \textit{direkt}, wenn sich die Unterräume paarweise trivial schneiden.
+    \item Die Summe von Eigenräumen zu verschiedenen Eigenwerten ist direkt.
+    \item $\alpha$ ist genau dann diagonalisierbar, wenn $V$ die direkte Summe der Eigenräume $E(\lambda_i)$ zu den verschiedenen Eigenwerten $\lambda_i$ ist.
+    \item $\pi_i$ ist ein Epimorphismus (surjektive lineare Abbildung).
+\end{enumerate}
 
 %----------------------------------------------------------------------------------------------------------
 %-----------------------------------------------Satz 1.9---------------------------------------------------
 %----------------------------------------------------------------------------------------------------------
-\begin{mysatz} \qquad \par
-    Seien $\alpha$ und $\beta$ diagonalisierbare Endomorphismen, welche miteinander kommutieren (d.h. $\alpha\beta=\beta\alpha$). Dann sind $\alpha$ und 
-    $\beta$ gemeinsam diagonalisierbar, d.h. es gibt eine Basis aus Eigenvektoren von $\alpha$ und $\beta$
+\begin{mysatz}\ \\
+    Seien $\alpha$ und $\beta$ diagonalisierbare Endomorphismen, welche miteinander kommutieren (d.h. $\alpha\beta = \beta\alpha$). Dann sind $\alpha$ und $\beta$ gemeinsam diagonalisierbar, d.h. es gibt eine Basis aus Eigenvektoren von $\alpha$ und $\beta$.
 
-%\begin{bew}
-\textit{Beweis:}
-    $\alpha$ ist diagonalisierbar $\Rightarrow \lambda_1,\ldots,\lambda_s$ seien verschiedene Eigenwerte und $U_1,\ldots,U_s$ die dazugehörigen 
-    Eigenräume mit $V=U_1\oplus\ldots\oplus U_s$. \par \medskip
-    Sei $u_i\in U_i$. Dann ist auch $\beta(u_i)=u_i'\in U_i$, weil
-    \begin{equation*}
-        \alpha(u_i')= \alpha(\beta(u_i)) = \beta\alpha(u_i) = \beta \lambda_i u_i = \lambda_i u_i'.
-    \end{equation*}
-    Da $\beta$ diagonalisierbar ist, existiert eine Basis $\lbrace b_1,\ldots,b_n \rbrace$ von $V$ aus Eigenvektoren von $\beta$, d.h. 
-    $\beta(b_j)=\mu_j\cdot b_j$. Jedes $b_j$ lässt sich eindeutig schreiben als $\displaystyle{b_j=\sum_{i=1}^s u_{ij}}$ mit $u_{ij}\in U_i.$ Dann ist
-    \begin{equation*}
+    \textit{Beweis:}
+    $\alpha$ ist diagonalisierbar $\Rightarrow \lambda_1,\ldots,\lambda_s$ seien verschiedene Eigenwerte und $U_1,\ldots,U_s$ die dazugehörigen Eigenräume mit $V = U_1 \oplus \ldots \oplus U_s$.
+    Sei $u_i\in U_i$, dann ist auch $\beta(u_i)=u_i'\in U_i$, weil
+    \begin{align*}
+        \alpha(u_i')= \alpha(\beta(u_i)) = \beta\alpha(u_i) = \beta \lambda_i u_i = \lambda_i u_i'
+    \end{align*}
+    Da $\beta$ diagonalisierbar ist, existiert eine Basis $\left\{ b_1,\ldots,b_n \right\}$ von $V$ aus Eigenvektoren von $\beta$, d.h. $\beta(b_j)=\mu_j\cdot b_j$. Jedes $b_j$ lässt sich eindeutig schreiben als $b_j=\sum\limits_{i=1}^s u_{ij}$ mit $u_{ij}\in U_i.$ Dann ist
+    \begin{align*}
         \sum_{i=1}^s \beta(u_{ij}) = \beta(b_j)=\mu_j\cdot b_j = \sum_{i=1}^s\mu_j u_{ij}
-    \end{equation*}
-    Da $u_{ij}'=\beta(u_{ij})\in U_i$ für jeden $i$ und $\mu_ju_{ij}\in U_i$, folgt die Eindeutigkeit $\beta(u_{ij})=\mu_j u_{ij}$. Demnach ist, wenn 
-    $u_{ij}\neq0$ gitl $u_{ij}$ ein Eigenwert zu $\alpha$ mit $\alpha(u_{ij})=\lambda_i\cdot u_{ij}$, aber auch ein Eigenwert zu $\beta$ mit 
-    $\beta(u_{ij})=\mu_j\cdot u_{ij}$ und daher ist die Menge $\lbrace u_{ij}|i=1,\ldots,s;j=1,\ldots,n \rbrace$ ein Erzeugnendensystem, aus dem man 
-    eine Basis wählen kann.
-%\end{bew}
+    \end{align*}
+    Da $u_{ij}' = \beta(u_{ij}) \in U_i$ für jeden $i$ und $\mu_ju_{ij} \in U_i$, folgt die Eindeutigkeit $\beta(u_{ij}) = \mu_j u_{ij}$. Demnach ist, wenn $u_{ij}\neq0$ gilt $u_{ij}$ ein Eigenwert zu $\alpha$ mit $\alpha(u_{ij}) = \lambda_i \cdot u_{ij}$, aber auch ein Eigenwert zu $\beta$ mit $\beta(u_{ij})=\mu_j\cdot u_{ij}$ und daher ist die Menge $\left\{ u_{ij} \mid i = 1,\ldots,s;\ j = 1,\ldots,n \right\}$ ein Erzeugendensystem, aus dem man eine Basis wählen kann.
 \end{mysatz}
 
 %-----------------------------------------------Beispiel---------------------------------------------------
-%\begin{bsp} \qquad \par
 \textit{Beispiel:}
-    Gegeben Sei $V=\R^2$ und die Endomorphismen $\alpha,\beta$, die bzgl. der Standardbasis die folgenen Abbildungsmatrizen besitzen.
-    \begin{equation*}
-        \alpha:A=\mata1&0\\1&2\mate \qquad \mbox{und} \qquad \beta:B=\mata3&0\\-4&-1\mate \qquad \mbox{mit} \qquad AB=BA=\mata3&0\\-5&-2\mate
-    \end{equation*}
-    Dann ist 
-    \begin{equation*}
-        E_{\alpha}(1) = \langle \mata1\\-1\mate \rangle = E_{\beta}(3) \mbox{ und }	E_{\alpha}(2) = \langle \mata0\\ 1\mate \rangle = E_{\beta}(-1)
-    \end{equation*}
-%\end{bsp}
 
-%\newpage
+Gegeben Sei $V=\R^2$ und die Endomorphismen $\alpha,\beta$, die bzgl. der Standardbasis die folgenen Abbildungsmatrizen besitzen.
+\begin{align*}
+    \alpha:A=\begin{pmatrix}1&0\\1&2\end{pmatrix} \qquad \mbox{und} \qquad \beta:B=\begin{pmatrix}3&0\\-4&-1\end{pmatrix} \qquad \mbox{mit} \qquad AB=BA=\begin{pmatrix}3&0\\-5&-2\end{pmatrix}
+\end{align*}
+Dann ist 
+\begin{align*}
+    E_{\alpha}(1) = \langle \begin{pmatrix}1\\-1\end{pmatrix} \rangle = E_{\beta}(3) \mbox{ und }	E_{\alpha}(2) = \langle \begin{pmatrix}0\\ 1\end{pmatrix} \rangle = E_{\beta}(-1)
+\end{align*}
