@@ -1,0 +1,441 @@
+\section{Hauptidealringe}
+
+Ein Menge $R$ mit zwei Verknüpfungen $(+)$ und $(\cdot)$ heißt Ring, falls folgende Axiome gelten:
+\begin{enumerate}
+    \item $(R,+)$ ist eine kommutative Gruppe
+    \item $(R,\cdot)$ ist assoziativ, d.h. $(ab)c=a(bc)$ für alle $a,b,c\in R$
+    \item $(a+b)c=ac+ab$ und $c(a+b)=ca+cb$ für alle $a,b,c\in R$. Diese Eigenschaft nennt man Distibutivität.
+\end{enumerate}
+Gilt zu den genannten Axiomen zusätzlich noch
+\begin{enumerate}
+    \item $ab=ba$ für alle $a,b \in R$, so heißt $R$ kommutativer Ring.
+    \item $\exists e\in R$ mit $ea=ae=a$ für alle $a\in R$, so heißt $R$ Ring mit Einselement.
+\end{enumerate}
+
+%---------------------------------------------Definition 2.1------------------------------------------------
+%--------------------------------------Linksideal, Rechtsideal,Ideal----------------------------------------
+\begin{mydef} \textit{Linksideal, Rechtsideal, Ideal}
+
+    Sei $R$ ein Ring und $I$ eine Untergruppe von $(R,+)$. Mann nennt $I$ Linksideal genau dann, wenn
+    \begin{align*}
+        rx \in I \quad \forall r \in R \ \forall x \in I
+    \end{align*}
+    und Rechtsideal genau dann, wenn
+    \begin{align*}
+        xr \in I \quad \forall r \in R \ \forall x \in I
+    \end{align*}
+    und Ideal, falls $I$ sowohl Rechts-, als auch Linksideal ist. In diesem Fall schreibt man $I\lhd R$.
+\end{mydef}
+
+%-----------------------------------------------Bemerkung---------------------------------------------------
+\textit{Bemerkung:}
+\begin{enumerate}
+    \item $\{ 0 \}$ und $R$ sind Ideale in jedem Ring.
+    \item Ist $R$ kommutativ, dann fallen die Begriffe Linksideal, Rechtsideal und Ideal zusammen.
+    \item Bsp. $R = \Z$ mit dem Ideal $I_m = \left\{ k\cdot m \mid k\in \Z, m\in \N \right\}$
+    \item Bsp. $R = \R[x]$ mit dem Ideal $I = \{ p(x) \mid p(-1) = p(1) = 0 \} = \{ p(x) = (x-1)(x+1) \cdot q(x) \mid q(x) \in \R[x] \}$
+    \item Der Durchschnitt von Linksidealen ist wieder ein Linksideal.
+        $x \in I_1 \cap I_2 \Rightarrow rx \in I_1 \wedge rx \in I_2 \Rightarrow rx \in I_1\cap I_2$
+    \item Die Summe von Linksidealen ist wieder ein Linksideal.
+        $I_1 + I_2 = \{ x_1 + x_2 \mid x_1 \in I_1 \wedge x_2 \in I_2\}$
+    \item Wenn $R$ ein Ring mit Einselement ist und $I$ ein zweiseitiges Ideal, das $1$ enthält, dann ist $I=R$.
+\end{enumerate}
+
+%---------------------------------------------Definition 2.2------------------------------------------------
+%--------------------------------------Hauptideal, Hauptidealring-------------------------------------------
+\begin{mydef} \textit{Hauptideal, Hauptidealring}
+
+    Sei $R$ ein kommutativer Ring und $I$ ein Ideal von $R$. Man nennt $I$ Hauptideal, wenn ein $a \in R$ existiert mit
+    \begin{align*}
+        I = a \cdot R = \{ a\cdot r \mid r\in R \} = (a)
+    \end{align*}
+    Sei $R$ ein kommutativer, nullteilerfreier Ring mit $1$. Dann heißt $R$ Hauptidealring, wenn jedes Ideal ein Hauptideal ist.
+\end{mydef}
+
+%-----------------------------------------------Lemma 2.3---------------------------------------------------
+%-----------------------------------------Z ist Hauptidealring----------------------------------------------
+
+\begin{mylemma} \textit{$\Z$ ist Hauptidealring}
+
+    Falls $I=\{ 0 \}$ so ist die Behauptung trivial. Nehmen wir an $I \neq \{ 0 \}$ und $0 \neq x \in I$. Dann ist auch $-x \in I$. Also ist entweder $x$ oder $-x$ positiv und daher aus $\N$. Daher ist $I \cap \N \neq \emptyset$.
+    Sei $m$ die kleinste pos. Zahl in $I$. Dann ist $m \Z \subseteq I$, weil $m \in I \Rightarrow k \cdot m \in I$. Umgekehrt ist $I \subseteq m\Z$, denn sei $a \in I \Rightarrow a = q \cdot m + r$ mit $0 \leq r<m$. Dann ist $a-q\cdot m=r$. Da $a-q\cdot m \in I$ ist, muss auch $r \in I$ sein. Da aber $a$ die kleinste positive Zahl aus $i$ ist, folgt, dass $r=0$ ist. Damit bleibt $a=q\cdot m = (m)$.
+\end{mylemma}
+
+%-----------------------------------------------Definition 2.4-----------------------------------------------
+%--------------------------------------------Grad eines Polynoms---------------------------------------------
+
+\begin{mydef}\textit{Grad eines Polynoms}
+
+    Sei $\K$ ein Körper und $p \in \K[x]$ ein Polynom mit $p = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0$ und $a_n \neq 0$, dann heißt $n$ der Grad des Polynoms $(\deg p)$. Das Nullpolynom hat den Grad $-\infty$
+\end{mydef}
+
+%-----------------------------------------------Lemma 2.5---------------------------------------------------
+%----------------------------------------------Gradformeln--------------------------------------------------
+\begin{mylemma}\label{gradformeln} \textit{Gradformeln}
+    \begin{itemize}
+        \item $\deg p \cdot q = \deg p + \deg q$
+        \item $\deg(p + q) = \max \left\{ \deg p, \deg q \right\}$
+    \end{itemize}
+\end{mylemma}
+
+%-----------------------------------------------Lemma 2.6---------------------------------------------------
+%--------------------------------------------Division mit Rest----------------------------------------------
+\begin{mylemma}\label{divRestK[x]} \textit{Division mit Rest}
+
+    Seien $p , q \in \K[x]$, dann existieren eindeutig bestimmte Polynome $t, r \in \K[x]$ mit $p = t \cdot q + r$, wobei $\deg r < \deg q$ und $q\neq0$.
+
+    \begin{itemize}
+        \item Existenz: Induktion über $\deg p$.
+
+            Induktionsanfang:
+            \begin{align*}
+                \deg p = 0
+                \begin{cases}
+                    \deg q>0  & \rightarrow p=0\cdot q+p \\
+                    \deg q=0  & \rightarrow p=k\cdot q+0
+                \end{cases}
+            \end{align*}
+            Induktionsschritt: $n - 1 \Rightarrow n$
+            \begin{enumerate}
+                \item Fall $\deg p < \deg q \Rightarrow p = 0 \cdot q + p$
+                \item Fall $\deg p \geq \deg q$:
+
+                    $p = a_n x^n + \ldots + a_1 x + a_0$ und $b_m x^m + \ldots + b_1 x + b_0$ mit $m \leq n$.
+
+                    Sei $t_1 = a_n b_m^{-1} x^{n-m} \in \K[x]$. Dann ergibt $t_1 \cdot q = a_n x^n + s(x)$ mit $\deg s<n$.
+
+                    Setzt man $p_1 = p - t_1 \cdot q$ mit $\deg p_1 < \deg p$.
+
+                    Per Induktion gibt es dann $t_2, r \in \K[x]$ mit $p_1 = t_2 \cdot q + r$.
+
+                    Also ist $p = p_1 + t_1 \cdot q = t_2 \cdot q + r + t_1 \cdot q = (t_1 + t_2) \cdot q + r$.
+            \end{enumerate}
+
+        \item Eindeutigkeit
+
+            Sei $p = t \cdot q + r$, sowie $p = t' \cdot q + r'$ gegeben.
+
+            Dann ist o.B.d.A $\deg r \geq \deg r'$ sowie $\deg(t' - t) \geq 0$. Dann folgt aufgrund von $r - r' = (t' - t) \cdot q$ und mit \ref{gradformeln}, dass
+            \begin{align*}
+                \deg r \geq \deg(r - r') = \deg ((t' - t) \cdot q) = \deg(t' - t) + \deg q
+            \end{align*}
+            Dann wäre $\deg q \leq \deg r$. Widerspruch. Demnach muss $\deg(t' - t)= -\infty \Rightarrow t' - t \mbox{ ist nach }$ \ref{gradformeln} das Nullpolynom. Somit folgt $t' = t$ und damit schließlich $r' = r$.
+    \end{itemize}
+\end{mylemma}
+
+%----------------------------------------------------------------------------------------------------------
+%-----------------------------------------------Satz 2.7---------------------------------------------------
+%------------------------------------------K[x] ist Hauptidealring-----------------------------------------
+
+\begin{mysatz} \textit{$\K[x]$ ist  Hauptidealring} 
+
+    $\K[x]$ ist kommutativ mit Eins und Nullteilerfremd.
+
+    Letzteres gilt, weil aus $0 \neq p, q \in \K[x]$ folgt, dass $\deg (p \cdot q) = \deg p + \deg q \geq 0$ und daher $pq \neq 0$.
+
+    Sei $I \neq \{ 0 \}$, für diesen Fall ist die Aussage klar, ein Ideal von $\K[x]$. Dann enthält $I$ mindestens ein Polynom $p \neq 0$. Sei $q \in \K[x]$ ein Polynom mit kleinstem in $I$ auftretenden Grad. Dann ist klar, dass $q \cdot \K[x] \subseteq I$, weil $q \in I$.
+
+    Umgekehrt sei $p \in I$, d.h. $p = t \cdot q + r$ mit geeignetem $t, r \in \K[x]$. Diese existieren nach \ref{divRestK[x]} mit $\deg r < \deg q$. Umstellen liefert $I \ni p - tq = r$. Damit liegt auch $r \in I$ und wegen $\deg r < \deg q$ bleibt für $r$ nur das Nullpolynom übrig. Es folgt, dass $p = tq \in q \cdot \K[x]$ und daher ist $I = q \cdot \K[x]$ ein Hauptideal.
+\end{mysatz}
+
+%-----------------------------------------------Definition 2.8-----------------------------------------------
+%------------------------------------------------------------------------------------------------------------
+
+\begin{mydef} \textit{Einheit, Inverse, Vielfaches, kongruent, irreduzibel, teilerfremd, Primideal, Primelement, maximales Ideal}
+
+    Sei $R$ ein kommutativer Ring mit Einselement.
+    \begin{enumerate}
+        \item $u \in R$ heißt Einheit, falls ein $v \in R$ existiert mit $u \cdot v = 1$ ($v$ ist dann eindeutig bestimmt und heißt das Inverse von $u$).
+        \item Seien $a, b \in R$. Man sagt $a$ teilt $b$ in Zeichen $a \mid b$ oder $b$ ist ein Vielfaches von $a$ genau dann, wenn ein $c \in R$ existiert mit $a \cdot c = b$.
+        \item Seien $a, b, c \in R$. $a$ heißt kongruent zu $b$ modulo $c$ in Zeichen $a \equiv b \mbox{ mod }c$ genau dann, wenn $c \mid b-a$.
+        \item Wenn $p$ keine Einheit ist, aber aus $p = a \cdot b$ stets folgt, dass $a$ oder $b$ Einheit ist, dann heißt $p$ irreduzibel.
+        \item Seien $a_1, \ldots ,a_n \in R$. Man nenn diese Elemente teilerfremd, falls aus $u \mid a_i \ \forall i \in I$ folgt, dass $u$ eine Einheit ist.
+        \item Ein Ideal heißt Primideal, falls aus $a \cdot b \in P$ folgt, dass $a \in P$ oder $b \in P$ ist.
+        \item Ein Element $0 \neq p \in R$ heißt genau dann Primelement, wenn $pR$ ein Primideal ist.
+        \item Ein Ideal $M$ heißt maximal, falls $\{ 0 \}\subseteq M \subsetneqq R$ und es kein $I$ existiert mit $M \subsetneqq I \subsetneqq R$.
+    \end{enumerate}
+\end{mydef}
+
+%-----------------------------------------------Bemerkung 2.9------------------------------------------------
+
+\begin{mylemma}\ \label{lem2.9}
+
+    \begin{enumerate}
+        \item In einem Körper sind alle Elemente außer $0$ Einheiten. Primelemente existieren nicht.
+        \item $a \mid b$ genau dann, wenn $aR \supseteq bR$
+
+            \textit{Beweis:}
+            \begin{itemize}
+                \item $\exists c$ mit $b = c \cdot a \Rightarrow b \in aR$
+                \item $b \in aR \Rightarrow b = a \cdot r \Rightarrow a \mid b$
+            \end{itemize}
+        \item Primelemente sind stets irreduzibel.\label{lem2.9.3}
+
+            \textit{Beweis:}
+
+            Sei $p$ Primelement mit $p = a \cdot b \Rightarrow P = pR$ ist Primideal und $ab \in P.$
+
+            O.B.d.A.: $b \in P \Rightarrow b = p \cdot c$. Dann ist $p = a \cdot p \cdot c \Rightarrow (1 - ac)p = 0$ und somit $a \cdot c = 1 \Rightarrow a$ ist Einheit und damit $p$ irreduzibel.
+        \item $p$ Primelement $\Leftrightarrow P = p \cdot R$ ist Primideal.\label{lem2.9.4}
+
+            \textit{Beweis:}
+            \begin{itemize}
+                \item $ab \in P \Rightarrow a \in P \vee b \in P$
+                \item $ab = r \cdot p \Rightarrow p \mid a \vee p\mid b$
+            \end{itemize}
+        \item Der Ring $R = \{a + bi \mid a, b\in \Z \}$ wird als Ganze Gaußsche Zahlenebene bezeichnet.
+    \end{enumerate}
+\end{mylemma}
+
+%----------------------------------------------------------------------------------------------------------
+%-----------------------------------------------Satz 2.10--------------------------------------------------
+%----------------------------------------------------------------------------------------------------------
+
+\begin{mysatz}\label{zornschelemma}
+
+    Sei $R$ ein Hauptidealring und $0 \neq p \in R$.
+    \begin{enumerate}
+        \item Jede nichtleere Menge von Idealen enhält ein maximales Element. Insbesondere ist jedes Ideal $I \neq R$ in einem maximalen Ideal enthalten. \label{zli1}
+        \item Die folgenden Aussagen sind äquivalent:
+            \begin{enumerate}
+                \item $p$ ist Primelement
+                \item $p$ ist irreduzibel
+                \item $Rp$ ist maximales Ideal
+                \item $Rp$ ist Primideal
+            \end{enumerate}
+    \end{enumerate}
+    Für den vollständigen Beweis von \ref{zornschelemma}.\ref{zli1} benötigt man das 
+    \textsc{Zorn}sche \footnote{Max August Zorn, * 6. Juni 1906 in Krefeld; $\dagger$ 9. März 1993 in Bloomington, Indiana, USA, US-amerikanischer Professor der Mathematik deutscher Abstammung} Lemma. 
+    Daher beschränken wir uns beim Beweis auf die beiden Spezialfälle $R = \Z$ und $R = \K[x]$.
+    \begin{itemize}
+        \item Sei $\mathcal{M}$ eine nichtleere Menge von Idealen, die nicht nur das Nullideal enthält. Für diesen Fall wäre nichts zu zeigen.
+            Da jedes Ideal $\{0\} \neq I\in \mathcal{M}$ von einem Element $a$ erzeugt wird, also $I=(a)$,
+            wählt man unter allen Idealen in $\mathcal{M}$ ein Ideal so, dass $0 < |a|$ für $I = \Z$ oder $0 < \deg(a)$ für $I = \K[x]$ minimal ist.
+            Dieses Ideal ist dann ein maximales Ideal, denn für alle anderen Ideale gilt, dass das erzegende Element ein Vielfaches von $a$ ist.
+            Die zweite Aussage folgt aus der ersten: sei $I \neq R$ ein Ideal; ein maximales Element in der (nicht-leeren) Menge 
+            $\mathcal{M} = \{ A \mid I \leq A \lhd R, A \neq R\}$ ist dann ein maximales Ideal von $R$, welches $I$ enthält.
+        \item $(1) \Rightarrow (2)$ steht schon in \ref{lem2.9}.\ref{lem2.9.4}
+        \item $(2)\Rightarrow(3)$: Sei $p$ irreduzibel (d.h. $p$ keine Einheit) $\Rightarrow Rp \neq R$. Sei $Rp \lneq q A$ für ein Ideal $A$.
+            Zu zeigen ist dann, dass $A = R$ gilt. Da $A$ ein Hauptideal ist, folgt $A = Ra$ für ein $a$. Wegen $p \in A$ gibt es ein $b$ mit $p = ab$.
+            Die Irreduzibilität von $p$ erzwingt, dass $a$ oder $b$ eine Einheit ist. Wäre $b$ eine Einheit, dann $a = pb^{-1} \in pR$, also $A = Ra \leq Rp$, Widerspruch.
+            Also ist $a$ eine Einheit und daher $A = Ra = R$.
+        \item $(3)\Rightarrow(4)$: Sei $ab \in Rp$. Angenommen, weder $a$ noch $b$ liegen in $Rp$.
+            Dann sind die Ideale $Ra + Rp$ und $Rb + Rp$ beide echt größer als $Rp$, also gleich $R$ wegen der Maximalität von $Rp$.
+            Daher gibt es $r,s,t,u \in R$ mit $ra+sp = 1 = tb+up$. Dann folgt $1 = (ra + sp)(tb + up) = rtab + p(rua + stb + sup)\in Rp$, also $Rp = R$, Widerspruch.
+        \item $(4)\Rightarrow(1)$: per Definition.
+    \end{itemize}
+\end{mysatz}
+
+%-----------------------------------------------Bemerkung---------------------------------------------------
+
+\textit{Bemerkung:}
+
+Außer den von den Primelementen erzeugten Idealen gibt es noch ein weiteres Primideal, nämlich $\{0\}$. Ist dieses Ideal maximal, dann ist $R$ ein Körper.
+
+%----------------------------------------------------------------------------------------------------------
+%-----------------------------------------------Satz 2.11--------------------------------------------------
+%-----------------------------------------Primfaktorzerlegung in HR---------------------------------------
+
+\begin{mysatz} \textit{Primfaktorzerlegung in Hauptidealringen} \label{pfz-in-hir}
+
+    Sei $R$ ein Hauptidealring und $\{Rp_i \mid i \in I\}$ die Menge der maximalen Ideale $\neq \{ 0 \}$.
+    Dann hat jedes Element $0 \neq a \in R$ (bis auf Reihenfolge) eine eindeutige Zerlegung
+    \begin{align*}
+        a = u \cdot \prod_{i \in I} p_i^{n_i}
+    \end{align*}
+    mit $n_i \in \N$, fast allen $n_i = 0$ und der Einheit $u$.
+
+    \textit{Beweis:}
+    \begin{itemize}
+        \item Existenz: Es sei $\mathcal{M} = \left\{Rb \mid a = b \cdot \prod\limits_{i \in I}p_i^{n_i}\right\}$. (Diese Menge existiert immer, trivialerweise für $b = a$ und alle $n_i = 0$.)
+            Also gibt es ein maximales Element $Rc$ in $\mathcal{M}$.
+
+            Wenn $Rc \neq R$, dann liegt $Rc$ in einem maximalen Ideal $M$ von $R$. Es ist $m \neq \{ 0 \}$, denn sonst ist $Rc = \{ 0 \}$, also $c = 0, a = 0$, Widerspruch.
+
+            Also ist $M = Rp_j$ für ein $j \in I$. Dann ist $Rc \subseteq Rp_j$, also $c = dp_j$ mit geeignetem $d$.
+
+            Wegen
+            \begin{align*}
+                a = c \prod\limits_{i\in I}p_i^{n_i} = dp_j\prod\limits_{i \in I}p_i^{n_i}
+            \end{align*}
+            folgt $Rd\in \mathcal{M}$. Es ist aber $c=p_jd\in Rd$, also $Rc \subseteq Rd$ und daher $Rc=Rd$ wegen der Maximalität von $Rc$ in $\mathcal{M}$. Es 
+            folgt, dass $p_j$ ein Einheit ist, d.h $Rp_j=R$. Aber $Rp_j$ ist maximales Ideal, Widerspruch.
+            Also ist $Rc=R$, d.h. $c$ ist ein Einheit und $a=c\prod_{i\in I}p_i^{n_i}$\par \medskip
+        \item Eindeutigkeit: Angenommen, es ist
+            \begin{align*}
+                u \prod\limits_{i \in I}p_i^{a_i} = v \prod\limits_{i \in I}p_i^{b_i}
+            \end{align*}
+            mit $a_1 > a_2$. Dann ist
+            \begin{align*}
+                u p_1^{a_1 - b_1} \prod\limits_{i \neq 1}p_i^{a_i}= v \prod_{i \neq 1}p_i^{b_i} \in Rp_1
+            \end{align*}
+            Da $Rp_1$ ein Primideal ist, muss mindestens einer der Faktoren von $v \prod\limits_{i \neq 1}p_i^{b_i}$ in $Rp_1$ liegen. $v$ tut's nicht, weil $v$ eine Einheit ist. 
+            Es ist aber auch $p_j \notin Rp_1$, denn sonst ist $Rp_j \subseteq Rp_1$, also $Rp_j = Rp_1$, wegen der Maximalität von $Rp_j$ und $Rp_1$, Widerspruch.
+            Also ist $a_i = b_i$ für alle $i$ und dann auch $u = v$.
+    \end{itemize}
+\end{mysatz}
+
+%-----------------------------------------------Lemma 2.12---------------------------------------------------
+%-----------------------------------------Folgerung aus Satz 2.11--------------------------------------------
+
+\begin{mylemma} Folgerung aus Satz \ref{pfz-in-hir}
+
+    Sei $0 \neq p(x) \in \K[x]$ ein Polynom vom Grad $n$, dann hat $p(x)$ höchstens $n$ Nullstellen.
+
+    \textit{Beweis:}
+
+    Seien $a_1, \ldots, a_m$ die Nullstellen von $p(x)$, dann sind $x - a_1, x - a_2, \ldots, x - a_m$ irreduzible Teiler von $p$ mit $\deg x - a_i = 1 \quad \forall i = 1, \ldots, m$.
+    
+    Daher ist auch $\prod\limits_{i = 1}^m x - a_i$ ein Teiler von $p$.
+    Es gilt
+    \begin{align*}
+        \deg \left( \prod_{i = 1}^m x - a_i \right) = m < n = \deg p(x)
+    \end{align*}
+    und die Behauptung folgt.
+\end{mylemma}
+
+%-----------------------------------------------Lemma 2.13---------------------------------------------------
+%------------------------------------------------------------------------------------------------------------
+
+\begin{mylemma}\label{lem2.13} \qquad  \par
+    Seien $a_1,\ldots,a_n$ teilerfremde Elemente eines Hauptidealringes. Dann existieren $b_1,\ldots,b_n$ mit 
+    \begin{align*}
+        1 = \sum_{i=1}^n b_ia_i
+    \end{align*}
+
+    \textit{Beweis:}
+
+    Sei $I = \sum\limits_{i=1}^n Ra_i$ Dann existiert ein $a$, sodass $I = Ra$. Da $a_i \in I$, gibt es ein $c_i$ mit $a_i = c_i a$, also $a \mid a_i$ für $i=1,\ldots,n$.
+    Nach Vorraussetzung ist dann $a$ eine Einheit, also $I=R$. Insbesondere ist $1 \in I$, also gibt es $b_i$ mit der gewünschten Eigenschaft.
+\end{mylemma}
+
+%-----------------------------------------------Definition 2.14-----------------------------------------------
+%----------------------------------------------------ggT------------------------------------------------------
+
+\begin{mydef} \textit{größter gemeinsamer Teiler}
+
+    Seien $a_1, \ldots, a_n$ Elemente eines Hauptidealringes $R$. Dann ist $I = \sum\limits_{i=1}^n Ra_i$ ein Ideal in $R$.
+    Da $R$ Hauptidealring ist, existiert ein $g \in R$ mit $I = Rg$. Dann heißt $g$ der größte gemeinsame Teiler (ggT) von $a_1, \ldots, a_n$
+\end{mydef}
+
+%-----------------------------------------------Bemerkung---------------------------------------------------
+
+\textit{Bemerkung:}
+\begin{itemize}
+    \item Nach Definition von ggT existieren $b_1, \ldots, b_n$ mit $g = b_1 a_1 + \ldots + b_n a_n$
+        
+        \hfill (Verallgemeinerung von \ref{lem2.13})
+    \item $\forall i=1, \ldots, n:$
+        \begin{align*}
+        Rg \geq Ra_i & \Rightarrow g \mid a_i\\
+        Rt \geq Ra_i & \Rightarrow Rt \geq Rg \Rightarrow t\mid g
+        \end{align*}
+\end{itemize}
+
+%-----------------------------------------------Definition 2.15-----------------------------------------------
+%----------------------------------------------------kgV------------------------------------------------------
+
+\begin{mydef} \textit{kleinstes gemeinsames Vielfaches}
+
+    Seien $a_1, \ldots, a_n$ Elemente eines Hauptidealringes $R$. Dann ist $I=\bigcap\limits_{i=1}^n$ ein Ideal in $R$.
+    Da $R$ Hauptidealring ist, existiert ein $k \in R$ mit $I = Rk$. Dann heißt $k$ das kleinste gemeinsame Vielfache von $a_1, \ldots, a_n$.
+\end{mydef}
+
+%-----------------------------------------------Bemerkung---------------------------------------------------
+
+\textit{Bemerkung:}
+
+    Da $Rk \leq Ra_i$ für jedes $i$ nach \ref{lem2.9}.\ref{lem2.9.3} gilt, ist $k$ gemeinsames Vielfaches der $a_i$.
+    Wenn zusätzlich $a_i \mid t$ für jedes $i$, dann ist $Rt \leq Ra_i$, also $Rt \leq Rk$ und damit ist $k$ das kleineste gemeinsame Vielfache.\\
+
+%-----------------------------------------------Bemerkung---------------------------------------------------
+
+\textit{Bemerkung:} \textit{Bestimmung von ggT und kgV}
+
+    Sei $0 \neq a_i$ für $i = 1, \ldots, n$ und sei $a_i = \prod\limits_j p_j^{e_{ij}}$ die Faktorisierung in Primelemente.
+    Für jedes $j$ sei $u_j = \min(e_{1j}, \ldots, e_{nj})$ und $v_j = \max(e_{1j}, \ldots, e_{nj})$.
+    Dann ist $g = \prod\limits_j p_j^{u_j}$ der größte gemeinsame Teiler (ggT) und $k = \prod\limits_j p_j^{v_j}$ das kleinste gemeinsame Vielfache (kgV) der $a_i$.\\
+
+%-----------------------------------------------Bemerkung---------------------------------------------------
+
+\textit{Bemerkung:} \textit{Euklidischer Algorithmus zur Bestimmung des ggT in $\Z$ und $\K[x]$}
+
+    Dazu seien $a\neq0, b\neq0 \in R$. Nach \ref{divRestK[x]} lässt sich dann $a$ zerlegen in \par
+    \begin{center}
+        \begin{tabular}{ccc}
+            & $\Z$ & $\K[x]$ \\ \hline
+            $a=q_1\cdot b + r_1$ & $0\leq r_1 < |b|$ & $\deg(r)<\deg(b)$\\
+            $b=q_2\cdot r_1 + r_2$ & $0\leq r_2 < r_1 $ & $\deg(r_2)<\deg(r_1)$ \\
+            $r_1=q_3\cdot r_2 + r_3$ & $0\leq r_3 < r_2 $ & $\deg(r_3)<\deg(r_2)$\\
+            $\vdots$ & $\vdots$ & $\vdots$ \\
+            $r_{n-1}=q_{n+1}\cdot r_n + r_{n+1}$ & $0\leq r_{n+1}<r_n$ & $\deg r_{n+1}<\deg r_n$\\
+            $r_{n}=q_{n+2}\cdot r_{n+1} + 0$ & &
+        \end{tabular}
+    \end{center}
+    Der Rest wird nach endlichen vielen Schritten $0$, weil $r_i < r_{i-1}$ eine streng monoton fallende Folge von natürlichen Zahlen ist.
+
+    Aus der letzten Gleichung erhält man dann $r_{n+1} \mid r_{n} \Rightarrow r_{n+1} \mid r_{n-1} \Rightarrow \ldots \Rightarrow r_{n+1} \mid b \Rightarrow r_{n+1} \mid a$.
+    Also ist $r_{n+1}$ gemeinsamer Teiler von $a$ und $b$.
+
+    Aus der Annahme $\exists t \in R$ mit $t \mid a \ \wedge \ t \mid b$ erhält man wegen $t \mid r_1\Rightarrow t \mid r_2\Rightarrow \ldots \Rightarrow t \mid r_{n+1}$,
+    dass $r_{n+1}$ der größte gemeinsame Teiler ist.
+
+    Ist man an der Darstellung des ggT von $a$ und $b$ durch eben diese Elemente interessiert, so erhält man
+    \begin{align*}
+        r_{n+1} & = r_{n-1} - q_{n+1} \cdot r_n = r_{n-1} - q_{n+1} \cdot (r_{n-2} - q_n \cdot r_{n-1}) = \ldots = \\
+        & = k\cdot a + l\cdot b
+    \end{align*}
+
+%-----------------------------------------------Beispiel ---------------------------------------------------
+\textit{Beispiel:} \textbf{ggT$(9,88)$}
+
+    Wegen 
+    \begin{align*}
+        88 & = 9 \cdot 9 + 7\\
+        9 & = 1 \cdot 7 + 2\\
+        7 & = 3 \cdot 2 + 1\\
+        2 & = 2 \cdot 1 + 0
+    \end{align*}
+    ist ggT$(9,88)=1$.
+    
+    Zusätzlich ist
+    \begin{align*}
+        1 & = 7 - 3 \cdot 2\\
+        & = 7 - 3 \cdot (9 - 7) = 4 \cdot 7 - 3 \cdot 9 = 4 \cdot (88 - 9 \cdot 9) - 3 \cdot 9\\
+        & = 4 \cdot 88 - 39 \cdot 9
+    \end{align*}
+    die Darstellung des ggT$(8,99)$ durch eben diese Zahlen.\par\medskip
+
+    \textbf{Diophantische Gleichungen}
+
+    Als Diophantische Gleichung bezeichnet man eine Gleichung der Form $ax + by = c$ mit $a,b,c\in \Z$ und der Lösungsmenge $(x,y) \in \Z^2$.
+
+    Ganzzahlige Lösungen existieren genau dann, wenn ggT$(a,b) \mid c$, denn der ggT$(a,b)$ teilt die linke Seite der Gleichung, also muss er auch die rechte Seite teilen.
+
+    Wähle $a',b',c'\in \Z$ so, dass $a'x + b'y = c'$ mit ggT$(a', b') = 1$ gilt.
+
+    Dann ist mittels des euklidischen Algorithmus' $1 = k \cdot a' + l \cdot b'$ und $c' = {(c'k)}_{x_0} \cdot a' + {(c'l)}_{y_0} \cdot b'$ mit
+    den allgemeinen Lösungspaaren $x_i=x_0 + i\cdot b$ und $y_i=y_i\cdot a$.
+
+%-----------------------------------------------Satz 2.16--------------------------------------------------
+%-----------------------------------------Chinesischer Restsatz--------------------------------------------
+
+\begin{mysatz} \textit{Chinesischer Restsatz}
+
+    Seien $a_1, \ldots, a_n$ paarweise teilerfremde Elemente eines Hauptidealringes $R$ und $b_1, \ldots, b_n$ beliebige Elemente aus dem Hauptidealring.
+    Dann existiert ein $c \in R$ mit $c \equiv b_i \mod a_i \ \forall i=1, \ldots, n$
+
+    \textit{Beweis:} Induktion über $n$.
+
+    Der Fall $n=1$ hat die triviale Lösung $c=b_1$.
+    
+    Sei nun $n>1$ und $c_0 \equiv b_i \mod a_i$ für alle $i=1, \ldots, n-1$.
+
+    Weil $a_n$ teilerfremd zu $d = a_1 \cdot \ldots \cdot a_{n-1}$ ist, existieren $r, s \in R$ mit $1 = ra_n + sd$.
+    Dann ist also $sd \equiv 0 \mod a_i$ für $i < n$ und $sd \equiv 1 \mod a_n$.
+    Daher gilt
+    \begin{align*}
+        c & = c_0 + (b_n - c_o) \cdot sd \mod a_n = c_0 + (b_n - c_0) \mod a_n \\
+        c & = b_n \mod a_n
+    \end{align*}
+\end{mysatz}
