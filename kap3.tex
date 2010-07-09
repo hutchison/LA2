@@ -108,7 +108,7 @@ Des Weiteren sind $\ker (f) = \ker (f(\alpha))$ und $\IM (f)=\IM (f(\alpha))$.
                 m(x) & = x^n + \sum\limits_{j=0}^{n-1} k_j \cdot x^{j}
             \end{align*}
             das Minimalpolynom ist.
-        \item $m$ ist zugleich auch das charakteristische Polynom.
+        \item \label{zykVR-3} $m$ ist zugleich auch das charakteristische Polynom.
         \item \label{zykVR-4} Wenn $m = f \cdot g$ mit normierten Polynomen $f$ und $g$ ist, dann ist $\ker g = \IM f = U$ ein invarianter Unterrum.
             $U$ ist ebenfalls zyklisch und $\dim U = \deg g$.
         \item \label{zykVR-5} Die Abbildung $g \mapsto \ker g$ ist eine bijektive Abbildung der normierten Teiler von $m$ auf die invarianten Unterräume von $V$.
@@ -348,296 +348,446 @@ Zur Probe kann man noch leicht nachprüfen, dass $V = Z \oplus W$ gilt.
     \end{enumerate}
 \end{mysatz}
 
-%    %----------------------------------------------------------------------------------------------------------
-%    %-----------------------------------------------Satz 3.8---------------------------------------------------
-%    %---------------------------------------kanonisch rationale Form-------------------------------------------
-%
-%    \begin{satz}\label{kanonischrationaleForm} \qquad  \par
-%        Sei $\alpha$ ein Endomorphismus von $V$, dann existiert eine Basis von $V$ bzgl. der die Abbildungsmatrix die Form
-%        \begin{align*}
-%            A=\mata A_1&0&\cdots&0 \\ 0&\ddots&&\vdots \\ \vdots&&\ddots&0\\0&\cdots&0&A_t\mate\qquad\mbox{mit }
-%            A_i=\mata 0&\cdots&\cdots&0&-k_0^{(i)}\\1&\ddots&&\vdots&\\0&\ddots&\ddots&\vdots&\vdots\\ \vdots&\cdots&1&0&\\0&\cdots&0&1&-k_{n_i-1}^{(i)} \mate
-%            \in\K^{n_i\times n_i},
-%        \end{align*}
-%        wobei
-%        \begin{align*}
-%            x^{n_i} + \sum_{j=0}^{n_i-1} k_j^{(i)}\cdot x^j = p_i(x)^{s_i}
-%        \end{align*}
-%        mit $s_i\in \N$ und $p_i\in \K[x]$ irreduzibel ist. Dabei gilt: Wenn $d_i=\deg p_i$, dann ist $n_i=d_i\cdot s_i$ und $\sum_{i=1}^{t}=\dim V$.
-%    \end{satz}
-%
-%    \begin{bew}
-%        Faktorisiere das Minimalpolynom in Potenzen von normierten irreduziblen Faktoren, etwa
-%        \begin{align*}
-%            m=\prod_{j\in I} p_j^{e_j}.
-%        \end{align*}
-%        Mit $U_j=\ker p_j^{e_j}$ ist dann $V=U_1\oplus \ldots \oplus U_r$, wobei $p_j^{e_j}$ das Minimalpolynom von $\alpha_{|_{U_j}}$ ist. Nach 
-%        \ref{Existenz/zyklische/invarianteUR} (und trivialer Induktion über die Dimension) zerfällt jedes $U_j$ in die direkte Summe von zyklischen 
-%        Unterräumen. Daher findet man für jeden zyklischen Raum $Z_j$ nach \ref{zyklischeVR}$.1$ eine Basis. Dann ist die Vereinigung der Basen all dieser 
-%        zyklischen Unterräume eine Basis von $V$, bzgl. der die Abbildungsmatrix die behauptete Gestalt hat.
-%    \end{bew}
-%
-%    %---------------------------------------------Definition 3.9------------------------------------------------
-%    %-----------------------------------------kanonisch rationale Form------------------------------------------
-%
-%    \begin{mydef} \qquad \par
-%        Eine Matrix der Gestalt aus Satz \ref{kanonischrationaleForm} heißt Matrix in kanonisch rationaler Form von $A$.
-%    \end{mydef}
-%
-%    %-----------------------------------------------Lemma 3.9---------------------------------------------------
-%    %-----------------------------------------------------------------------------------------------------------
-%
-%    \begin{lem}\label{lem3.10} \qquad \par
-%        Sei A in kanonisch rationaler Form. Dann gelten:
-%        \begin{itemize}
-%            \item [1.] Für jedes $f\in \K[x]$ ist $f(A)=\mata f(A_1) & & \\ & \ddots & \\ & & f(A_t)\mate$.
-%            \item [2.] Wenn $m_i$ das Minimalpolynom von $A_i$ ist, dann ist $m$ das kleinste gemeinsame Vielfacher der $m_i$.
-%        \end{itemize}
-%    \end{lem}
-%
-%    \begin{bew}
-%        1. Diese Aussage ist trivial.\par\medskip
-%        2. Nach 1. ist $f(A)=0$ genau dann, wenn $f(A_i)=$ für jedes $i$ gilt. Nach der Bemerkung zu Definition \ref{minpoly} ist das äquivalent zu der 
-%        Aussage, dass $m_i|f$ für jedes $i$. Daraus folgt die Behauptung.
-%    \end{bew}
-%
-%    %----------------------------------------------------------------------------------------------------------
-%    %-----------------------------------------------Satz 3.11--------------------------------------------------
-%    %--------------------------------------------Cayley-Hamilton-----------------------------------------------
-%
-%    \begin{satz}\label{CayleyHamilton} \textit{Satz von Cayley-Hamilton} \par
-%        \begin{itemize}
-%            \item [1.] Das Minimalpolynom ist ein Teiler des charakteristischen Polynoms.
-%            \item [2.] $\alpha$ ist Nullstelle des charakteristischen Polynoms.
-%            \item [3.] Jeder irreduzible Teiler des charakteristischen Polynom ist auch Teiler des Minimalpolynoms.
-%        \end{itemize}
-%    \end{satz}
-%
-%    \begin{bew}
-%        Sei A eine Matrix zu $\alpha$ in kanonischer rationaler Form und $m_i$ das Minimalpolynom von $A_i$ wie oben. Dann ist $m$ das kleinste gemeinsame 
-%        Vielfache der $m_i$ nach \ref{lem3.10}$.2$. Für jedes $i$ ist $m_i$ zugleich das charakteristische Polynom von $A_i$ nach \ref{zyklischeVR}$.3$. 
-%        Daher ist das charakteristische Polynom von $A$ gleich dem Produkt der $m_i$. Daraus folgen alle Behauptungen.
-%    \end{bew}
-%
-%
-%    \newpage
-%
-%
-%
-%    %----------------------------------------------------------------------------------------------------------
-%    %-----------------------------------------------Satz 3.12--------------------------------------------------
-%    %----------------------------------------------------------------------------------------------------------
-%
-%    \begin{satz}\label{anzahlbloeckeKRF} \qquad \par
-%        Sei $B$ die Matrix eines Endomorphismus $\alpha$ die ähnlich ist zu einer Matrix der Form 
-%        \begin{align*}
-%            A=\mata A_1 & & \\ & \ddots & \\ & & A_t\mate.
-%        \end{align*} 
-%        Dann ist $A$ durch $B$ bis auf die Reihenfolge der $A_i$ eindeutig bestimmt. Sei $p$ ein irreduzibles Polynom und $0<k\in \N$, dann lässt sich die 
-%        Anzahl  $z(p,k)$ der Blöcke $A_i$ mit $m_i=p^k$ aus der Formel 
-%        \begin{align*}
-%            z\cdot \deg p = \RG p^{k-1}(B) + \RG p^{k+1}(B) - 2\RG p^k(B)
-%        \end{align*}
-%        bestimmen.
-%    \end{satz}
-%
-%    \begin{bew}
-%        Die erste Aussage ist nur eine Umformulierung von \ref{kanonischrationaleForm}. Die behauptete Eindeutigkeit von $A$ folgt aus der Formel für $z$. 
-%        Es genügt also, diese zu beweisen. Ähnliche Matrizen haben den gleichen Rang. Daher reicht es aus, den Beweis für $A$ zu zeigen. Nach Lemma 
-%        \ref{lem3.10} ist für ein $f\in\K[x]$ stets $\RG f(A) = \sum_{i=1}^t \RG f(A_i)$ und daher reicht es aus nur einen Block $A_i$ zu betrachten und 
-%        \begin{align*}
-%            r_i = \RG p^{k-1}(A_i) + \RG p^{k+1}(A_i)-2\RG p^k(A_i) = \begin{cases} \deg p & m_i=p^k\\0 & \mbox{sonst} \end{cases}
-%            \end{align*}
-%            zu zeigen.\par
-%            Sei also $m_i=q^s$ mit einem irreduziblen Polynom $q$. Wenn $p\neq q$, dann sind $p^k$ und $m_i$ teilerfremd. Nach Lemma \ref{lem2.13} existieren 
-%            $f,g\in\K[x]$ mit $1=f\cdot p^k+g\cdot m_i$. Durch Einsetzen von $A_i$ folgt
-%            \begin{align*}
-%                E=f(A_i)\cdot p^k(A_i) + g(A_i)\cdot m_i(A_i) = f(A_i)\cdot p^k(A_i),
-%            \end{align*}
-%            denn $m_i(A)=0$. Hierbei ist $E$ die Einheitsmatrix passender Größe. Insbesondere ist $p^k(A_i)$ invertierbar, hat also vollen Rang. Mit derselben 
-%            Begründung gilt dies auch für $p^{k-1}(A_i)$ und $p^{k+1}(A_i)$. Da die drei Matrizen den gleichen Rang haben, ist $r_i=0$.\par
-%            Sei also $p = q$. Wenn $s<k$, dann ist $s\leq k-1$ und daher $p^{k-1}(A_i)=0$ und erst recht $p^k(A_i)=p^{k+1}(A_i)=0$. Auch in diesem Fall haben 
-%            also alle beteiligten Matrizen den Rang (diesmal $0$), und daher ist $r_i=0$.\par
-%            Wenn $s=k$, dann ist wieder $p^k(A_i)=p^{k+1}(A_i)=0$. Dagegen ist $\RG p^{k-1}(A_i)=\deg p$ nach \ref{zyklischeVR}. In diesem Fall ist also 
-%            $r_i=\deg p$. \par
-%            Mit \ref{zyklischeVR} wird auch der letzte Fall diskutiert. Wenn $s>k$, etwa $s=k+t$ dan ist $m_i=p^s=p^k\cdot p^t$ eine Faktorisierung. Demnach ist 
-%            also $\RG p^k(A_i)=\deg p^t = t\dot \deg p$. Genauo ist $\RG p^{k+1}(A_i)=\deg p^{t+1} = (t+1)\dot \deg p$ und 
-%            $\RG p^{k-1}(A_i)=\deg p^{t-1} = (t-1)\dot \deg p$. Daraus ergibt sich wieder $r_i=0$.
-%        \end{bew}
-%
-%
-%
-%        \newpage
-%
-%
-%
-%        %------------------------------------------------Beispiel---------------------------------------------------
-%
-%        \begin{bsp} \qquad \par
-%            Sei
-%            \begin{align*}
-%                B=\mata -3&-1&4&-3&-1\\1&1&-1&1&0\\-1&0&2&0&0\\4&1&-4&5&1\\-2&0&2&-2&1 \mate \in \IR^{5 \times 5} 
-%            \end{align*}
-%            diese Matrix bzgl. der Standardvektoren. Dann ist $\mbox{charpol }B=(x-1)^4\cdot (x-2)$. Dieses besitzt also die beiden irreduziblen Faktoren $p_1(x)=x-1$ und $p_2(x)=x-2$. Dann ist \par\medskip
-%            \begin{tabular}{cc}
-%                \begin{minipage}{5cm}
-%                    \begin{eqnarray*}
-%                        \RG (B-E) & = & 3 \\ \RG (B-E)^2 &=&2\\ \RG (B-E)^3 &=& 1 \\ \RG (B-E)^4 &=& 1
-%                    \end{eqnarray*}
-%                \end{minipage}
-%                &
-%                \begin{minipage}{5cm}
-%                    \begin{tabular}{c|c|c}
-%                        $k$  &  $\RG p_1^k(B)$  &  $z\cdot\deg p_1$  \\ \hline
-%                        $0$  &       $5$        &         $-$                            \\ 
-%                        $1$  &       $3$        &         $1$                            \\ 
-%                        $2$  &       $2$        &         $0$                            \\ 
-%                        $3$  &       $1$        &         $1$                            \\ 
-%                        $4$  &       $1$        &         $0$                            \\ 
-%                    \end{tabular}
-%                \end{minipage}
-%            \end{tabular} \par \medskip 
-%
-%            Die Einträge in der letzten Spalte wurden mit der Formel aus Satz \ref{anzahlbloeckeKRF} errechnet. Die Ränge von $p_1^k(B)$ wurden so lange 
-%            bestimmt, bis sich der Rang für ein bestimmtes $k$ nicht mehr ändert. 
-%
-%
-%            Aus der Tabelle entnimmt man, dass die kanonisch rationale Form der Matrix $B$ einen $1$-er Block zu $m_{A_1}=x-1$ und einen $3$-er Block zu 
-%            $m_{A_2}=(x-1)^3=x^3-3x^2+3x-1$ besitzt. Zusätzlich kommt dann ein $1$-er Block zu $m_{A_3}=x-2$ dazu. Daher hat die kanonisch rationale Form der 
-%            Matrix $B$ die folgende Gestalt.
-%            \begin{align*}
-%                A=\mata 1&&&& \\ &0&0&1&\\ &1&0&-3& \\ &0&1&3& \\ &&&&2 \mate
-%            \end{align*}
-%            Ist man zusätzlich an der Transformationmatrix interessiert ($A$ und $B$ sind ähnlich, d.h. $A=T^{-1}BT$), so muss man die verallgemeinerten 
-%            Eigenräume zu den Blöcken betrachten. Es ist (zum $3$-er Block)
-%            \begin{align*}
-%                \ker (B-E)^2 = \left\langle \mata0\\0\\1\\1\\0\mate,\mata1\\0\\1\\0\\0\mate,\mata0\\1\\0\\0\\-1\mate \right\rangle \qquad \mbox{und} \qquad
-%                \ker (B-E)^3 = \left\langle \mata0\\0\\0\\0\\1\mate,\mata0\\0\\1\\1\\0\mate,\mata1\\0\\1\\0\\ 0\mate,\mata0\\1\\0\\0\\0\mate\right\rangle
-%            \end{align*}
-%            Nun wählt man ein Element $b_2$ aus dem Kern von $(B-E)^3$, welches nicht im Kern von $(B-E)^2$ liegt, also $b_2=(0,0,0,0,1)^T$. Dann erzeugt man 
-%            ausgehend von diesem Element den Invarianten Unterraum, also
-%            \begin{align*}
-%                b_2=\mata0\\0\\0\\0\\1\mate \qquad \alpha(b_2) =b_3= \mata-1\\0\\0\\1\\1\mate \qquad \alpha^2(v)=b_4=\mata-1\\0\\1\\2\\1\mate
-%            \end{align*}
-%            Zu den beiden $1$-er Blöcken und den dazugehörigen Eigenwerten müssen die entsprechenden Eigenvektoren berechnet werden, also
-%            \begin{align*}
-%                b_1=\mata1\\0\\1\\0\\0\mate\mbox{ ist EV zum EW }\lambda_1=1 \mbox{ und } b_5=\mata0\\1\\2\\3\\-2\mate \mbox{ ist EV zum EW }\lambda_2=2
-%            \end{align*}
-%            Damit hat man die Transformationsmatrix $T=(b_1,b_2,b_3,b_4,b_5)$ gefunden, mit der man zur Probe $TA = TB$ durchrechnen kann.
-%
-%        \end{bsp}
-%
-%        %------------------------------------------------Beispiel---------------------------------------------------
-%
-%        \begin{bsp}
-%            Sei
-%            \begin{align*}
-%                B=\mata3&-1&0&0&-2\\1&3&1&0&0\\0&1&3&0&2\\1&0&1&3&1\\0&0&0&0&3\mate
-%            \end{align*}
-%            wieder bzgl. der Standardbasis. Dann ist $p(x)=(x-3)^5$ das charakteristische Polynom von $B$.\par \medskip
-%            \begin{tabular}{cc}
-%                \begin{minipage}{5cm}
-%                    \begin{eqnarray*}
-%                        \RG (B-3E) &=& 3\\ \RG (B-3E)^2=1 \\ \RG (B-3E)^3 &=&0
-%                    \end{eqnarray*}             
-%                \end{minipage}
-%                &
-%                \begin{minipage}{5cm}
-%                    \begin{tabular}{c|c|c}
-%                        $k$   &   $\RG p^k(B)$   &   $z\cdot \deg p$ \\ \hline
-%                        $0$   &       $5$        &       $-$                             \\
-%                        $1$   &       $3$        &       $0$                             \\
-%                        $2$   &       $1$        &       $1$                             \\
-%                        $3$   &       $0$        &       $1$                             \\
-%                    \end{tabular}
-%                \end{minipage}
-%            \end{tabular} \par \medskip
-%            Aus der Tabelle erkennt man, dass $m(x)=m_1(x)=(x-3)^3$ das Minimalpolynom der Matrix $B$ ist. Also muss es mindestens einen $3$-er Block in der 
-%            kanonisch rationalen Form der Matrix $B$ geben. Zusätzlich existiert dann noch ein $2$-er Block zu dessen Minimalpolynom $m_2(x)=(x-3)^2$. Die 
-%            kanonisch rationale Form der Matrix hat also die folgende Gestalt.
-%            \begin{align*}
-%                A=\mata0&0&27&&\\1&0&-27&&\\0&1&9&&\\&&&0&-9\\&&&1&6\mate
-%            \end{align*}
-%            Sei nun noch die Transformationsmatrix gesucht, dann geht man wieder blockweise vor. Für den Block der Größe $3$ sucht man sich ein Element 
-%            $b_1\in\ker(B-3E)^3\backslash\ker(B-3E)^2$ und bildet den dazugehörigen zyklischen Unterraum. Zu dem Block der Größe $2$ sucht man sich ein Element 
-%            $b_4\in\ker(B-3E)^2\backslash\ker(B-3E)$ und bildet auch hier den dazugehörigen zyklischen Unterraum. Es ist
-%            \begin{eqnarray*}
-%                \ker(B-3E)^3&=& \IR^5\qquad\ker(B-3E)^2=\left\langle\mata0\\1\\0\\0\\0\mate,\mata0\\0\\0\\1\\0\mate,\mata0\\0\\0\\0\\1\mate,\mata1\\0\\-1\\0\\0\mate\right\rangle \\
-%                \ker(B-3E)  &=& \left\langle \mata1\\0\\-1\\0\\0\mate,\mata0\\0\\0\\1\\0\mate \right\rangle
-%            \end{eqnarray*}
-%            Daher ist (lineare Unabhängigkeit bei der Auswahl beachten)
-%            \begin{eqnarray*}
-%                b_1 &=& \mata1\\0\\0\\0\\0\mate \qquad \alpha(b_1)=b_2=\mata3\\1\\0\\1\\0\mate \qquad \alpha^2(b_1)=b_3=\mata8\\6\\1\\6\\0\mate \\
-%                b_4 &=& \mata0\\0\\0\\0\\1\mate \qquad \alpha(b_4)=b_5=\mata-2\\0\\2\\1\\3\mate
-%            \end{eqnarray*}
-%            Und man erhält somit schließlich $T=(b_1,b_2,b_3,b_4,b_5)$ die Transformationsmatrix.
-%        \end{bsp}
-%
-%        %------------------------------------------------Bemerkung--------------------------------------------------
-%
-%        \begin{bem}\qquad \par
-%            Sei $\alpha$ ein Endomorphismus von $V$ mit Minimalpolynom $m$ über $\K$ und $\K$ algebraisch abgeschlossen, d.h. alle Polynome aus $\K[x]$ 
-%            zerfallen vollständig in Linearfaktoren.
-%        \end{bem}
-%
-%        %----------------------------------------------------------------------------------------------------------
-%        %-----------------------------------------------Satz 3.13--------------------------------------------------
-%        %----------------------------------------------------------------------------------------------------------
-%
-%        \begin{satz}\label{jordanscheNormalform} \textit{Jordansche Normalform}\par
-%            Bezüglich einer geeigneten Basis von $V$ hat $A$ die Gestalt
-%            \begin{align*}
-%                A=\mata A_1 & &0\\ & \ddots & \\ 0& & A_t \mate \qquad \mbox{ mit } A_i=\mata \lambda_i&&&0\\1&\ddots&&\\&\ddots&\ddots&\\0&&1&\lambda_i\mate.
-%            \end{align*}
-%            Dabei heißt $A$ die Jordansche Normalform und die $A_i$ werden als Jordankästchen bezeichnet. $A$ ist bis auf die Reihenfolge der $A_i$ eindeutig 
-%            bestimmt. 
-%        \end{satz}
-%
-%        \begin{bew}
-%            Existenz einer geeigneten Basis: Nach dem Beweis von \ref{kanonischrationaleForm} existiert eine Zerlegung \par $V=Z_1\oplus\cdots\oplus Z_t$ mit 
-%            zyklischen invarianten Unterräumen, deren Minimalpolynome $m_i$ Potenzen von irreduziblen Teilern (nach \ref{CayleyHamilton}) des charakteristischen 
-%            Polynoms von $\alpha$ sind. Nun muss für jedes $Z_i$ eine Basis gefunden werden, sodass die Matrix von $\alpha_{|_{Z_i}}$ die Gestalt eines 
-%            Jordan-Kästchens hat. Daher darf man annehmen, dass $V=Z_1$ zyklisch ist und dass $m=(x-\lambda)^n$ für geeignetes $\lambda \in \K$ gilt.
-%            Daher gibt es nach \ref{zyklischeVR} eine Basis $v,\alpha(v),\ldots,\alpha^{n-1}(v)$.\par
-%            Da $(\alpha-\lambda)^n$ das normierte Polynom kleinsten Grades ist mit $(\alpha-\lambda)^nv = 0$ ist, sind die Vektoren 
-%            $b_1=v, b_2=(\alpha-\lambda)(v),\ldots,b_n=(\alpha-\lambda)^{n-1}(v)$ linear unabhängig, bilden also eine Basis. Aus $(\alpha-\lambda)(b_k)=b_{k+1}$ 
-%            (für $k<n$) bzw. $(\alpha-\lambda)(b_n)=(\alpha-\lambda)^n(v) = 0$ folgt $\alpha(b_k) = b_{k+1} + \lambda b_k$ (für $k<n$) bzw. 
-%            $\alpha(b_n)= \lambda b_n$. Bezüglich dieser Basis hat $\alpha$ also die angegebene Form. \par
-%            Die Eindeutigkeit folgt aus der folgenden Formel:
-%            \begin{align*}
-%                z= \RG (\alpha-\lambda)^{k-1} + \RG (\alpha-\lambda)^{k+1} - 2\cdot \RG (\alpha-\lambda)^{k}
-%            \end{align*}
-%            denn das ist genau die Formel aus \ref{kanonischrationaleForm} mit $\deg p=1$.
-%        \end{bew}
-%
-%        %------------------------------------------------Bemerkung--------------------------------------------------
-%
-%        \begin{bem}\qquad \par
-%            \begin{itemize}
-%                \item [1.]Um die Jordansche Normalform zu berechnen, müssen zu jedem Eigenwert $\lambda$ ide Ränge von $(\alpha-\lambda)^s$ bestimmt werden.
-%                \item [2.]Eine Basis zu jedem Block der Größe $k$ erhält man durch
-%                    \begin{align*}
-%                        v\in \ker(\alpha-\lambda)^k\backslash \ker(\alpha-\lambda)^{k-1} \\ 
-%                        \Rightarrow \left\{ v,(\alpha-\lambda)v,\ldots,(\alpha-\lambda)^{k-1},\ldots\right\}
-%                    \end{align*}
-%                    Insbesondere ist $\ker(\alpha-\lambda)\leq \ker(\alpha-\lambda)^2\leq \ldots \leq \ker(\alpha-\lambda)^k=\ker(\alpha-\lambda)^{k+1}$
-%            \end{itemize}
-%        \end{bem}
-%
-%        %--------------------------------------------Definition 3.14-----------------------------------------------
-%        %-----------------------------------------------nilpotent--------------------------------------------------
-%
-%        \begin{mydef}\textit{nilpotent} \par
-%            $\alpha$ heißt genau dann nilpotent, wenn $\exists k\in \N$ mit $\alpha^k=0$
-%        \end{mydef}
-%
-%        %-----------------------------------------------Bemerkung--------------------------------------------------
-%
-%        \begin{bem}\qquad \par
-%            \begin{itemize}
-%                \item [1.]Der Enomorphismus $\alpha$ ist genau dann nilpotent, wenn $x^n$ das charakteristische Polynom von $\alpha$ ist.
-%                \item [2.]Das Minimalpolynom entspricht dann dem charakteristischen Polynom.
-%            \end{itemize}
-%        \end{bem}
-%
-%        \newpage
+%----------------------------------------------------------------------------------------------------------
+%-----------------------------------------------Satz 3.8---------------------------------------------------
+%---------------------------------------kanonisch rationale Form-------------------------------------------
+
+\begin{mysatz}\label{kanonischrationaleForm}
+Sei $\alpha$ ein Endomorphismus von $V$, dann existiert eine Basis von $V$ bzgl. der die Abbildungsmatrix die Form
+\begin{align*}
+A & =
+\begin{pmatrix}
+A_1 & 0 & \cdots & 0\\
+0 & \ddots & & \vdots\\
+\vdots & & \ddots & 0\\
+0 & \cdots & 0 & A_t
+\end{pmatrix}
+\qquad\text{ mit }
+A_i =
+\begin{pmatrix}
+0 & \cdots & \cdots & 0 & -k_0^{(i)}\\
+1 & \ddots & & \vdots &\\
+0 & \ddots & \ddots & \vdots & \vdots\\
+\vdots & \cdots & 1 & 0 &\\
+0 & \cdots & 0 & 1 & -k_{n_i-1}^{(i)}
+\end{pmatrix}
+\in\K^{n_i \times n_i}
+\end{align*}
+,wobei
+\begin{align*}
+x^{n_i} + \sum\limits_{j = 0}^{n_i - 1} k_j^{(i)} \cdot x^j = p_i(x)^{s_i}
+\end{align*}
+mit $s_i \in \N$ und $p_i \in \K[x]$ irreduzibel ist. Dabei gilt: wenn $d_i = \deg p_i$, dann ist $n_i = d_i \cdot s_i$ und $\sum\limits_{i = 1}^{t}=\dim V$.
+
+\textit{Beweis:}
+
+Faktorisiere das Minimalpolynom in Potenzen von normierten irreduziblen Faktoren, etwa
+\begin{align*}
+m = \prod\limits_{j \in I} p_j^{e_j}.
+\end{align*}
+Mit $U_j = \ker p_j^{e_j}$ ist dann $V = U_1 \oplus \ldots \oplus U_r$, wobei $p_j^{e_j}$ das Minimalpolynom von $\alpha_{/_{U_j}}$ ist. 
+Nach \ref{Existenz/zyklische/invarianteUR} (und trivialer Induktion über die Dimension) zerfällt jedes $U_j$ in die direkte Summe von zyklischen Unterräumen.
+Daher findet man für jeden zyklischen Raum $Z_j$ nach \ref{zyklischeVR}.\ref{zykVR-1} eine Basis.
+Dann ist die Vereinigung der Basen all dieser zyklischen Unterräume eine Basis von $V$, bzgl. der die Abbildungsmatrix die behauptete Gestalt hat.
+\end{mysatz}
+
+%---------------------------------------------Definition 3.9------------------------------------------------
+%-----------------------------------------kanonisch rationale Form------------------------------------------
+
+\begin{mydef} \textit{kanonisch rationale Form}
+
+    Eine Matrix der Gestalt aus Satz \ref{kanonischrationaleForm} heißt Matrix in kanonisch rationaler Form von $A$.
+\end{mydef}
+
+%-----------------------------------------------Lemma 3.9---------------------------------------------------
+%-----------------------------------------------------------------------------------------------------------
+
+\begin{mylemma}\label{lem3.10}\ 
+
+    Sei A in kanonisch rationaler Form. Dann gelten:
+    \begin{enumerate}
+        \item \label{lem3.10.2} Für jedes $f \in \K[x]$ ist $f(A) = \begin{pmatrix} f(A_1) & & \\ & \ddots & \\ & & f(A_t) \end{pmatrix} $.
+        \item Wenn $m_i$ das Minimalpolynom von $A_i$ ist, dann ist $m$ das kleinste gemeinsame Vielfacher der $m_i$.
+    \end{enumerate}
+
+    \textit{Beweis:}
+    \begin{enumerate}
+        \item Diese Aussage ist trivial.
+        \item Nach 1. ist $f(A) = 0$ genau dann, wenn $f(A_i) = 0$ für jedes $i$ gilt. 
+        Nach der Bemerkung zu Definition \ref{minpoly} ist das äquivalent zu der Aussage, dass $m_i \mid f$ für jedes $i$. Daraus folgt die Behauptung.
+    \end{enumerate}
+\end{mylemma}
+
+%----------------------------------------------------------------------------------------------------------
+%-----------------------------------------------Satz 3.11--------------------------------------------------
+%--------------------------------------------Cayley-Hamilton-----------------------------------------------
+
+\begin{mysatz}\label{CayleyHamilton} \textit{Satz von Cayley-Hamilton} \par
+    \begin{enumerate}
+        \item Das Minimalpolynom ist ein Teiler des charakteristischen Polynoms.
+        \item $\alpha$ ist Nullstelle des charakteristischen Polynoms.
+        \item Jeder irreduzible Teiler des charakteristischen Polynom ist auch Teiler des Minimalpolynoms.
+    \end{enumerate}
+
+\textit{Beweis:}
+
+    Sei $A$ eine Matrix zu $\alpha$ in kanonischer rationaler Form und $m_i$ das Minimalpolynom von $A_i$ wie oben.
+    Dann ist $m$ das kleinste gemeinsame Vielfache der $m_i$ nach \ref{lem3.10}.\ref{lem3.10.2}.
+    Für jedes $i$ ist $m_i$ zugleich das charakteristische Polynom von $A_i$ nach \ref{zyklischeVR}.\ref{zykVR-3}.
+    Daher ist das charakteristische Polynom von $A$ gleich dem Produkt der $m_i$. Daraus folgen alle Behauptungen.
+\end{mysatz}
+
+%----------------------------------------------------------------------------------------------------------
+%-----------------------------------------------Satz 3.12--------------------------------------------------
+%----------------------------------------------------------------------------------------------------------
+
+\begin{mysatz}\label{anzahlbloeckeKRF}\
+
+    Sei $B$ die Matrix eines Endomorphismus $\alpha$ die ähnlich ist zu einer Matrix der Form
+    \begin{align*}
+        A = 
+        \begin{pmatrix}
+        A_1 & & \\
+         & \ddots & \\
+         & & A_t
+        \end{pmatrix}
+    \end{align*}
+    Dann ist $A$ durch $B$ bis auf die Reihenfolge der $A_i$ eindeutig bestimmt.
+    Sei $p$ ein irreduzibles Polynom und $0 < k \in \N$, dann lässt sich die Anzahl  $z(p,k)$ der Blöcke $A_i$ mit $m_i = p^k$ aus der Formel
+    \begin{align*}
+        z \cdot \deg p = \rg p^{k-1}(B) + \rg p^{k+1}(B) - 2 \rg p^k(B)
+    \end{align*}
+    bestimmen.\\
+
+\textit{Beweis:}
+
+    Die erste Aussage ist nur eine Umformulierung von \ref{kanonischrationaleForm}.
+    Die behauptete Eindeutigkeit von $A$ folgt aus der Formel für $z$.
+    Es genügt also, diese zu beweisen. Ähnliche Matrizen haben den gleichen Rang. Daher reicht es aus, den Beweis für $A$ zu zeigen.
+    Nach Lemma \ref{lem3.10} ist für ein $f \in \K[x]$ stets $\rg f(A) = \sum\limits_{i = 1}^t \rg f(A_i)$ und daher reicht es aus nur einen Block $A_i$ zu betrachten und
+    \begin{align*}
+        r_i = \rg p^{k-1}(A_i) + \rg p^{k+1}(A_i) - 2\rg p^k(A_i) = 
+        \begin{cases}
+            \deg p & m_i = p^k\\
+            0 & \mbox{sonst}
+        \end{cases}
+        \end{align*}
+        zu zeigen.
+
+        Sei also $m_i = q^s$ mit einem irreduziblen Polynom $q$.
+        Wenn $p \neq q$, dann sind $p^k$ und $m_i$ teilerfremd.
+        Nach Lemma \ref{lem2.13} existieren $f,g \in \K[x]$ mit $1 = f \cdot p^k + g \cdot m_i$.
+        Durch Einsetzen von $A_i$ folgt
+        \begin{align*}
+            E = f(A_i) \cdot p^k(A_i) + g(A_i) \cdot m_i(A_i) = f(A_i) \cdot p^k(A_i)
+        \end{align*}
+        denn $m_i(A) = 0$. Hierbei ist $E$ die Einheitsmatrix passender Größe.
+        Insbesondere ist $p^k(A_i)$ invertierbar, hat also vollen Rang.
+        Mit derselben Begründung gilt dies auch für $p^{k-1}(A_i)$ und $p^{k+1}(A_i)$. Da die drei Matrizen den gleichen Rang haben, ist $r_i=0$.
+
+        Sei also $p = q$. Wenn $s < k$, dann ist $s \leq k-1$ und daher $p^{k-1}(A_i) = 0$ und erst recht $p^k(A_i) = p^{k+1}(A_i) = 0$.
+        Auch in diesem Fall haben also alle beteiligten Matrizen den Rang (diesmal $0$), und daher ist $r_i = 0$.
+
+        Wenn $s = k$, dann ist wieder $p^k(A_i) = p^{k+1}(A_i) = 0$. Dagegen ist $\rg p^{k-1}(A_i) = \deg p$ nach \ref{zyklischeVR}.
+        In diesem Fall ist also $r_i = \deg p$.
+
+        Mit \ref{zyklischeVR} wird auch der letzte Fall diskutiert. Wenn $s > k$, etwa $s = k+t$ dan ist $m_i = p^s = p^k \cdot p^t$ eine Faktorisierung.
+        Demnach ist also $\rg p^k(A_i) = \deg p^t = t \dot \deg p$.
+        Genauso ist $\rg p^{k+1}(A_i) = \deg p^{t+1} = (t+1)\dot \deg p$ und $\rg p^{k-1}(A_i) = \deg p^{t-1} = (t-1)\dot \deg p$. Daraus ergibt sich wieder $r_i = 0$.
+\end{mysatz}
+
+%------------------------------------------------Beispiel---------------------------------------------------
+
+\textit{Beispiel:}
+
+    Sei
+    \begin{align*}
+        B = 
+        \begin{pmatrix}
+        -3 & -1 & 4 & -3 & -1\\
+        1 & 1 & -1 & 1 & 0\\
+        -1 & 0 & 2 & 0 & 0\\
+         4 & 1 & -4 & 5 & 1\\
+        -2 & 0 & 2 & -2 & 1
+        \end{pmatrix}
+    \end{align*}
+    diese Matrix bzgl. der Standardvektoren. Dann ist $\charpol B = (x-1)^4 \cdot (x-2)$.
+    Dieses besitzt also die beiden irreduziblen Faktoren $p_1(x) = x-1$ und $p_2(x) = x-2$. Dann ist \par\medskip
+    \begin{tabular}{cc}
+        \begin{minipage}{5cm}
+            \begin{eqnarray*}
+                \rg (B-E) & = & 3 \\ \rg (B-E)^2 &=&2\\ \rg (B-E)^3 &=& 1 \\ \rg (B-E)^4 &=& 1
+            \end{eqnarray*}
+        \end{minipage}
+        &
+        \begin{minipage}{5cm}
+            \begin{tabular}{c|c|c}
+                $k$  &  $\rg p_1^k(B)$  &  $z\cdot\deg p_1$ \\ \hline
+                $0$  &       $5$        &         $-$ \\
+                $1$  &       $3$        &         $1$ \\
+                $2$  &       $2$        &         $0$ \\
+                $3$  &       $1$        &         $1$ \\
+                $4$  &       $1$        &         $0$ \\
+            \end{tabular}
+        \end{minipage}
+    \end{tabular} \par \medskip 
+
+    Die Einträge in der letzten Spalte wurden mit der Formel aus Satz \ref{anzahlbloeckeKRF} errechnet.
+    Die Ränge von $p_1^k(B)$ wurden so lange bestimmt, bis sich der Rang für ein bestimmtes $k$ nicht mehr ändert.
+
+    Aus der Tabelle entnimmt man, dass die kanonisch rationale Form der Matrix $B$ einen $1$-er Block 
+    zu $m_{A_1} = x-1$ und einen $3$-er Block zu $m_{A_2} = (x-1)^3 = x^3-3x^2+3x-1$ besitzt.
+    Zusätzlich kommt dann ein $1$-er Block zu $m_{A_3} = x-2$ dazu.
+    Daher hat die kanonisch rationale Form der Matrix $B$ die folgende Gestalt:
+    \begin{align*}
+        A =
+        \begin{pmatrix}
+            1 & & & & \\
+            & 0 & 0 & 1 & \\
+            & 1 & 0 & -3 & \\ 
+            & 0 & 1 & 3 & \\ 
+            & &  & & 2
+        \end{pmatrix}
+    \end{align*}
+    Ist man zusätzlich an der Transformationmatrix interessiert ($A$ und $B$ sind ähnlich, d.h. $A=T^{-1}BT$),
+    so muss man die verallgemeinerten Eigenräume zu den Blöcken betrachten.
+    Es ist (zum $3$-er Block)
+    \begin{align*}
+        \ker (B-E)^2 = \left\langle
+        \begin{pmatrix}
+            0\\0\\1\\1\\0
+        \end{pmatrix},
+        \begin{pmatrix}
+            1\\0\\1\\0\\0
+        \end{pmatrix},
+        \begin{pmatrix}
+            0\\1\\0\\0\\-1
+        \end{pmatrix}
+        \right\rangle \qquad \text{und} \qquad
+        \ker (B-E)^3 = \left\langle
+        \begin{pmatrix}
+            0\\0\\0\\0\\1
+        \end{pmatrix},
+        \begin{pmatrix}
+            0\\0\\1\\1\\0
+        \end{pmatrix},
+        \begin{pmatrix}
+            1\\0\\1\\0\\ 0
+        \end{pmatrix},
+        \begin{pmatrix}
+            0\\1\\0\\0\\0
+        \end{pmatrix}
+        \right\rangle
+    \end{align*}
+    Nun wählt man ein Element $b_2$ aus dem Kern von $(B-E)^3$, welches nicht im Kern von $(B-E)^2$ liegt, also $b_2=(0,0,0,0,1)^T$.
+    Dann erzeugt man ausgehend von diesem Element den Invarianten Unterraum, also
+    \begin{align*}
+        b_2 = 
+        \begin{pmatrix}
+            0\\0\\0\\0\\1
+        \end{pmatrix}
+        \qquad \alpha(b_2) = b_3 =
+        \begin{pmatrix}
+            -1\\0\\0\\1\\1
+        \end{pmatrix} \qquad \alpha^2(v) = b_4 =
+        \begin{pmatrix}
+            -1\\0\\1\\2\\1
+        \end{pmatrix}
+    \end{align*}
+    Zu den beiden $1$-er Blöcken und den dazugehörigen Eigenwerten müssen die entsprechenden Eigenvektoren berechnet werden, also
+    \begin{align*}
+        b_1 =
+        \begin{pmatrix}
+            1\\0\\1\\0\\0
+        \end{pmatrix}
+        \text{ ist EV zum EW }\lambda_1 = 1 \text{ und } b_5 =
+        \begin{pmatrix}
+            0\\1\\2\\3\\-2
+        \end{pmatrix} \text{ ist EV zum EW }
+        \lambda_2 = 2
+    \end{align*}
+    Damit hat man die Transformationsmatrix $T=(b_1,b_2,b_3,b_4,b_5)$ gefunden, mit der man zur Probe $TA = TB$ durchrechnen kann.
+
+%------------------------------------------------Beispiel---------------------------------------------------
+
+\textit{Beispiel:}
+
+    Sei
+    \begin{align*}
+        B =
+        \begin{pmatrix}
+            3 & -1 & 0 & 0 & -2\\
+            1 & 3 & 1 & 0 & 0\\
+            0 & 1 & 3 & 0 & 2\\
+            1 & 0 & 1 & 3 & 1\\
+            0 & 0 & 0 & 0 & 3
+        \end{pmatrix}
+    \end{align*}
+    wieder bzgl. der Standardbasis.
+    Dann ist $p(x) = (x-3)^5$ das charakteristische Polynom von $B$.\par \medskip
+    \begin{tabular}{cc}
+        \begin{minipage}{5cm}
+            \begin{eqnarray*}
+                \rg (B-3E)   & = & 3\\
+                \rg (B-3E)^2 & = & 1 \\
+                \rg (B-3E)^3 & = & 0
+            \end{eqnarray*}
+        \end{minipage}
+        &
+        \begin{minipage}{5cm}
+            \begin{tabular}{c|c|c}
+                $k$   &   $\rg p^k(B)$   &   $z\cdot \deg p$ \\ \hline
+                $0$   &       $5$        &       $-$ \\
+                $1$   &       $3$        &       $0$ \\
+                $2$   &       $1$        &       $1$ \\
+                $3$   &       $0$        &       $1$ \\
+            \end{tabular}
+        \end{minipage}
+    \end{tabular} \par \medskip
+    Aus der Tabelle erkennt man, dass $m(x) = m_1(x) = (x-3)^3$ das Minimalpolynom der Matrix $B$ ist.
+    Also muss es mindestens einen $3$-er Block in der kanonisch rationalen Form der Matrix $B$ geben.
+    Zusätzlich existiert dann noch ein $2$-er Block zu dessen Minimalpolynom $m_2(x)=(x-3)^2$. 
+    Die kanonisch rationale Form der Matrix hat also die folgende Gestalt:
+    \begin{align*}
+        A =
+        \begin{pmatrix}
+            0 & 0 & 27 & & \\
+            1 & 0 & -27 & & \\
+            0 & 1 & 9 & & \\
+            & & & 0 & -9\\
+            & & & 1 & 6
+        \end{pmatrix}
+    \end{align*}
+    Sei nun noch die Transformationsmatrix gesucht, dann geht man wieder blockweise vor.
+    Für den Block der Größe $3$ sucht man sich ein Element $b_1 \in \ker(B-3E)^3 \setminus \ker(B-3E)^2$ und bildet den dazugehörigen zyklischen Unterraum.
+    Zu dem Block der Größe $2$ sucht man sich ein Element $b_4 \in \ker(B-3E)^2 \setminus \ker(B-3E)$ und bildet auch hier den dazugehörigen zyklischen Unterraum.
+    Es ist
+    \begin{align*}
+        \ker(B-3E)^3 & = \R^5 \qquad \ker(B-3E)^2 = \left\langle
+        \begin{pmatrix}
+            0\\1\\0\\0\\0
+        \end{pmatrix},
+        \begin{pmatrix}
+            0\\0\\0\\1\\0
+        \end{pmatrix},
+        \begin{pmatrix}
+            0\\0\\0\\0\\1
+        \end{pmatrix},
+        \begin{pmatrix}
+            1\\0\\-1\\0\\0
+        \end{pmatrix}
+        \right\rangle \\
+        \ker(B-3E) & =
+        \left\langle
+        \begin{pmatrix}
+            1\\0\\-1\\0\\0
+        \end{pmatrix},
+        \begin{pmatrix}
+            0\\0\\0\\1\\0
+        \end{pmatrix}
+        \right\rangle
+    \end{align*}
+    Daher ist (lineare Unabhängigkeit bei der Auswahl beachten)
+    \begin{align*}
+        b_1 & =
+        \begin{pmatrix}
+            1\\0\\0\\0\\0
+        \end{pmatrix}
+        \qquad \alpha(b_1) = b_2 =
+        \begin{pmatrix}
+            3\\1\\0\\1\\0
+        \end{pmatrix}
+        \qquad \alpha^2(b_1) = b_3 =
+        \begin{pmatrix}
+            8\\6\\1\\6\\0
+        \end{pmatrix}\\
+        b_4 & =
+        \begin{pmatrix}
+            0\\0\\0\\0\\1
+        \end{pmatrix}
+        \qquad \alpha(b_4) = b_5 =
+        \begin{pmatrix}
+            -2\\0\\2\\1\\3
+        \end{pmatrix}
+    \end{align*}
+    Und man erhält somit schließlich $T=(b_1,b_2,b_3,b_4,b_5)$ die Transformationsmatrix.
+
+%------------------------------------------------Bemerkung--------------------------------------------------
+\textit{Bemerkung:}
+
+    Sei $\alpha$ ein Endomorphismus von $V$ mit Minimalpolynom $m$ über $\K$ und $\K$ algebraisch abgeschlossen, d.h. alle Polynome aus $\K[x]$ zerfallen vollständig in Linearfaktoren.
+
+%----------------------------------------------------------------------------------------------------------
+%-----------------------------------------------Satz 3.13--------------------------------------------------
+%----------------------------------------------------------------------------------------------------------
+
+\begin{mysatz}\label{jordanscheNormalform} \textit{Jordansche Normalform}
+
+    Bezüglich einer geeigneten Basis von $V$ hat $A$ die Gestalt
+    \begin{align*}
+        A =
+        \begin{pmatrix}
+            A_1 & & 0\\
+             & \ddots & \\
+             0 & & A_t
+        \end{pmatrix}
+        \qquad \text{ mit } A_i =
+        \begin{pmatrix}
+            \lambda_i & & & 0\\
+            1 & \ddots & & \\
+            & \ddots & \ddots & \\
+            0 & & 1 & \lambda_i
+        \end{pmatrix}
+    \end{align*}
+    Dabei heißt $A$ die Jordansche Normalform und die $A_i$ werden als Jordankästchen bezeichnet.
+    $A$ ist bis auf die Reihenfolge der $A_i$ eindeutig bestimmt.
+
+\textit{Beweis:}
+    Existenz einer geeigneten Basis:
+    Nach dem Beweis von \ref{kanonischrationaleForm} existiert eine Zerlegung $V = Z_1 \oplus \ldots \oplus Z_t$ mit zyklischen invarianten Unterräumen,
+    deren Minimalpolynome $m_i$ Potenzen von irreduziblen Teilern (nach \ref{CayleyHamilton}) des charakteristischen Polynoms von $\alpha$ sind.
+    Nun muss für jedes $Z_i$ eine Basis gefunden werden, sodass die Matrix von $\alpha_{/_{Z_i}}$ die Gestalt eines Jordan-Kästchens hat.
+    Daher darf man annehmen, dass $V = Z_1$ zyklisch ist und dass $m = (x - \lambda)^n$ für geeignetes $\lambda \in \K$ gilt.
+    Daher gibt es nach \ref{zyklischeVR} eine Basis $v,\alpha(v),\ldots,\alpha^{n-1}(v)$.
+
+    Da $(\alpha - \lambda)^n$ das normierte Polynom kleinsten Grades ist mit $(\alpha - \lambda)^n v = 0$ ist,
+    sind die Vektoren $b_1 = v, b_2 = (\alpha - \lambda)(v),\ldots,b_n = (\alpha - \lambda)^{n-1}(v)$ linear unabhängig, bilden also eine Basis.
+    Aus $(\alpha - \lambda)(b_k) = b_{k+1}$ (für $k < n$) bzw. $(\alpha - \lambda)(b_n) = (\alpha - \lambda)^n(v) = 0$ folgt
+    $\alpha(b_k) = b_{k+1} + \lambda b_k$ (für $k<n$) bzw. $\alpha(b_n)= \lambda b_n$. Bezüglich dieser Basis hat $\alpha$ also die angegebene Form.
+
+    Die Eindeutigkeit folgt aus der folgenden Formel:
+    \begin{align*}
+        z = \rg (\alpha-\lambda)^{k-1} + \rg (\alpha-\lambda)^{k+1} - 2\cdot \rg (\alpha-\lambda)^{k}
+    \end{align*}
+    denn das ist genau die Formel aus \ref{kanonischrationaleForm} mit $\deg p=1$.
+\end{mysatz}
+
+%------------------------------------------------Bemerkung--------------------------------------------------
+\textit{Bemerkung:}
+    \begin{enumerate}
+        \item Um die Jordansche Normalform zu berechnen, müssen zu jedem Eigenwert $\lambda$ die Ränge von $(\alpha - \lambda)^s$ bestimmt werden.
+        \item Eine Basis zu jedem Block der Größe $k$ erhält man durch
+            \begin{align*}
+                v \in \ker(\alpha - \lambda)^k \setminus \ker (\alpha - \lambda)^{k-1} \\
+                \Rightarrow
+                \left\{
+                    v,(\alpha - \lambda)v,\ldots,(\alpha - \lambda)^{k-1},\ldots
+                \right\}
+            \end{align*}
+            Insbesondere ist $\ker(\alpha - \lambda) \leq \ker(\alpha - \lambda)^2 \leq \ldots \leq \ker(\alpha - \lambda)^k = \ker(\alpha - \lambda)^{k+1}$
+    \end{enumerate}
+
+%--------------------------------------------Definition 3.14-----------------------------------------------
+%-----------------------------------------------nilpotent--------------------------------------------------
+
+\begin{mydef}\textit{nilpotent}
+
+    $\alpha$ heißt genau dann nilpotent, wenn $\exists k \in \N$ mit $\alpha^k=0$
+\end{mydef}
+
+%-----------------------------------------------Bemerkung--------------------------------------------------
+\textit{Bemerkung:}
+    \begin{enumerate}
+        \item Der Enomorphismus $\alpha$ ist genau dann nilpotent, wenn $x^n$ das charakteristische Polynom von $\alpha$ ist.
+        \item Das Minimalpolynom entspricht dann dem charakteristischen Polynom.
+    \end{enumerate}
