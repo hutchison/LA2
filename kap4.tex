@@ -5,17 +5,17 @@
 
 \begin{mydef} \label{Bilinearform} \textit{Bilinearform}
 
-        Sei $V$ ein $\K$-VR, dann heißt die Abbildung $(\cdot , \cdot ):V \times V \mapsto \R$ Bilinearform genau dann, wenn gilt
-        \begin{enumerate}
-                \item $(v, w_1 + w_2) = (v, w_1) + (v, w_2) \ \forall v, w_1, w_2 \in V$
+    Sei $V$ ein $\K$-VR, dann heißt die Abbildung $(\cdot , \cdot ):V \times V \mapsto \R$ Bilinearform genau dann, wenn gilt
+    \begin{enumerate}
+        \item $(v, w_1 + w_2) = (v, w_1) + (v, w_2) \ \forall v, w_1, w_2 \in V$
 
-                        $(v_1+v_2,w)=(v_1,w) + (v_2,w) \ \forall v_1,v_2,w \in V$
-                \item $(k v,w) = k(v,w) = (v, k w) \ \forall v, w \in V, \forall k \in \K$
+            $(v_1+v_2,w)=(v_1,w) + (v_2,w) \ \forall v_1,v_2,w \in V$
+        \item $(k v,w) = k(v,w) = (v, k w) \ \forall v, w \in V, \forall k \in \K$
 
-                Ist zusätzlich noch
-                \item $(v,w) = (w,v) \ \forall v ,w \in V$
-        \end{enumerate}
-        erfüllt, dann heißt die Bilinearform symmetrisch.
+            Ist zusätzlich noch
+        \item $(v,w) = (w,v) \ \forall v ,w \in V$
+    \end{enumerate}
+    erfüllt, dann heißt die Bilinearform symmetrisch.
 \end{mydef}
 
 %----------------------------------------Beispiel-------------------------------------------------
@@ -42,32 +42,35 @@ Sei $V=\F_2[x]$
 
 \begin{mydef}\label{gramscheMatrix}
 
-Sei $\dim V = n$ und $\{ b_1, \ldots, b_n \}$ eine Basis von $V$ und $(\cdot ,\cdot )$ eine Bilinearform auf $V$.
-Desweiteren sei $(b_i, b_j)$ für alle $i, j \in \{1, \ldots, n \}$ gegeben.
-Für beliebige $v, w \in V$ ist dann
-\begin{align*}
-(v,w)   & = \left( \sum\limits_{i = 1}^n v_i b_i, \sum\limits_{j = 1}^n w_j b_j \right) = \sum\limits_{i = 1}^n \left(v_i b_i ,\sum\limits_{j = 1}^n w_j b_j \right) \\
+    Sei $\dim V = n$ und $\{ b_1, \ldots, b_n \}$ eine Basis von $V$ und $(\cdot ,\cdot )$ eine Bilinearform auf $V$.
+    Desweiteren sei $(b_i, b_j)$ für alle $i, j \in \{1, \ldots, n \}$ gegeben.
+    Für beliebige $v, w \in V$ ist dann
+    \begin{align*}
+        (v,w)   & = \left( \sum\limits_{i = 1}^n v_i b_i, \sum\limits_{j = 1}^n w_j b_j \right) = \sum\limits_{i = 1}^n \left(v_i b_i ,\sum\limits_{j = 1}^n w_j b_j \right) \\
         & = \sum\limits_{i, j} v_i(b_i, b_j) w_j
-\end{align*}
-Man nennt die Matrix
-\begin{align*}
-G =
-\begin{pmatrix}
-    (b_1,b_1) & \cdots & (b_1,b_n) \\
-    \vdots & & \vdots \\
-    (b_n,b_1) & \cdots & (b_n,b_n)
-\end{pmatrix}
-\end{align*}
-die Gramsche Matrix der Bilineaform $(\cdot , \cdot )$ bzgl. der Basis B.
+    \end{align*}
+    Man nennt die Matrix
+    \begin{align*}
+        G =
+        \begin{pmatrix}
+            (b_1,b_1) & \cdots & (b_1,b_n) \\
+            \vdots & & \vdots \\
+            (b_n,b_1) & \cdots & (b_n,b_n)
+        \end{pmatrix}
+    \end{align*}
+    die Gramsche Matrix der Bilineaform $(\cdot , \cdot )$ bzgl. der Basis B.
 \end{mydef}
 \textit{Bemerkung:}
 \begin{enumerate}
-\item \label{gramscheMatrix-1} Offensichtlich ist
-\begin{align*}
-(v,w) & = v^T \cdot G \cdot w = (v_1, \ldots, v_n) \cdot G \cdot \begin{pmatrix} w_1\\ \vdots \\ w_n\end{pmatrix} 
-\end{align*}
-\item \label{gramscheMatrix-2} Die Bilinearform $(\ \cdot \ , \ \cdot \ )$ ist genau dann symmetrisch, wenn $G$ symmetrisch ist.
-\item \label{gramscheMatrix-3} Sei $A$ eine beliebige Matrix aus $\K^{n \times n}$, dann ist durch $(v,w) := v^T \cdot A \cdot w$ eine Bilinearform auf $V = \K^n$ definiert.
+    \item \label{gramscheMatrix-1} Offensichtlich ist
+        \begin{align*}
+            (v,w) & = v^T \cdot G \cdot w = (v_1, \ldots, v_n) \cdot G \cdot
+            \begin{pmatrix}
+                w_1\\ \vdots \\ w_n
+            \end{pmatrix}
+        \end{align*}
+    \item \label{gramscheMatrix-2} Die Bilinearform $(\ \cdot \ , \ \cdot \ )$ ist genau dann symmetrisch, wenn $G$ symmetrisch ist.
+    \item \label{gramscheMatrix-3} Sei $A$ eine beliebige Matrix aus $\K^{n \times n}$, dann ist durch $(v,w) := v^T \cdot A \cdot w$ eine Bilinearform auf $V = \K^n$ definiert.
 \end{enumerate}
 
 %---------------------------------------Definition 4.2--------------------------------------------
@@ -78,12 +81,12 @@ die Gramsche Matrix der Bilineaform $(\cdot , \cdot )$ bzgl. der Basis B.
     Sei $(\cdot , \cdot )$ eine Bilinearform auf $V$.
     Die Vektoren $v,w\in V$ heißen orthogonal zueinander, wenn 
     \begin{align*}
-            (v,w) & = 0
+        (v,w) & = 0
     \end{align*}
     gilt.
     Eine Bilinearform heißt genau dann nicht ausgeartet, wenn der Nullvektor der einzige Vektor ist, derzu allen Vektoren orthogonal ist.
     \begin{align*}
-            (v,w) & = 0 \ \forall w \Rightarrow v = 0.
+        (v,w) & = 0 \ \forall w \Rightarrow v = 0.
     \end{align*}
 \end{mydef}
 
@@ -107,13 +110,13 @@ die Gramsche Matrix der Bilineaform $(\cdot , \cdot )$ bzgl. der Basis B.
 
 \begin{mydef} \label{orthogonalesKomplemen} \textit{orthogonales Komplement}
 
-        Sei $X$ eine beliebige Teilmenge eines VR $V$, auf der die Bilinearform $(\cdot , \cdot)$ definiert ist.
-        Man nennt die Menge
-        \begin{align*}
-                X^{\perp} & = \left\{ v \in V \mid (v,x) = 0 \quad \forall x \in X \right\}
-        \end{align*}
-        das orthogonale Komplement zu $X$. 
-        Analog ist $^{\perp}X$ definiert.
+    Sei $X$ eine beliebige Teilmenge eines VR $V$, auf der die Bilinearform $(\cdot , \cdot)$ definiert ist.
+    Man nennt die Menge
+    \begin{align*}
+        X^{\perp} & = \left\{ v \in V \mid (v,x) = 0 \quad \forall x \in X \right\}
+    \end{align*}
+    das orthogonale Komplement zu $X$. 
+    Analog ist $^{\perp}X$ definiert.
 \end{mydef}
 
 %----------------------------------------------------------------------------------------------------------
@@ -122,14 +125,14 @@ die Gramsche Matrix der Bilineaform $(\cdot , \cdot )$ bzgl. der Basis B.
 
 \begin{mysatz}\label{eigenschaftenorthKomplement}
 
-Sei $V$ ein VR mit der Bilinearform $(\cdot , \cdot)$ und $X \subseteq V$.
-Dann gilt
-\begin{enumerate}
-    \item $X^{\perp}$ ist ein Unterraum von $V$.
-    \item $X \subseteq Y$, dann ist $Y^{\perp} \subseteq X^{\perp}$
-    \item $X^{\perp} = \left\langle X \right\rangle^{\perp}$
-    \item \label{EigOrthKompl4} $X \subseteq X^{\perp\perp}$
-\end{enumerate}
+    Sei $V$ ein VR mit der Bilinearform $(\cdot , \cdot)$ und $X \subseteq V$.
+    Dann gilt
+    \begin{enumerate}
+        \item $X^{\perp}$ ist ein Unterraum von $V$.
+        \item $X \subseteq Y$, dann ist $Y^{\perp} \subseteq X^{\perp}$
+        \item $X^{\perp} = \left\langle X \right\rangle^{\perp}$
+        \item \label{EigOrthKompl4} $X \subseteq X^{\perp\perp}$
+    \end{enumerate}
 \end{mysatz}
 \textit{Beweis:} Übungsaufgabe
 
@@ -138,25 +141,25 @@ Dann gilt
 
 \begin{mylemma} \label{dimensionsformelorthKomplement} \textit{Dimensionsformel}
 
-        Sei $V$ ein $n-$dimensionaler VR, $(\cdot , \cdot )$ eine nicht ausgeartete Bilinearform auf $V$, so gilt für alle Unterräume $U$ von $V$
-        \begin{align*}
-                \dim U^{\perp} & = n - \dim U
-        \end{align*}
-\textit{Beweis:}
+    Sei $V$ ein $n-$dimensionaler VR, $(\cdot , \cdot )$ eine nicht ausgeartete Bilinearform auf $V$, so gilt für alle Unterräume $U$ von $V$
+    \begin{align*}
+        \dim U^{\perp} & = n - \dim U
+    \end{align*}
+    \textit{Beweis:}
 
-        Sei $\{ b_1, \ldots, b_m, \ldots, b_n \}$ eine Basis von $V$ und $\{ b_1, \ldots, b_m \}$ eine Basis von $U$.
-        Sei $x \in U^{\perp}$.
-        Dann gilt für alle $j = 1, \ldots, m$, dass $(x, b_j) = 0$.
-        Nun lässt sich $x$ als Linearkombination der Basiselemente von $V$ darstellen, etwa $\displaystyle{x=\sum_{i=1}^n k_i\cdot b_i}$.
+    Sei $\{ b_1, \ldots, b_m, \ldots, b_n \}$ eine Basis von $V$ und $\{ b_1, \ldots, b_m \}$ eine Basis von $U$.
+    Sei $x \in U^{\perp}$.
+    Dann gilt für alle $j = 1, \ldots, m$, dass $(x, b_j) = 0$.
+    Nun lässt sich $x$ als Linearkombination der Basiselemente von $V$ darstellen, etwa $\displaystyle{x=\sum_{i=1}^n k_i\cdot b_i}$.
 
-        Dann folgt
-        \begin{align*}
-                0 & = (x, b_j) = \sum\limits_{i = 1}^n k_i \cdot (b_i, b_j) \ \forall j = 1, \ldots, m
-        \end{align*}
-        Das ist ein homogenes lineares Gleichungssystem mit $m$ Gleichungen und $n$ Unbekannten ($k_1, \ldots, k_n$).
-        In der Koeffizientenmatrix $G'$ stehen die ersten $m$ Zeilen der Gramschen Matrix $G$.
-        Dann hat $G'$ den Rang $n$, weil $G$ regulär ist.
-        Also existiert eine $n-m$ parametrige Lösung des Gleichungssystem und daher ist $\dim U^{\perp} = \dim V - \dim U = n-m$.
+    Dann folgt
+    \begin{align*}
+        0 & = (x, b_j) = \sum\limits_{i = 1}^n k_i \cdot (b_i, b_j) \ \forall j = 1, \ldots, m
+    \end{align*}
+    Das ist ein homogenes lineares Gleichungssystem mit $m$ Gleichungen und $n$ Unbekannten ($k_1, \ldots, k_n$).
+    In der Koeffizientenmatrix $G'$ stehen die ersten $m$ Zeilen der Gramschen Matrix $G$.
+    Dann hat $G'$ den Rang $n$, weil $G$ regulär ist.
+    Also existiert eine $n-m$ parametrige Lösung des Gleichungssystem und daher ist $\dim U^{\perp} = \dim V - \dim U = n-m$.
 \end{mylemma}
 
 %----------------------------------------Bemerkung-------------------------------------------------
@@ -170,11 +173,11 @@ Wenn $U = U^{\perp \perp}$ (möglich nach \ref{eigenschaftenorthKomplement}.\ref
 
 \begin{mydef}\label{skalarprodukte} \textit{Skalarprodukt}
 
-        Eine Bilinearform $\left\langle \cdot , \cdot \right\rangle$ auf dem Vektorraum $V$ heißt genau dann Skalaprodukt,
-        wenn sie symmetrisch und positiv definit ist, d.h.
-        \begin{align*}
-                \forall v\in V : \ \left\langle v, v \right\rangle \geq 0 \text{ und } \left\langle v, v \right\rangle = 0 \Leftrightarrow v = 0
-        \end{align*}
+    Eine Bilinearform $\left\langle \cdot , \cdot \right\rangle$ auf dem Vektorraum $V$ heißt genau dann Skalaprodukt,
+    wenn sie symmetrisch und positiv definit ist, d.h.
+    \begin{align*}
+        \forall v\in V : \ \left\langle v, v \right\rangle \geq 0 \text{ und } \left\langle v, v \right\rangle = 0 \Leftrightarrow v = 0
+    \end{align*}
 \end{mydef}
 
 %----------------------------------------Bemerkung-------------------------------------------------
@@ -193,23 +196,23 @@ Dann gilt:
 
 Sei $V = \R^3$. Als Basis wählen wir die Standardbasis. Sei nun $\left\langle \cdot , \cdot \right\rangle$ definiert durch
 \begin{align*}
-        \left\langle
-        \begin{pmatrix}
-            x_1\\y_1\\z_1
-        \end{pmatrix},
-        \begin{pmatrix}
-            x_2\\y_2\\z_2
-        \end{pmatrix}
-        \right\rangle = 3 x_1 x_2 + 2 y_1 y_2 + 2 z_1 z_2 - x_1 y_2 - y_1 z_2 - z_1 y_2 - x_2 y_1 - y_2 z_1 - x_1 z_2
+    \left\langle
+    \begin{pmatrix}
+        x_1\\y_1\\z_1
+    \end{pmatrix},
+    \begin{pmatrix}
+        x_2\\y_2\\z_2
+    \end{pmatrix}
+    \right\rangle = 3 x_1 x_2 + 2 y_1 y_2 + 2 z_1 z_2 - x_1 y_2 - y_1 z_2 - z_1 y_2 - x_2 y_1 - y_2 z_1 - x_1 z_2
 \end{align*}
 Nach \ref{gramscheMatrix} hat die Gramsche Matrix der Bilinearform die Gestalt:
 \begin{align*}
-        G =
-        \begin{pmatrix}
-            3 & -1 & -1\\
-            -1 & 2 & -1\\
-            -1 & -1 & 2
-        \end{pmatrix}
+    G =
+    \begin{pmatrix}
+        3 & -1 & -1\\
+        -1 & 2 & -1\\
+        -1 & -1 & 2
+    \end{pmatrix}
 \end{align*}
 Da $G$ symmetrisch ist, ist auch die Bilinearform symmetrisch (vgl. \ref{gramscheMatrix}.\ref{gramscheMatrix-2}).
 
@@ -237,27 +240,27 @@ Daher ist $\left\langle \cdot , \cdot \right\rangle$ ein Skalarprodukt.\\
 %----------------------------------------Beispiel-------------------------------------------------
 \textit{Beispiel:}
 
-    Sei $V = \mathcal{C}[a,b]$, der Raum der stetigen Funktionen auf dem Intervall $[a,b] \subset \R$.
-    Auf diesem Raum sei $\left\langle \cdot , \cdot \right\rangle$ definiert durch
-    \begin{align*}
-            \left\langle f,g \right\rangle & := \int\limits_a^b f(x) \cdot g(x) \ dx
-    \end{align*}
-    Die Eigenschaften des Integrals übertragen sich auf die Eigenschaften von $\left\langle \cdot ,  \cdot \right\rangle$.
-    Damit ist $\left\langle \cdot , \cdot \right\rangle$ zumindestens schon mal eine symmetrische Bilineaform.
-    Für die positive Definitheit muss das Integral so gewählt werden, dass $\left\langle f, f \right\rangle > 0$ ist.
-    Wenn $\left\langle f, f \right\rangle = 0$, so folgt aufgrund der Stetigkeit von $f$, dass die Funktion $f = 0$ ist.
+Sei $V = \mathcal{C}[a,b]$, der Raum der stetigen Funktionen auf dem Intervall $[a,b] \subset \R$.
+Auf diesem Raum sei $\left\langle \cdot , \cdot \right\rangle$ definiert durch
+\begin{align*}
+    \left\langle f,g \right\rangle & := \int\limits_a^b f(x) \cdot g(x) \ dx
+\end{align*}
+Die Eigenschaften des Integrals übertragen sich auf die Eigenschaften von $\left\langle \cdot ,  \cdot \right\rangle$.
+Damit ist $\left\langle \cdot , \cdot \right\rangle$ zumindestens schon mal eine symmetrische Bilineaform.
+Für die positive Definitheit muss das Integral so gewählt werden, dass $\left\langle f, f \right\rangle > 0$ ist.
+Wenn $\left\langle f, f \right\rangle = 0$, so folgt aufgrund der Stetigkeit von $f$, dass die Funktion $f = 0$ ist.
 
 %---------------------------------------Definition 4.9--------------------------------------------
 %--------------------------------------------Norm-------------------------------------------------
 
 \begin{mydef} \label{norm} \textit{Norm}
 
-Sei $V$ ein VR über $\R$. Dann heißt eine Abbildung $\| \cdot \|: V \mapsto \R^{+}$ Norm, falls folgende Eigenschaften erfüllt sind:
-\begin{enumerate}
-    \item $\| v \| \geq 0 \quad \Rightarrow \quad \| v \| = 0 \Leftrightarrow v = 0 \qquad \forall v \in V$
-    \item $\| \lambda v\| = |\lambda| \cdot \| v \| \qquad \forall \lambda \in \R, \ \forall v \in V$
-    \item $\| v + w \| \leq \| v \| + \| w \| \qquad \forall v,w\in V$.
-\end{enumerate}
+    Sei $V$ ein VR über $\R$. Dann heißt eine Abbildung $\| \cdot \|: V \mapsto \R^{+}$ Norm, falls folgende Eigenschaften erfüllt sind:
+    \begin{enumerate}
+        \item $\| v \| \geq 0 \quad \Rightarrow \quad \| v \| = 0 \Leftrightarrow v = 0 \qquad \forall v \in V$
+        \item $\| \lambda v\| = |\lambda| \cdot \| v \| \qquad \forall \lambda \in \R, \ \forall v \in V$
+        \item $\| v + w \| \leq \| v \| + \| w \| \qquad \forall v,w\in V$.
+    \end{enumerate}
 \end{mydef}
 
 %----------------------------------------Beispiel-------------------------------------------------
@@ -265,7 +268,7 @@ Sei $V$ ein VR über $\R$. Dann heißt eine Abbildung $\| \cdot \|: V \mapsto \R
 \textit{Beispiel:}
 \begin{enumerate}
     \item   $V = \R^n$ mit $\| v \|_{\infty} =\max\limits_{i} | x_i |$, wobei $v = (x_1, \ldots, x_n)^T$
-            $V = \R^n$ mit $\| v \|_{1} = | x_1| + \ldots + | x_n | = \sum\limits_{i = 1}^n | x_i |$
+        $V = \R^n$ mit $\| v \|_{1} = | x_1| + \ldots + | x_n | = \sum\limits_{i = 1}^n | x_i |$
     \item $V = \R^{n \times n}$ mit $\| A \| = \max\limits_{v \in V \setminus\{ 0 \}} \frac{\| Av \|}{\| v \|} = \max\limits_{\| v\| = 1} \| Av \|$
 \end{enumerate}
 
@@ -277,354 +280,437 @@ Sei $V$ ein VR über $\R$. Dann heißt eine Abbildung $\| \cdot \|: V \mapsto \R
 
     Durch $\| v \| = \sqrt{\left\langle v, v \right\rangle}$ wird in einem euklidischen Vektorraum $V$ (reellwertiger Vektorraum mit Skalaprodukt) eine Norm definiert.
 
-\textit{Beweis:}
+    \textit{Beweis:}
 
     Die ersten beiden Normeigenschaften folgen unmittelbar. Die Dreiecksungleichung folgt mit Hilfe des nächsten Satzes.
 \end{mysatz}
 
-%%----------------------------------------------------------------------------------------------------------
-%%-----------------------------------------------Satz 4.11--------------------------------------------------
-%%--------------------------------------Cauchy-Schwarzsche-Ungleichung--------------------------------------
-%
-%\begin{mysatz} \label{CSU} \textit{Cauchy-Schwarzsche-Ungleichung} \par
-%        Sei $V$ ein euklidischer Vektorraum. Dann gilt
-%        \begin{eqnarray*}
-%                        | \left\langle v,w \right\rangle | & \leq & \| v \| \cdot \| w \| \mbox{ oder in äquvalenter Weise}\\
-%                        \left\langle v,w \right\rangle^2 & \leq & \left\langle v,v \right\rangle \cdot \left\langle w,w \right\rangle \qquad \forall v,w\in V
-%        \end{eqnarray*}
-%\end{mysatz}
-%
-%\begin{bew}
-%        Wenn $w=0$ oder $v=0$, dann ist die Aussage trivial. \par
-%        Daher sei $v,w\neq 0$. Dann gilt für jedes $k\in \R$ 
-%                        \begin{equation*}
-%                                        0 \leq \left\langle v-kw,v-kw \right\rangle = \left\langle v,v \right\rangle +k^2\left\langle w,w \right\rangle -2k \left\langle v,w \right\rangle
-%                        \end{equation*}
-%        Also insbesondere auch für $k=\frac{\left\langle v,w \right\rangle}{\left\langle w,w \right\rangle}$. Dann ist nämlich
-%                        \begin{equation*}
-%                                        0 \leq \left\langle v,v \right\rangle +\frac{\left\langle v,w \right\rangle^2}{\left\langle w,w \right\rangle^2}\left\langle w,w \right\rangle -2\frac{\left\langle v,w \right\rangle}{\left\langle w,w \right\rangle} \left\langle v,w \right\rangle
-%                                                                = \left\langle v,v \right\rangle - \frac{\left\langle v,w \right\rangle^2}{\left\langle w,w \right\rangle}.
-%                        \end{equation*}
-%        und der Satz ist bewiesen.
-%\end{bew}
-%
-%%----------------------------------------Bemerkung-------------------------------------------------
-%
-%\begin{bem} \qquad \par
-%        Wegen \ref{CSU} gilt 
-%                \begin{equation*}
-%                                | \left\langle v,w \right\rangle | \leq  \| v \| \cdot \| w \| \qquad
-%                \end{equation*}
-%        Umstellen liefert
-%                \begin{equation*}
-%                        -1 \leq \frac{ \left\langle v,w \right\rangle}{\| v \| \cdot \| w \|}  \leq  1
-%                \end{equation*}
-%        Daher existiert im Fall $v,w\neq 0$ genau ein $\varphi \in [0,\pi]$ mit 
-%                \begin{equation*}
-%                        \cos(\varphi) = \frac{ \left\langle v,w \right\rangle}{\| v \| \cdot \| w \|}
-%                \end{equation*}
-%        Dies entspricht der Definition des Winkels zwischen $2$ Vektoren.
-%\end{bem}
-%
-%%----------------------------------------Beispiel-------------------------------------------------
-%
-%\begin{bsp} \qquad \par
-%        Im $\R^2,\R^3$ mit dem Standardskalarprodukt entspricht $\| v \|$ der Länge und $\varphi$ dem Winkel zwischen den Vektoren $v,w$ im 
-%        elementargeometrischen Sinn.\par
-%        
-%        \begin{center}
-%                \begin{tikzpicture}
-%                        \draw[->] (0,0) -- (8.1,0);             % Vektor v
-%                                        \draw (6,-0.2) node{$v$};
-%                        \draw[->] (0,0) -- (4.5,2.625); % Vektor w
-%                                        \draw (2.5,1.7) node {$w$};     
-%                        \draw (0,0) -- (6,3.5);                                 % Strecke q     
-%                        \draw (4.5,2.625) -- (4.5,0);
-%                                        \draw (4.5cm,0.5cm) arc (90:180:0.5cm);
-%                                        \draw (4.3cm,0.2cm) node {$\cdot$};
-%                        \draw (6cm,3.5) -- (8.1cm,0);
-%                                        \draw (6.25cm,3.05cm) arc(300:210:0.5);
-%                                        \draw (5.95cm,3.2cm) node {$\cdot$};
-%                        \draw (1cm,0) arc (0:30:1cm);   % Winkel alpha
-%                                        \draw (0.6cm,0.15cm) -- (1.2cm,0.4cm);
-%                                        \draw (2 cm,0.5cm) node {$\sphericalangle (v,w)$};
-%                \end{tikzpicture}
-%        \end{center}
-%        
-%        
-%        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%        %%% Die Strecken p und q müssen noch beschriftet werden %%%
-%        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%        \begin{eqnarray*}
-%                \left.\begin{array}{c} \displaystyle{ \cos \sphericalangle (v,w) = \frac{p}{\| w \|} } \\ 
-%                                                                                                         \displaystyle{ \cos \sphericalangle (v,w) = \frac{q}{\| v \|} }  \end{array}\right\}
-%                                                                                                         &\Rightarrow& \left\langle v,w \right\rangle = q\cdot \| w \| = p\cdot \| v \| \qquad \mbox{ und damit } \\
-%                \cos \sphericalangle (v,w) &=& \frac{\left\langle v,w \right\rangle}{\| v \| \cdot \| w \|}
-%        \end{eqnarray*}
-%
-%
-%
-%
-%
-%        Das Skalarprodukt von $v$ und $w$ ist die Länge von $v$ mal der Länge der Projektion von $w$ auf $v$. Desweiteren sind zwei Vektoren orthogonal 
-%        zueinander, wenn das Skalarprodukt verschwindet. Dies gilt für $\varphi=\pi/2$ aber auch, wenn einer der beiden Vektoren der Nullvektor ist.
-%\end{bsp}
-%
-%%---------------------------------------Definition 4.12-------------------------------------------
-%%------------------------------------orthogonal,orthonormal---------------------------------------
-%
-%\begin{mydef} \label{orthogonal,orthonormal}     \textit{orthogonal, orthonormal} \par
-%        Eine Menge $\{ v_1,\ldots,v_n \}$ von Vektoren in einem euklidischen Vektorraum $V$ heißt genau dann orthogonal, wenn 
-%        $\left\langle v_i,v_j \right\rangle=0$ für alle $i=j\in \{ 1,\ldots,n \}$ und orthonormal, wenn $\left\langle v_i,v_j \right\rangle=\delta_{ij}$ ist. 
-%\end{mydef}
-%
-%%------------------------------------------Lemma 4.13---------------------------------------------
-%%-------------------------------------------------------------------------------------------------
-%
-%\begin{mylemma} \qquad \par
-%        Eine orthogonale Menge, die den Nullvektor nicht enthält, ist linear unabhängig.
-%\end{mylemma}
-%\begin{bew}
-%        Sei $\{ v_1,\ldots,v_n \}$ die orthogonale Menge. Die Vektoren $v_1,\ldots,v_n$ sind genau dann linear unabhängig, wenn aus 
-%        $\sum_{i=1}^n k_i\cdot v_i = 0$ folgt, dass die Koeffizienten $k_i$ alle $0$ sind. Da die Vektoren orthogonal zueinander sind, folgt
-%                \begin{equation*}
-%                                0 = \left\langle \sum_{i=1}^n k_i\cdot v_i , v_j \right\rangle = k_j \cdot \left\langle \underbrace{v_j,v_j}_{\neq 0} \right\rangle
-%                \end{equation*}
-%        woraus folgt, dass der Koeffizienten $k_j=0$ ist. 
-%\end{bew}
-%
-%%----------------------------------------Bemerkung-------------------------------------------------
-%
-%\begin{bem} \qquad \par
-%        Orthonormale Mengen sind stets linear unabhängig, solange der Nullvektor nicht in der Menge enthalten sind.
-%\end{bem}
-%
-%%----------------------------------------------------------------------------------------------------------
-%%-----------------------------------------------Satz 4.14--------------------------------------------------
-%%--------------------------------------Orthonormalisierungsverfahren---------------------------------------
-%
-%\begin{mysatz} \textit{Orthonormalisierungsverfahren nach Eberhard Schmidt $(1876-1959)$} \par
-%        Jeder endlich dimensionle euklische Vektorraum besitzt eine Orthonormalbasis, kurz ON-Basis.
-%\end{mysatz}
-%
-%\begin{bew} \textit{Induktion über die Dimension $n$} \par
-%        $n=1$: Sei $V=\left\langle b \right\rangle$. Dann ist $\{ e=\frac{b}{\| b \|}\}$ eine ON-Basis.\par \medskip
-%        $n-1\rightarrow n$: Sei dazu $\{ e_1,\ldots,e_{n-1} \}$ eine ON-Basis von $U\subset V$. Dann kann man mit einem geeigenten $b_n\in V$ die 
-%        Menge $\{ e_1,\ldots,e_{n-1},b_n \}$ zu einer Basis von $V$ ergänzen. Setze nun
-%                        \begin{equation*}
-%                                e_n' = \left(-\sum_{i=1}^{n-1} \frac{ \left\langle e_i,b_n \right\rangle }{ \left\langle e_i,e_i \right\rangle }\cdot e_i \right) + b_n
-%                        \end{equation*}
-%        Dann folgt für alle $k=1,\ldots,n-1$ 
-%                        \begin{eqnarray*}
-%                                \left\langle e_n',e_k \right\rangle & = & -\sum_{i=1}^{n-1} \frac{ \left\langle e_i,b_n \right\rangle }{ \left\langle e_i,e_i \right\rangle }\cdot \left\langle e_i,e_k \right\rangle + \left\langle b_n,e_k \right\rangle \\
-%                                                                                                         & = & - \frac{ \left\langle e_k,b_n \right\rangle }{ \left\langle e_k,e_k \right\rangle } \cdot \left\langle e_k,e_k \right\rangle + \left\langle b_n,e_k \right\rangle \\
-%                                                                                                         & = & 0
-%                        \end{eqnarray*}
-%        Damit hat man ein Element gefunden, welches senkrecht auf den anderen Basisvektoren steht. Normieren von $e_n'$ liefert dann die ON-Basis von $V$.
-%\end{bew}
-%
-%%----------------------------------------Beispiel-------------------------------------------------
-%
-%\begin{bsp} \qquad \par
-%        Sei 
-%                \begin{equation*}
-%                        \{ b_1,b_2,b_3 \} = \left\{ \begin{pmatrix} 1\\-1\\0\\1 \end{pmatrix},\begin{pmatrix} 1\\0\\1\\0 \end{pmatrix},\begin{pmatrix} 1\\-1\\0\\0 \end{pmatrix} \right\}
-%                \end{equation*}
-%        eine Basis von $U\subset \R^4$. Dann ist $e_1'=b_1$ und $e_2'=\lambda e_1'+b_2$, daher folgt
-%                \begin{eqnarray*}
-%                                                0 & = & \left\langle e_2',e_1' \right\rangle = \lambda \left\langle e_1',e_1' \right\rangle + \left\langle b_2,e_1' \right\rangle \\
-%                        \lambda & = & - \frac{ \left\langle b_2,e_1' \right\rangle}{ \left\langle e_1',e_1' \right\rangle} = -\frac{1}{3}
-%                \end{eqnarray*}
-%        Also ist 
-%                \begin{equation*}
-%                                e_2' = -\frac{1}{3} \cdot \begin{pmatrix} 1\\-1\\0\\1 \end{pmatrix} + \begin{pmatrix} 1\\0\\1\\0 \end{pmatrix} = \frac{1}{3}\cdot \begin{pmatrix} 2\\1\\3\\-1 \end{pmatrix}.
-%                \end{equation*}
-%        Für den dritten Basisvektor muss gelten gilt $e_3'=\lambda_1 e_1 + \lambda_2 e_2 + b_3$. Daher folgt
-%                \begin{eqnarray*}
-%                                                        0 & = & \left\langle e_3',e_1' \right\rangle = \lambda_1 \left\langle e_1',e_1' \right\rangle + \lambda_2 \left\langle e_2',e_1' \right\rangle + \left\langle b_3,e_1' \right\rangle \\
-%                        \lambda_1 & = & - \frac{ \left\langle b_3,e_1'\right\rangle }{ \left\langle e_1',e_1' \right\rangle } = -\frac{2}{3}
-%                \end{eqnarray*}
-%        Dann muss $\lambda_2=-\frac{1}{5}$ sein, sodass
-%                \begin{equation*}
-%                        e_3' = -\frac{2}{3}\cdot\begin{pmatrix}1\\-1\\0\\1\end{pmatrix}-\frac{1}{15}\cdot\begin{pmatrix} 2\\1\\3\\-1\end{pmatrix}+\begin{pmatrix}1\\-1\\0\\0\end{pmatrix}=\frac{1}{5}\begin{pmatrix}1\\-2\\-1\\-3 \end{pmatrix}
-%                \end{equation*}
-%        Normieren von der $e_i'$ liefert dann die ON-Basis
-%        \begin{equation*}
-%                        \left\{ \frac{1}{\sqrt{3}}\cdot \begin{pmatrix} 1\\-1\\0\\1 \end{pmatrix}, \frac{1}{\sqrt{15}}\cdot \begin{pmatrix} 2\\1\\3\\-1 \end{pmatrix}, 
-%                                                                         \frac{1}{\sqrt{15}}\cdot \begin{pmatrix} 1\\-2\\-1\\3 \end{pmatrix} \right\}
-%        \end{equation*}
-%        
-%        
-%        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%        %  Beispiel nochma durchrechnen, irgendwas stimmt da nicht %
-%        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\end{bsp}
-%
-%%----------------------------------------Bemerkung-------------------------------------------------
-%
-%\begin{bem} \qquad \par
-%        Sei $\{ e_1,\ldots,e_n \}$ eine ON-Basis von $V$ und $v\in V$, dann sind die Koordinaten $k_i$ aus $\displaystyle{v=\sum k_i e_i}$ gegeben 
-%        durch
-%                \begin{equation*}
-%                        k_i = \left\langle e_i,v \right\rangle
-%                \end{equation*}
-%                
-%                %%%%% hier fehlt noch einiges %%%%%
-%\end{bem}
-%
-%%---------------------------------------Definition 4.15-------------------------------------------
-%%-----------------------------------isometrische Abbildungen--------------------------------------
-%
-%\begin{mydef} \textit{Isometrische Abbildungen} \par
-%        Eine lineare Abbildung $f$ eines euklidischen VR $V$ in einen euklidischen Vektorraum $W$ heißt genau dann isometrisch, wenn
-%                \begin{equation*}
-%                                \left\langle v,w \right\rangle_V = \left\langle f(v),f(w)\right\rangle_W \ \forall v,w \in W
-%                \end{equation*}
-%\end{mydef}
-%
-%%----------------------------------------Bemerkung-------------------------------------------------
-%
-%\begin{bem} \qquad \par
-%        Seien $V$ und $W$ euklidische Vektorräume. Die lineare Abbildung $f:V\rightarrow W$ ist genau dann eine isometrische Abbildung, wenn sie 
-%        invariant bzgl. der Normen der jeweiligen Vektorräume ist.
-%                \begin{equation*}
-%                        \| f(v) \|_W = \| v \|_V \ \forall v\in V
-%                \end{equation*}
-%\end{bem}
-%
-%%------------------------------------------Lemma 4.16---------------------------------------------
-%%-------------------------------------------------------------------------------------------------
-%
-%\begin{mylemma}     \qquad \par
-%        Isometrische Abbildungen sind injektiv.
-%\end{mylemma}
-%
-%\begin{bew}
-%        Sei $v\in \ker f$. Dann ist $fv=0$ und daher
-%                \begin{equation*}
-%                                \left\langle fv,fv \right\rangle = 0 \Leftrightarrow \left\langle v,v \right\rangle=0 \Leftrightarrow v=0
-%                \end{equation*}
-%        Damit liegt nur der Nullvektor im Kern der Abbildung und das Lemma ist bewiesen.
-%\end{bew}
-%
-%%------------------------------------------Lemma 4.17---------------------------------------------
-%%-------------------------------------------------------------------------------------------------
-%
-%\begin{mylemma}     \qquad \par
-%        Sei $\{ b_1,\ldots,b_n \}$ eine ON-Basis von $V$. $f$ ist genau dann isometrisch, wenn        $\{ f(b_1),\ldots,f(b_n) \}$ eine 
-%        ON-Basis ist.
-%\end{mylemma}
-%
-%\begin{bew}
-%        $\Rightarrow$ Wenn $f$ isometrisch ist, dann folgt $\left\langle f(b_i),f(b_j) \right\rangle= \left\langle b_i,b_j \right\rangle=\delta_{ij}$.\par
-%        $\Leftarrow$ Zu zeigen ist, dass $f$ isometrisch ist, wenn $\{ f(b_1),\ldots,f(b_n) \}$ eine ON-Basis ist. Seien dazu 
-%        $v_1=\sum k_i\cdot b_i$ und $v_2=\sum l_i \cdot b_i$. Dann ist 
-%        \begin{equation*}
-%                \left\langle v_1,v_2 \right\rangle=\left\langle \sum_{i=1}^n k_i f(b_i), \sum_{i=1}^n l_i f(b_i)\right\rangle = \sum k_i\cdot l_i = \left\langle v_1,v_2 \right\rangle
-%        \end{equation*}
-%\end{bew} \par \medskip
-%
-%Im folgenden sei stets $V=W$. Dann wird $f$ zu einem isometrischen Endomorphismus (auch Automorphismus genannt). Diese Abbildungen bekommen einen bestimmten Namen. Sie heißen orthogonale Abbildungen. \par \medskip
-%Die Menge aller orthogonalen Abbildungen ist eine Gruppe
-%        \begin{equation*}
-%                \mathcal{O}(n)\leq GL(n,\R)=\{ \mbox{reguläre Matrizen vom Typ $n\times n$} \}
-%        \end{equation*}
-%
-%%----------------------------------------Bemerkung-------------------------------------------------
-%
-%\begin{bem} \qquad \par
-%        Eine quadratische Matrix heißt genau dann orthogonal, wenn die Spaltenvektoren eine ON-System bilden.
-%\end{bem}
-%
-%%----------------------------------------------------------------------------------------------------------
-%%-----------------------------------------------Satz 4.18--------------------------------------------------
-%%----------------------------------------------------------------------------------------------------------
-%
-%\begin{mysatz} \label{orthogonaleMatrix}  \qquad\par
-%        Für Matrizen $A\in \R^{n \times n}$ sin folgende Aussagen äquivalent
-%        \begin{itemize}
-%                \item [1.] $A$ ist orthogonal
-%                \item [2.] Die Abbildung $f_A:\R^n \rightarrow \R^n$ mit $f_a(v) = A\cdot v$ ist isometrisch
-%                \item [3.] $A^T\cdot A = A\cdot A^T = E$
-%                \item [4.] Wenn $A$ regulär, dann ist $A^{-1} = A^T$
-%                \item [5.] Die Zeilenvektoren bilden ein ON-System
-%        \end{itemize}
-%\end{mysatz}
-%
-%\begin{bew}
-%        $1.\Leftrightarrow 2.$
-%\end{bew}
-%
-%%----------------------------------------Bemerkung-------------------------------------------------
-%
-%\begin{bem} \qquad \par
-%        \begin{itemize}
-%                \item [1.] Sei $A$ eine orthogonale Matrix. Dann ist $\det A=\pm1$, denn
-%                                                         \begin{equation*}
-%                                                                        1=\det E = \det A^T\cdot A = \det A^T \cdot \det A = (\det A)^2.
-%                                                         \end{equation*}
-%                \item [2.]Zwei Matrizen $A,B\in\R^{n \times n}$ heißen orthogonal ähnlich, wenn eine orthogonale Matrx $T$ existiert mit $T^{-1}AT=B$.
-%        \end{itemize}
-%\end{bem}
-%
-%
-%%-----------------------------------------Beispiel-------------------------------------------------
-%
-%\begin{bsp} \textit{Beschreibung von orthogonalen Abbildungen in $\R^2$} \par
-%        Sei $V=\R^2$ mit dem Standardskalarprodukt. Gesucht ist eine Matrix $A\in \R^{2\times 2}$ die orthogonal ist. Nach \ref{orthogonaleMatrix}$.3$ 
-%        muss für $A$ gelten:
-%        \begin{equation*}
-%                \begin{pmatrix} a_{11} & a_{12}\\a_{21} & a_{22} \end{pmatrix} \cdot \begin{pmatrix} a_{11} & a_{21}\\a_{12} & a_{22} \end{pmatrix} = \begin{pmatrix} 1&0\\0&1 \end{pmatrix}
-%        \end{equation*}
-%        Daher muss $a_{11}^2 + a_{12}^2=1 = a_{22}^2+a_{21}^2$ und $a_{11}a_{21} + a_{12}a_{22}=0$ gelten. Gleichzeitig müssen die Spalten der Matrix aber 
-%        auch ein ON-System bilden. Daher gilt noch $a_{11}^2+a_{21}^2=1$ Für diese Gleichungen existiert ein $\varphi \in[0,2\pi]$ mit 
-%        $a_{11}=\cos(\varphi), a_{21}=\sin(\varphi)$. Dann sind 
-%        \begin{equation*}
-%                D_{\varphi} = \begin{pmatrix} \cos(\varphi)&-\sin(\varphi)\\ \sin(\varphi)&\cos(\varphi) \end{pmatrix} \mbox{ oder }
-%                S_{\varphi} = \begin{pmatrix} \cos(\varphi)&\sin(\varphi)\\ \sin(\varphi)&-\cos(\varphi) \end{pmatrix}
-%        \end{equation*}
-%        die beiden orthogonalen Matrizen in $\R^2$. Dabei hat $D_{\varphi}$ die Determinante $1$ und stellt eine Drehung um den Winkel $\varphi$ dar. Die 
-%        Eigenwerte von $D_{\varphi}$ sind $\lambda_{1/2}=\cos(\varphi)\pm \sqrt{\cos(\varphi)^2-1}$. Diese sind demnach nur dann reell, wenn $\varphi$ den 
-%        Wert $0$ oder $\pi$ annimmt. \par \medskip      
-%        
-%        Dagegen hat $S_{\varphi}$ die Determinante $-1$ und das charakteristische Polynom: 
-%        charpol$S_{\varphi}=\lambda^2-\cos(\varphi)^2-\sin(\varphi)^2=\lambda^2-1$ mit den Eigenwerten $\pm 1$. $S_{\varphi}$ stellt eine Spiegelung der 
-%        Richtung des Eigenvektors dar. 
-%\end{bsp}
-%
-%
-%%----------------------------------------Bemerkung-------------------------------------------------
-%
-%\begin{bem} \qquad \par
-%        Sei $f$ eine orthogonale Abbildung. Dann nehmen die Eigenwerte von $f$, falls diese existieren, den Wert $\pm 1$ an, denn
-%                \begin{equation*}
-%                        \| v \| = \| f(v) \| = \| \lambda \cdot v\| = | \lambda | \cdot \| v \|
-%                \end{equation*}
-%\end{bem}
-%
-%%----------------------------------------------------------------------------------------------------------
-%%-----------------------------------------------Satz 4.19--------------------------------------------------
-%%----------------------------------------------------------------------------------------------------------
-%
-%\begin{mysatz} \qquad \par
-%        Sei $f$ eine orthogonale Abbildung des $n$-dim. Vektorraums $V$ in sich. Dann existiert eine ON-Basis von $V$, bzgl der $f$ die Darstellungsmatrix
-%                \begin{equation*}
-%                        \begin{pmatrix}  1                        &               0                &              &                        & \cdots &\cdots &             &                        &      0
-%                                        \\ 0                    &       \ddots &                &                        &                              &                       &               &                        &
-%                                        \\                      &                                &      1 &                      &                              &                       &               &                                &
-%                                        \\                        &                              &              & -1             &                              &                       &                 &                              &\vdots
-%                                        \\ \vdots &                              &              &                        & \ddots &                     &               &                        &\vdots
-%                                        \\ \vdots       &                                &              &                                &                              &       -1      &               &                        &
-%                                        \\                              &                                &              &                        &                              &                       &A_1  &                          &
-%                                        \\                              &                                &              &                        &                              &                       &               & \ddots &      0 
-%                                        \\       0              &                                &              & \cdots & \cdots &                     &               &    0   & A_1 \end{pmatrix}
-%                \end{equation*}
-%        besitzt.
-%\end{mysatz}
-%
-%\begin{bew}
-%        Induktion über $n$
-%\end{bew}
-%
-%\newpage
+%----------------------------------------------------------------------------------------------------------
+%-----------------------------------------------Satz 4.11--------------------------------------------------
+%--------------------------------------Cauchy-Schwarzsche-Ungleichung--------------------------------------
+
+\begin{mysatz} \label{CSU} \textit{Cauchy-Schwarzsche-Ungleichung}
+
+    Sei $V$ ein euklidischer Vektorraum. Dann gilt
+    \begin{align*}
+        | \left\langle v,w \right\rangle | & \leq \| v \| \cdot \| w \|
+        \intertext{oder in äquvalenter Weise}
+        \left\langle v,w \right\rangle^2 & \leq \left\langle v,v \right\rangle \cdot \left\langle w,w \right\rangle \qquad \forall\ v,w\in V
+    \end{align*}
+
+    \textit{Beweis:}
+
+    Wenn $w=0$ oder $v=0$, dann ist die Aussage trivial.
+
+    Daher sei $v,w \neq 0$. Dann gilt für jedes $k \in \R$:
+    \begin{align*}
+        0 & \leq \left\langle v - kw, v - kw \right\rangle = \left\langle v,v \right\rangle + k^2 \left\langle w,w \right\rangle - 2 k \left\langle v,w \right\rangle
+    \end{align*}
+    Also insbesondere auch für $k = \frac{\left\langle v,w \right\rangle}{\left\langle w,w \right\rangle}$. Dann ist nämlich
+    \begin{align*}
+        0 & \leq \left\langle v,v \right\rangle + \frac{\left\langle v,w \right\rangle^2}{\left\langle w,w \right\rangle^2} \left\langle w,w \right\rangle - 2 \frac{\left\langle v,w \right\rangle}{\left\langle w,w \right\rangle} \left\langle v,w \right\rangle = \left\langle v,v \right\rangle - \frac{\left\langle v,w \right\rangle^2}{\left\langle w,w \right\rangle}
+    \end{align*}
+    und der Satz ist bewiesen.
+\end{mysatz}
+
+%----------------------------------------Bemerkung-------------------------------------------------
+
+\textit{Bemerkung:}
+
+Wegen \ref{CSU} gilt
+\begin{align*}
+    | \left\langle v,w \right\rangle | & \leq  \| v \| \cdot \| w \|
+    \intertext{Umstellen liefert:}
+    -1 & \leq \frac{ \left\langle v,w \right\rangle}{\| v \| \cdot \| w \|}  \leq  1
+    \intertext{Daher existiert im Fall $v, w \neq 0$ genau ein $\varphi \in [0,\pi]$ mit}
+    \cos(\varphi) & = \frac{ \left\langle v,w \right\rangle}{\| v \| \cdot \| w \|}
+\end{align*}
+Dies entspricht der Definition des Winkels zwischen $2$ Vektoren.\\
+
+%----------------------------------------Beispiel-------------------------------------------------
+
+\textit{Beispiel:}
+
+Im $\R^2,\R^3$ mit dem Standardskalarprodukt entspricht $\| v \|$ der Länge und $\varphi$ dem Winkel zwischen den Vektoren $v,w$ im elementargeometrischen Sinn.
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[>=latex,->] (0,0) -- (10,0);% Vektor v
+        \draw (7,0) node[anchor=north] {$v$};
+        \draw[>=latex,->] (0,0) -- (4,3);% Vektor w
+        \draw (2,1.5) node[anchor=north west] {$w$};
+        \draw (4,3) -- (6.4,4.8);% Strecke q
+        \draw (6.4,4.8) -- (10,0);
+        \draw (4,0) -- (4,3);
+        \draw (4,0.3) arc (90:180:0.3);
+        \draw (3.9,0.1) node {$\cdot$};
+        \draw (6.16,4.62) arc(210:305:0.3);
+        \draw (6.4,4.6) node {$\cdot$};
+        \draw (1.8,0) arc (0:37:1.8);% Winkel alpha
+        \draw (1.1,0.3) node {$\sphericalangle (v,w)$};
+        \draw [gray,decorate,decoration={brace,amplitude=5pt},yshift=-3pt] (4,0)  -- (0,0) node [black,midway,below=4pt] {$p$};
+        \draw [gray,decorate,decoration={brace,amplitude=5pt},yshift=2pt,xshift=-2pt] (0,0)  -- (6.4,4.8) node [black,midway,anchor=south east,yshift=1pt,xshift=-1pt] {$q$};
+    \end{tikzpicture}
+\end{center}
+\begin{align*}
+    \left.
+    \begin{array}{c}
+        \displaystyle{ \cos \sphericalangle (v,w) = \frac{p}{\| w \|} } \\
+        \displaystyle{ \cos \sphericalangle (v,w) = \frac{q}{\| v \|} }
+    \end{array}
+    \right\}
+    & \Rightarrow \left\langle v,w \right\rangle = q \cdot \| w \| = p \cdot \| v \| \qquad \text{ und damit }\\
+    \cos \sphericalangle (v,w) & = \frac{\left\langle v,w \right\rangle}{\| v \| \cdot \| w \|}
+\end{align*}
+Das Skalarprodukt von $v$ und $w$ ist die Länge von $v$ mal der Länge der Projektion von $w$ auf $v$.
+Desweiteren sind zwei Vektoren orthogonal zueinander, wenn das Skalarprodukt verschwindet.
+Dies gilt für $\varphi = \pi/2$, aber auch, wenn einer der beiden Vektoren der Nullvektor ist.
+
+%---------------------------------------Definition 4.12-------------------------------------------
+%------------------------------------orthogonal,orthonormal---------------------------------------
+
+\begin{mydef}\label{orthogonal,orthonormal}\textit{orthogonal, orthonormal}
+
+    Eine Menge $\{ v_1, \ldots, v_n \}$ von Vektoren in einem euklidischen Vektorraum $V$ heißt genau dann orthogonal,
+    wenn $\left\langle v_i,v_j \right\rangle = 0$ für alle $i = j \in \{ 1, \ldots, n \}$ und orthonormal, wenn $\left\langle v_i, v_j \right\rangle = \delta_{ij}$ ist.
+\end{mydef}
+
+%------------------------------------------Lemma 4.13---------------------------------------------
+%-------------------------------------------------------------------------------------------------
+
+\begin{mylemma}
+    Eine orthogonale Menge, die den Nullvektor nicht enthält, ist linear unabhängig.
+
+    \textit{Beweis:}
+
+    Sei $\{ v_1, \ldots, v_n \}$ die orthogonale Menge.
+    Die Vektoren $v_1, \ldots, v_n$ sind genau dann linear unabhängig, wenn aus $\sum\limits_{i = 1}^n k_i \cdot v_i = 0$ folgt, dass die Koeffizienten $k_i$ alle $0$ sind.
+    Da die Vektoren orthogonal zueinander sind, folgt
+    \begin{align*}
+        0 & = \left\langle \sum\limits_{i = 1}^n k_i \cdot v_i , v_j \right\rangle = k_j \cdot \left\langle \underbrace{v_j, v_j}_{ \neq 0} \right\rangle
+    \end{align*}
+    woraus folgt, dass der Koeffizienten $k_j=0$ ist.
+\end{mylemma}
+
+%----------------------------------------Bemerkung-------------------------------------------------
+
+\textit{Bemerkung:}
+
+Orthonormale Mengen sind stets linear unabhängig, solange der Nullvektor nicht in der Menge enthalten sind.
+
+%----------------------------------------------------------------------------------------------------------
+%-----------------------------------------------Satz 4.14--------------------------------------------------
+%--------------------------------------Orthonormalisierungsverfahren---------------------------------------
+
+\begin{mysatz} \textit{Orthonormalisierungsverfahren nach 
+    \textsc{Gram}\footnote{J\o rgen Pedersen Gram (* 27. Juni 1850 in Nustrup; $\dagger$ 29. April 1916 in Kopenhagen), dänischer Mathematiker}
+    und
+    \textsc{Schmidt}\footnote{Erhard Schmidt (* 13. Januar 1876 in Dorpat (heutiges Tartu, Estland); $\dagger$ 6. Dezember 1959 in Berlin), dt. Mathematiker}}
+
+    Jeder endlich dimensionale euklidische Vektorraum besitzt eine Orthonormalbasis, kurz ON-Basis.
+
+    \textit{Beweis:} Induktion über die Dimension $n$.
+
+    \begin{itemize}
+        \item $n = 1$: Sei $V=\left\langle b \right\rangle$. Dann ist $\{ e=\frac{b}{\| b \|}\}$ eine ON-Basis.\par \medskip
+        \item $n - 1 \rightarrow n$: Sei dazu $\{ e_1, \ldots, e_{n-1} \}$ eine ON-Basis von $U \subset V$.
+            Dann kann man mit einem geeigenten $b_n\in V$ die Menge $\{ e_1, \ldots, e_{n-1}, b_n \}$ zu einer Basis von $V$ ergänzen.
+            Setze nun
+            \begin{align*}
+                e_n' & = \left( - \sum\limits_{i = 1}^{n-1} \frac{ \left\langle e_i, b_n \right\rangle }{ \left\langle e_i, e_i \right\rangle } \cdot e_i \right) + b_n
+            \end{align*}
+            Dann folgt für alle $k = 1, \ldots, n-1$
+            \begin{align*}
+                \left\langle e_n', e_k \right\rangle & = - \sum_{i = 1}^{n-1} \frac{ \left\langle e_i, b_n \right\rangle }{ \left\langle e_i,e_i \right\rangle } \cdot 
+                \left\langle e_i,e_k \right\rangle + \left\langle b_n,e_k \right\rangle \\
+                & = - \frac{ \left\langle e_k,b_n \right\rangle }{ \left\langle e_k,e_k \right\rangle } \cdot \left\langle e_k,e_k \right\rangle + \left\langle b_n,e_k \right\rangle = 0
+            \end{align*}
+            Damit hat man ein Element gefunden, welches senkrecht auf den anderen Basisvektoren steht. Normieren von $e_n'$ liefert dann die ON-Basis von $V$.
+    \end{itemize}
+\end{mysatz}
+
+%----------------------------------------Beispiel-------------------------------------------------
+
+\textit{Beispiel:}
+
+Sei
+\begin{align*}
+    \{ b_1,b_2,b_3 \} =
+    \left\{ \begin{pmatrix}
+        1\\-1\\0\\1
+    \end{pmatrix}
+    ,
+    \begin{pmatrix}
+        1\\0\\1\\0
+    \end{pmatrix}
+    ,
+    \begin{pmatrix}
+        1\\-1\\0\\0
+    \end{pmatrix}
+    \right\}
+\end{align*}
+eine Basis von $U \subset \R^4$.
+Dann ist $e_1' = b_1$ und $e_2' = \lambda e_1' + b_2$, daher folgt
+\begin{align*}
+    0 & = \left\langle e_2', e_1' \right\rangle = \lambda \left\langle e_1', e_1' \right\rangle + \left\langle b_2, e_1' \right\rangle \\
+    \lambda & = - \frac{ \left\langle b_2, e_1' \right\rangle}{ \left\langle e_1', e_1' \right\rangle} = - \frac{1}{3}
+\end{align*}
+Also ist
+\begin{align*}
+    e_2' & = - \frac{1}{3} \cdot
+    \begin{pmatrix}
+        1\\-1\\0\\1
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        1\\0\\1\\0
+    \end{pmatrix}
+    = \frac{1}{3} \cdot
+    \begin{pmatrix}
+        2\\1\\3\\-1
+    \end{pmatrix}
+\end{align*}
+Für den dritten Basisvektor muss gelten gilt $e_3' = \lambda_1 e_1 + \lambda_2 e_2 + b_3$.
+Daher folgt
+\begin{align*}
+    0 & = \left\langle e_3', e_1' \right\rangle = \lambda_1 \left\langle e_1', e_1' \right\rangle + \lambda_2 \left\langle e_2', e_1' \right\rangle + \left\langle b_3, e_1' \right\rangle\\
+    \lambda_1 & = - \frac{ \left\langle b_3, e_1'\right\rangle }{ \left\langle e_1', e_1' \right\rangle } = - \frac{2}{3}
+\end{align*}
+Dann muss $\lambda_2 = - \frac{1}{5}$ sein, sodass
+\begin{align*}
+    e_3' = - \frac{2}{3} \cdot
+    \begin{pmatrix}
+        1\\-1\\0\\1
+    \end{pmatrix}
+    - \frac{1}{15} \cdot
+    \begin{pmatrix}
+        2\\1\\3\\-1
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        1\\-1\\0\\0
+    \end{pmatrix}
+    = \frac{1}{5}
+    \begin{pmatrix}
+        1\\-2\\-1\\-3
+    \end{pmatrix}
+\end{align*}
+Normieren von der $e_i'$ liefert dann die ON-Basis
+\begin{align*}
+    \left\{ \frac{1}{\sqrt{3}} \cdot
+    \begin{pmatrix}
+        1\\-1\\0\\1
+    \end{pmatrix},
+    \frac{1}{\sqrt{15}} \cdot
+    \begin{pmatrix}
+        2\\1\\3\\-1
+    \end{pmatrix},
+    \frac{1}{\sqrt{15}} \cdot
+    \begin{pmatrix}
+        1\\-2\\-1\\3
+    \end{pmatrix}
+    \right\}
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  TODO Beispiel nochma durchrechnen, irgendwas stimmt da nicht %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------Bemerkung-------------------------------------------------
+
+\textit{Bemerkung:}
+
+Sei $\{ e_1, \ldots, e_n \}$ eine ON-Basis von $V$ und $v \in V$, dann sind die Koordinaten $k_i$ aus $v = \sum k_i e_i$ gegeben durch
+\begin{align*}
+    k_i = \left\langle e_i,v \right\rangle
+\end{align*}
+
+%%%%% TODO hier fehlt noch einiges %%%%%
+
+%---------------------------------------Definition 4.15-------------------------------------------
+%-----------------------------------isometrische Abbildungen--------------------------------------
+
+\begin{mydef}\textit{Isometrische Abbildungen}
+
+    Eine lineare Abbildung $f$ eines euklidischen VR $V$ in einen euklidischen Vektorraum $W$ heißt genau dann isometrisch, wenn
+    \begin{align*}
+        \left\langle v,w \right\rangle_V = \left\langle f(v),f(w) \right\rangle_W \quad \forall\ v,w \in W
+    \end{align*}
+\end{mydef}
+
+%----------------------------------------Bemerkung-------------------------------------------------
+
+\textit{Bemerkung:}
+
+Seien $V$ und $W$ euklidische Vektorräume.
+Die lineare Abbildung $f:V\rightarrow W$ ist genau dann eine isometrische Abbildung, wenn sie invariant bzgl. der Normen der jeweiligen Vektorräume ist.
+\begin{align*}
+    \| f(v) \|_W = \| v \|_V \quad \forall\ v\in V
+\end{align*}
+
+%------------------------------------------Lemma 4.16---------------------------------------------
+%-------------------------------------------------------------------------------------------------
+\begin{mylemma}
+    Isometrische Abbildungen sind injektiv.\medskip
+
+    \textit{Beweis:}
+    Sei $v \in \ker f$. Dann ist $fv = 0$ und daher
+    \begin{align*}
+        \left\langle fv,fv \right\rangle = 0 \Leftrightarrow \left\langle v,v \right\rangle = 0 \Leftrightarrow v = 0
+    \end{align*}
+    Damit liegt nur der Nullvektor im Kern der Abbildung und das Lemma ist bewiesen.
+\end{mylemma}
+
+%------------------------------------------Lemma 4.17---------------------------------------------
+%-------------------------------------------------------------------------------------------------
+
+\begin{mylemma}
+    Sei $\{ b_1, \ldots, b_n \}$ eine ON-Basis von $V$.
+
+    $f$ ist genau dann isometrisch, wenn $\{ f(b_1), \ldots, f(b_n) \}$ eine ON-Basis ist.\medskip
+
+    \textit{Beweis:}
+    \begin{itemize}
+        \item[,,$\Rightarrow$''] Wenn $f$ isometrisch ist, dann folgt $\left\langle f(b_i),f(b_j) \right\rangle = \left\langle b_i, b_j \right\rangle = \delta_{ij}$.
+        \item[,,$\Leftarrow$''] Zu zeigen ist, dass $f$ isometrisch ist, wenn $\{ f(b_1), \ldots, f(b_n) \}$ eine ON-Basis ist.
+            Seien dazu $v_1 = \sum k_i \cdot b_i$ und $v_2 = \sum l_i \cdot b_i$.
+            Dann ist
+            \begin{align*}
+                \left\langle v_1, v_2 \right\rangle = \left\langle \sum\limits_{i = 1}^n k_i f(b_i), \sum\limits_{i = 1}^n l_i f(b_i) \right\rangle = \sum k_i \cdot l_i = \left\langle v_1, v_2 \right\rangle
+            \end{align*}
+    \end{itemize}
+\end{mylemma}
+
+Im folgenden sei stets $V = W$. Dann wird $f$ zu einem isometrischen Endomorphismus (auch Automorphismus genannt).
+Diese Abbildungen bekommen einen bestimmten Namen. Sie heißen orthogonale Abbildungen.\medskip
+
+Die Menge aller orthogonalen Abbildungen ist eine Gruppe
+\begin{align*}
+    \mathcal{O}(n) \leq GL(n,\R) = \{ \text{reguläre Matrizen vom Typ $n\times n$} \}
+\end{align*}
+
+%----------------------------------------Bemerkung-------------------------------------------------
+
+\textit{Bemerkung:}\medskip
+
+Eine quadratische Matrix heißt genau dann orthogonal, wenn die Spaltenvektoren ein ON-System bilden.
+
+%----------------------------------------------------------------------------------------------------------
+%-----------------------------------------------Satz 4.18--------------------------------------------------
+%----------------------------------------------------------------------------------------------------------
+
+\begin{mysatz}\label{orthogonaleMatrix}
+    Für Matrizen $A\in \R^{n \times n}$ sin folgende Aussagen äquivalent
+    \begin{enumerate}
+        \item $A$ ist orthogonal.
+        \item Die Abbildung $f_A : \R^n \mapsto \R^n$ mit $f_a(v) = A \cdot v$ ist isometrisch.
+        \item \label{oM-3} $A^T \cdot A = A \cdot A^T = E$.
+        \item Wenn $A$ regulär, dann ist $A^{-1} = A^T$.
+        \item Die Zeilenvektoren bilden ein ON-System.
+    \end{enumerate}
+
+    \textit{Beweis:}\medskip
+
+    $1.\Leftrightarrow 2.$
+\end{mysatz}
+
+%----------------------------------------Bemerkung-------------------------------------------------
+
+\textit{Bemerkung:}
+\begin{enumerate}
+    \item Sei $A$ eine orthogonale Matrix. Dann ist $\det A = \pm 1$, denn
+        \begin{align*}
+            1 = \det E = \det A^T \cdot A = \det A^T \cdot \det A = (\det A)^2.
+        \end{align*}
+    \item Zwei Matrizen $A, B \in \R^{n \times n}$ heißen orthogonal ähnlich, wenn eine orthogonale Matrx $T$ existiert mit $T^{-1} A T = B$.
+\end{enumerate}
+
+
+%-----------------------------------------Beispiel-------------------------------------------------
+
+\textit{Beispiel:}\medskip
+
+\textit{Beschreibung von orthogonalen Abbildungen in $\R^2$}
+
+Sei $V = \R^2$ mit dem Standardskalarprodukt.
+Gesucht ist eine Matrix $A \in \R^{2\times 2}$ die orthogonal ist. Nach \ref{orthogonaleMatrix}.\ref{oM-3} muss für $A$ gelten:
+\begin{align*}
+    \begin{pmatrix}
+        a_{11} & a_{12}\\
+        a_{21} & a_{22}
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+        a_{11} & a_{21}\\
+        a_{12} & a_{22}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1 & 0\\
+        0 & 1
+    \end{pmatrix}
+\end{align*}
+Daher muss $a_{11}^2 + a_{12}^2 = 1 = a_{22}^2 + a_{21}^2$ und $a_{11} a_{21} + a_{12} a_{22} = 0$ gelten.
+Gleichzeitig müssen die Spalten der Matrix aber auch ein ON-System bilden.
+Daher gilt noch $a_{11}^2 + a_{21}^2 = 1$.
+Für diese Gleichungen existiert ein $\varphi \in [0 , 2 \pi]$ mit $a_{11} = \cos(\varphi), a_{21} = \sin(\varphi)$.\medskip
+
+Dann sind
+\begin{align*}
+    D_{\varphi} =
+    \begin{pmatrix}
+        \cos(\varphi) & - \sin(\varphi)\\
+        \sin(\varphi) & \cos(\varphi)
+    \end{pmatrix}
+    \intertext{oder}
+    S_{\varphi} =
+    \begin{pmatrix}
+        \cos(\varphi) & \sin(\varphi)\\
+        \sin(\varphi) & - \cos(\varphi)
+    \end{pmatrix}
+\end{align*}
+die beiden orthogonalen Matrizen in $\R^2$.
+Dabei hat $D_{\varphi}$ die Determinante $1$ und stellt eine Drehung um den Winkel $\varphi$ dar.
+Die Eigenwerte von $D_{\varphi}$ sind $\lambda_{1,2} = \cos(\varphi) \pm \sqrt{\cos(\varphi)^2 - 1}$.
+Diese sind demnach nur dann reell, wenn $\varphi$ den Wert $0$ oder $\pi$ annimmt.\medskip
+
+Dagegen hat $S_{\varphi}$ die Determinante $-1$ und das charakteristische Polynom:
+$\charpol S_{\varphi} = \lambda^2 - \cos(\varphi)^2 - \sin(\varphi)^2 = \lambda^2 - 1$ mit den Eigenwerten $\pm 1$.
+
+$S_{\varphi}$ stellt eine Spiegelung der Richtung des Eigenvektors dar.\\
+
+
+%----------------------------------------Bemerkung-------------------------------------------------
+
+\textit{Bemerkung:}\medskip
+
+Sei $f$ eine orthogonale Abbildung. Dann nehmen die Eigenwerte von $f$, falls diese existieren, den Wert $\pm 1$ an, denn
+\begin{align*}
+    \| v \| = \| f(v) \| = \| \lambda \cdot v\| = | \lambda | \cdot \| v \|
+\end{align*}
+
+%----------------------------------------------------------------------------------------------------------
+%-----------------------------------------------Satz 4.19--------------------------------------------------
+%----------------------------------------------------------------------------------------------------------
+
+\begin{mysatz}
+    Sei $f$ eine orthogonale Abbildung des $n$-dim. Vektorraums $V$ in sich.
+    Dann existiert eine ON-Basis von $V$, bzgl der $f$ die Darstellungsmatrix
+    \begin{align*}
+        \begin{pmatrix}
+            1 & 0 & & & \cdots &\cdots & & & 0 \\
+            0 & \ddots & & & & & & & \\
+            & & 1 & & & & & & \\
+            & & & -1 & & & & & \vdots \\
+            \vdots & & & & \ddots & & &  &\vdots \\
+            \vdots & & & & & -1 & & & \\
+            & & & & & & A_1 & & \\
+            & & & & & & & \ddots & 0 \\
+            0 & & & \cdots & \cdots & & & 0 & A_1
+        \end{pmatrix}
+    \end{align*}
+    besitzt.
+    \textit{Beweis:} \medskip
+
+    Induktion über $n$
+\end{mysatz}
