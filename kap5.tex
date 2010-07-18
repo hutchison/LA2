@@ -144,6 +144,7 @@
         \begin{pmatrix}
             2\\1
         \end{pmatrix}
+        \right)
         = \frac{1}{2}
         \begin{pmatrix}
             1 & 1\\
@@ -158,7 +159,6 @@
             -\frac{5}{2}\\
             \frac{1}{2}
         \end{pmatrix}}
-        \right)
     \end{align*}
 \end{minipage}
 \begin{minipage}{0.4\textwidth}
@@ -212,28 +212,232 @@
 \end{mydef}
 
 \begin{mysatz}
-    \ \\
-    Seien $T_1 = \left\{ P+U \right\}$ und $T_2 = \left\{ Q+U \right\}$ affine Teilräume eines affinen Raumes $\mathcal{A}_n$ mit Vektorraum $V$.
+
+    Seien $T_1 = \left\{ P+U \right\}$ und $T_2 = \left\{ Q+U \right\}$ affine Teilräume eines affinen Raumes $\mathcal{A}_n$ mit Vektorraum $V$. Dann gilt:
+    \begin{align*}
+        T_1 = T_2 \Leftrightarrow U = W \ \wedge \ \ora{PQ} \in U
+    \end{align*}
+    \textit{Beweis:}
+    \begin{itemize}
+        \item[,,$\Rightarrow$'']
+            \begin{align*}
+                \left\{ P + U \right\} = \left\{ Q + W \right\} & \Rightarrow \exists u \in U:\ P + u = Q\\
+                & \Rightarrow u = \ora{PQ} \in U & \left( \text{analog } \ora{QP} \in W \right)\\
+                w \in W & \Rightarrow \exists u':\ P + u' = Q + w\\
+                & \Rightarrow u' = \ora{PQ} + w \Rightarrow w = u' - \ora{PQ} \in U\\
+                & \left.
+                \begin{matrix}
+                    \Rightarrow & W \subseteq U\\
+                    \text{analog} & U \subseteq W
+                \end{matrix}
+                \right\} \Rightarrow U = W
+            \end{align*}
+        \item[,,$\Leftarrow$'']
+            \begin{align*}
+                \exists x \in U:\ P + x & = Q\\
+                x + U & = U\\
+                P + U & = P + \left( x + U \right) = \left( P + x \right) + U = Q + U = Q + W
+            \end{align*}
+    \end{itemize}
 \end{mysatz}
 
-\begin{mysatz}
-    Schnitte
+\textit{Bemerkung:}
+\begin{itemize}
+    \item Ist $T$ ein affiner Teilraum, dann ist $T = \left\{ P + \sum\limits_{i = 1}^{n} k_i u_i \mid k_i \in \K \right\}$ (wobei $\left\{ u_1, \ldots, u_n \right\}$ eine Basis von $U$ ist) 
+        die Parameterdarstellung des affinen Teilraumes.
+    \item Jeder affine Teilraum lässt sich als lineares Gleichungssystem darstellen. Diese Darstellung heißt parameterfreie Darstellung.
+\end{itemize}
+\textit{Beispiel:}
+\begin{itemize}
+    \item[$\mathcal{A}_2:$] $T_1 =
+        \left\{ \begin{pmatrix}
+        p_1\\ p_2
+        \end{pmatrix}
+        +
+        t \cdot
+        \begin{pmatrix}
+            u_1\\ u_2
+        \end{pmatrix}
+        \mid t \in \K
+        \right\}$
+        \begin{align*}
+            x & = p_1 + t u_1 \qquad \text{o.B.d.A. } u_1 \neq 0 \ \Rightarrow \ t = \frac{x - p_1}{u_1}\\
+            y & = p_2 + t u_2\\
+            \text{Einsetzen ergibt:} \qquad u_1 y & = u_1 p_2 + \left( x - p_1 \right) u_2 \ \Rightarrow \ u_2 x - u_1 y = p_1 u_2 - u_1 p_2
+        \end{align*}
+    \item[$\mathcal{A}_3:$] $T_1 = \left\{ P + t u \mid t \in \K \right\}$
+        \begin{align*}
+            T_1 & = \left\{
+            \begin{pmatrix}
+                1\\ 2\\ 3
+            \end{pmatrix}
+            + t
+            \begin{pmatrix}
+                1\\ -1\\ 1
+            \end{pmatrix}
+            \mid t \in \R
+            \right\}\\
+            & \left.
+            \begin{matrix}
+                x = 1 + t & \qquad & \rightarrow t = x - 1\\
+                y = 2 - t\\
+                z = 3 + t
+            \end{matrix}
+            \right\}\quad
+            \begin{matrix}
+                y = 2 - x + 1\\
+                z = 3 + x - 1
+            \end{matrix}\\
+            \Rightarrow & \quad
+            \begin{matrix}
+                x+y & = & 3\\
+                -x+z & = & 2
+            \end{matrix}
+        \end{align*}
+    \item[] $T_2 = \left\{ P + t_1 u_1 + t_2 u_2 \mid t_{1,2} \in \R\right\}$
+        \begin{align*}
+            T_2 & =
+            \left\{
+            \begin{pmatrix}
+                1\\ 0\\ 1
+            \end{pmatrix}
+            + t_1
+            \begin{pmatrix}
+                2\\ 1\\3
+            \end{pmatrix}
+            + t_2
+            \begin{pmatrix}
+                1\\ 1\\ 1
+            \end{pmatrix}
+            \mid t_{1,2} \in \F_5
+            \right\}\\
+            & \left.
+            \begin{matrix}
+                x & = & 1 + 2 t_1 + t_2 & \qquad & \rightarrow & t_2 = x + 4 + 3 t_1\\
+                y & = & t_1 + t_2 & & & y = 4 t_1 + x + 4\\
+                z & = & 1 + 3 t_1 + t_2
+            \end{matrix}
+            \right\} \quad t_1 = 4 y + x + 4\\
+            z & = 1 + 3\left( 4 y + x + 4 \right) + x + 4 + 3 \left( 4 y + x + 4 \right) \qquad \Rightarrow \qquad 3 x + y + z = 4
+        \end{align*}
+\end{itemize}
+
+\begin{mysatz} \label{Schnitte} \textit{Schnitte}\medskip
+
+    Der Durchschnitt zweier affiner Teilräume $T_1$ und $T_2$ von $\mathcal{A}_n$ ist ein affiner Teilraum oder leer.\medskip
+
+    \textit{Beweis:} $\qquad T_1 = P + U \qquad T_2 = Q + W$
+
+    Sei $T_1 \cap T_2 \neq \emptyset$, also $T_1 \cap T_2 \ni T$
+    \begin{align*}
+        \Rightarrow & T_1 = T + U \ \wedge \ T_2 = T + W\\
+        & T_1 \cap T_2 = S\\
+        & R = T + \left( U \cap W \right) \text{ist affiner Teilraum}\\
+        & R \subseteq T_1 \ \wedge \ R \subseteq T_2\\
+        \Rightarrow & R \subseteq S
+    \end{align*}
+    Sei $X \in S \Rightarrow X = T + u = T + w \Rightarrow u = w =: v \in U \cap W \Rightarrow X \in T + U \cap W \Rightarrow S = R$ und damit affiner Teilraum.
 \end{mysatz}
 
-\begin{mylemma}
-    kleinster Teilraum
+\textit{Beispiel:}
+
+$T_1 = 
+\left\{
+\begin{pmatrix}
+    1\\ 1\\ 1
+\end{pmatrix}
++ t_1
+\begin{pmatrix}
+    0\\ 1\\ 1
+\end{pmatrix}
++ t_2
+\begin{pmatrix}
+    4\\ 1\\ 0
+\end{pmatrix}
+\mid t_{1,2} \in \F_5
+\right\}$ und die Ebene $3 x + y + z = 4$.
+\begin{align*}
+    3\left( 1 + 4 t_2 \right) + \left( 1 + t_1 + t_2 \right) + \left( 1 + t_1 \right) = 4 \qquad & t_1 = s\\
+    2 t_1 + 3 t_2 = 4 \qquad & t_2 = 3 + s\\
+    T_1 \cap T_2 =
+    \left\{
+    \begin{pmatrix}
+        1\\ 1\\ 1
+    \end{pmatrix}
+    + s
+    \begin{pmatrix}
+        0\\ 1\\ 1
+    \end{pmatrix}
+    + (3 + s)
+    \begin{pmatrix}
+        4\\ 1 \\0
+    \end{pmatrix}
+    \mid
+    s \in \F_5
+    \right\}
+    = & 
+    \left\{
+    \begin{pmatrix}
+        3\\ 4\\1
+    \end{pmatrix}
+    + s
+    \begin{pmatrix}
+        4\\ 2\\ 1
+    \end{pmatrix}
+    \mid s \in \F_5
+    \right\}
+\end{align*}
+
+\begin{mylemma} \textit{kleinster Teilraum}\medskip
+
+    Seien $P_1, P_2, \ldots, P_n, P_{n+1}$ Punkte eines affinen Raumes $\mathcal{A}_n$, dann ist der kleinste affine Teilraum, der diese Punkte enthält, der Teilraum
+    \begin{align*}
+        T & = \bigcap\limits_{\substack{\scriptscriptstyle P1, \ldots, P_{n+1} \in T_i\\ \scriptscriptstyle T_i \text{ist Teilraum}}} T_i
+    \end{align*}
+    $T$ heißt der von $P_1, P_2, \ldots, P_n, P_{n+1}$ aufgespannte Teilraum. $T = P_1 + W$ mit $\left\langle \ora{P_1 P_2}, \ldots, \ora{P_1 P_{n+1}} \right\rangle = W$
+
+    \textit{Beweis:}\medskip
+
+    Nach Satz \ref{Schnitte} ist $T$ ein affiner Teilraum und kleinstmöglich.
+    Da für den zugehörigen Unterraum $U$ gilt, dass $\ora{P_i P_j} \ \left( i,j \in \left\{ 1, \ldots, n+1 \right\} \right)$ in $U$ enthalten sind, ist $W$ in $U$.
+    Da $T$ minimal ist, folgt $T = P_1 + W$.
 \end{mylemma}
 
-\begin{mydef}
-    Punkte in allgemeiner Lage
+\begin{mydef} \textit{Punkte in allgemeiner Lage}\medskip
+
+    Die Punkte $P_1, \ldots, P_n, P_{n+1}$ heißen Punkte in allgemeiner Lage genau dann, wenn $\left\{ \ora{P_1 P_2}, \ldots, \ora{P_n P_{n+1}} \right\}$ linear unabhängig ist.
 \end{mydef}
 
-\begin{mydef}
-    Summe von Teilräumen
+\begin{mydef} \textit{Summe von Teilräumen}\medskip
+
+    Seien $T_1 = P + U$ und $T_2 = Q + W$ affine Teilräume, dann heißt
+    \begin{align*}
+        T_1 + T_2 = \left\{ P + x \mid x \in U + W + \left\langle \ora{PQ} \right\rangle \right\}
+    \end{align*}
+    Summe der affinen Teilräume.
 \end{mydef}
 
-\begin{mysatz}
-    Dimensionssatz
+\begin{mysatz} \textit{Dimensionssatz}\medskip
+
+    Seien $T_1 = P + U$ und $T_2 = Q + W$, dann gilt
+    \begin{align*}
+        \dim T_1 + T_2 =
+        \left\{
+        \begin{tabular}{lr}
+            $\dim T_1 + \dim T_2 - \dim T_1 \cap T_2$ & falls $T_1 \cap T_2 \neq \emptyset$\\
+            $\dim T_1 + \dim T_2 - \dim \left( U \cap W \right) + 1$ & falls $T_1 \cap T_2 = \emptyset$
+        \end{tabular}
+        \right.
+    \end{align*}
+    \textit{Beweis:}
+    \begin{itemize}
+        \item[1. Fall:] $T_1 \cap T_2 \neq \emptyset$.
+            Für die Teilräume gilt dann $T_1 = R + U$ und $T_2 = R + W$ mit einem $R \in T_1 \cap T_2$.
+            Für die Summe der Teilräume gilt dann $T_1 + T_2 = \left\{ R + \left( U + W \right) \right\}$ was die Behauptung liefert.
+        \item[2. Fall] $T_1 \cap T_2 = \emptyset$.
+            Es ist $\ora{PQ} \in U + W$, denn wäre $\ora{PQ} = u + w$, dann wäre $P + U = Q + W \ \lightning!$ da der Schnitt leer ist.
+            Daraus folgt: $\dim T_1 + T_2 = \dim \left( U + W \right) + 1$, was die Behauptung liefert.
+    \end{itemize}
 \end{mysatz}
 
 \begin{mydef}
