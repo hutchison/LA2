@@ -49,7 +49,13 @@
         \item $P + v = Q + w \Rightarrow \left( P + v \right) - w = \left( Q + w \right) - w \Rightarrow P + (v - w) = Q \Rightarrow \ora{PQ} = v - w$
         \item Klar, siehe \ref{SatzEigaffRaum3}.
         \item \ \\
-            \begin{minipage}{0.3\textwidth}
+            \begin{minipage}{0.6\textwidth}
+                \begin{align*}
+                    0 & = \ora{PQ} + \ora{QS} + \ora{SR} + \ora{RP} = \ora{PQ} + \ora{QS} - \ora{RS} - \ora{PR}\\
+                    \ora{PR} - \ora{QS} & = \underbrace{\ora{PQ} - \ora{RS}}_{0} \Rightarrow \ora{PR} = \ora{QS}\\
+                \end{align*}
+            \end{minipage}
+            \begin{minipage}{0.4\textwidth}
                 \begin{center}
                     \begin{tikzpicture}
                         \draw (0,0) coordinate (P) node[anchor=north east] {$P$};
@@ -66,12 +72,6 @@
                         \draw[>=latex,->,dotted] (Q) -- (S);
                     \end{tikzpicture}
                 \end{center}
-            \end{minipage}
-            \begin{minipage}{0.4\textwidth}
-                \begin{align*}
-                    0 & = \ora{PQ} + \ora{QS} + \ora{SR} + \ora{RP} = \ora{PQ} + \ora{QS} - \ora{RS} - \ora{PR}\\
-                    \ora{PR} - \ora{QS} & = \underbrace{\ora{PQ} - \ora{RS}}_{0} \Rightarrow \ora{PR} = \ora{QS}\\
-                \end{align*}
             \end{minipage}\ \\
     \end{enumerate}
 \end{mysatz}
@@ -122,7 +122,7 @@
 
 \textit{Beispiel:} $\quad \mathcal{A}_2 \qquad V = \R^2$\medskip
 
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}{0.6\textwidth}
     \begin{align*}
         K & = \left\{ O; b_1, b_2 \right\} \quad K' = \left\{ O'; b'_1, b'_2 \right\}\\
         O'_{/_K} & =
@@ -422,12 +422,10 @@ $T_1 =
     Seien $T_1 = P + U$ und $T_2 = Q + W$, dann gilt
     \begin{align*}
         \dim T_1 + T_2 =
-        \left\{
-        \begin{tabular}{lr}
-            $\dim T_1 + \dim T_2 - \dim T_1 \cap T_2$ & falls $T_1 \cap T_2 \neq \emptyset$\\
-            $\dim T_1 + \dim T_2 - \dim \left( U \cap W \right) + 1$ & falls $T_1 \cap T_2 = \emptyset$
-        \end{tabular}
-        \right.
+        \begin{cases}
+            \dim T_1 + \dim T_2 - \dim T_1 \cap T_2 & \text{falls} T_1 \cap T_2 \neq \emptyset\\
+            \dim T_1 + \dim T_2 - \dim \left( U \cap W \right) + 1 & \text{falls} T_1 \cap T_2 = \emptyset
+        \end{cases}
     \end{align*}
     \textit{Beweis:}
     \begin{itemize}
@@ -475,7 +473,7 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \begin{enumerate}
         \item $X$ zwischen $A$ und $B$.
 
-            \begin{minipage}{0.4\textwidth}
+            \begin{minipage}{0.6\textwidth}
                 \begin{tabular}{rl}
                     Allgemein: & $\TV(A,B;X) < 0$\\
                     Sonderfall: & $\ora{AX} = - \ora{BX}$ wenn $X = M$.
@@ -496,7 +494,7 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
             \end{minipage}
         \item $A$ zwischen $X$ und $B$.
 
-            \begin{minipage}{0.4\textwidth}
+            \begin{minipage}{0.6\textwidth}
                 $0 \leq \TV(A,B;X) < 1$\\
             \end{minipage}
             \begin{minipage}{0.4\textwidth}
@@ -514,7 +512,7 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
             \end{minipage}
         \item $B$ zwischen $A$ und $X$.
 
-            \begin{minipage}{0.4\textwidth}
+            \begin{minipage}{0.6\textwidth}
                 $\TV(A,B;X) > 1$\\
             \end{minipage}
             \begin{minipage}{0.4\textwidth}
@@ -547,22 +545,122 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \begin{flushright}
         ($M_a, M_b, M_c$ seien die jeweiligen Seitenschnitte)
     \end{flushright}
+    \begin{minipage}{0.6\textwidth}
+        \begin{align*}
+            \textcolor{blue}{S_c}:\ X & = C + t_1 \ora{CM_c} = C + t_1 \left( \ora{CA} + \frac{1}{2} \ora{AB} \right)\\
+            \textcolor{blue}{S_b}:\ X & = B + t_2 \ora{BM_b} = B + t_2 \left( \ora{BA} + \frac{1}{2} \ora{AC} \right)\\
+            \textcolor{blue}{S_a}:\ X & = A + t_3 \ora{AM_b} = A + t_3 \left( \ora{AB} + \frac{1}{2} \ora{BC} \right)
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{center}
+        \begin{tikzpicture}
+            \draw (0,0) coordinate (A) node[anchor=north east] {$A$};
+            \draw (2,2) coordinate (B) node[anchor=south] {$B$};
+            \draw (5,0) coordinate (C) node[anchor=west] {$C$};
+            \draw (1,1) coordinate (Mc) node[anchor=south, above=5pt] {$M_c$};
+            \draw (2.5,0) coordinate (Mb) node[anchor=north west] {$M_b$};
+            \draw (3.5,1) coordinate (Ma) node[anchor=south, above=5pt] {$M_a$};
+            \draw[color=blue] (7/3,2/3) coordinate (S) node[anchor=south west] {$S$};
+            \fill (A) circle (1pt);
+            \fill (B) circle (1pt);
+            \fill (C) circle (1pt);
+            \fill (Ma) circle (1pt);
+            \fill (Mb) circle (1pt);
+            \fill (Mc) circle (1pt);
+            \fill[color=blue] (S) circle (1pt);
+            \draw (A) -- (B) -- (C) -- (A);
+            \draw[color=blue] (A) -- (Ma) -- (4.5,9/7) node[anchor=south] {$S_a$};
+            \draw[color=blue] (C) -- (Mc) -- (0,5/4) node[anchor=south] {$S_c$};
+            \draw[color=blue] (B) -- (Mb) -- (2.625,-0.5) node[anchor=east] {$S_b$};;
+        \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{align*}
+        S_c & \cap S_b\\
+        C + t_1 \left( \ora{CA} + \frac{1}{2} \ora{AB} \right) & = \ \ \, \underbrace{B} + t_2 \left( \ora{BA} + \frac{1}{2} \ora{AC} \right)\\
+        & = \overbrace{C + \ora{CB}} + t_2 \left( \ora{BA} + \frac{1}{2} \ora{AC} \right)\\
+        t_1 \ora{CA} + t_1 \cdot \frac{1}{2} \ora{AB} & = t_2 \ora{BA} + t_2 \cdot \frac{1}{2} \ora{AC} + \ora{CB}\\
+        0 & = \left( \frac{t_1}{2} + t_2 \right) \ora{AB} + \left( t_1 + \frac{t_2}{2} \right) \ora{CA} \underbrace{- \ora{CB}}_{-\left( \ora{CA} + \ora{AB} \right)}\\
+        0 & = \left( \frac{t_1}{2} + t_2 - 1 \right) \ora{AB} + \left( t_1 + \frac{t_2}{2} - 1 \right) \ora{CA}\\
+        \frac{t_1}{2} + t_2 = 1 \qquad t_1 + \frac{t_2}{2} & = 1 \qquad \Rightarrow \quad t_1 = t_2 = \frac{2}{3}\\
+        S_c \cap S_b & = S_1 = C + \frac{2}{3} \left( \ora{CA} + \frac{1}{2} \ora{AB} \right)\\
+        S_c \cap S_a & = S_2 = A + \frac{2}{3} \left( \ora{AB} + \frac{1}{2} \ora{BC} \right)\\
+        \Rightarrow S_1 & = S_2\\
+        S_2 & = A + \frac{2}{3} \ora{AB} + \frac{1}{3} \ora{BC} = C + \ora{CA} + \frac{1}{3} \left( \ora{AB} + \ora{BC} \right) + \frac{1}{3} \ora{AB}\\
+        & = C + \ora{CA} + \frac{1}{3} \ora{AC} + \frac{1}{3} \ora{AB} = C + \frac{2}{3} \ora{CA} + \frac{1}{3} AB = S_1 = S\\
+        \Rightarrow \ora{CS} & = \frac{2}{3} \ora{CA} + \frac{1}{3} \ora{AB}\\
+        \ora{AS} & = \frac{2}{3} \ora{AB} + \frac{1}{3} \ora{BC}\\
+        \ora{SM_c} & = \ora{SA} + \frac{1}{2} \ora{AB} = - \frac{2}{3} \ora{AB} - \frac{1}{3} \ora{BC} + \frac{1}{2} \ora{AB} = - \frac{1}{6} \ora{AB} - \frac{1}{3} \ora{BC}\\
+        & = - \frac{1}{6} \ora{AB} - \frac{1}{3} \left( \ora{BA} + \ora{AC} \right) = \frac{1}{6} \ora{AB} + \frac{1}{3} \ora{CA} = \frac{1}{2} \ora{CS}
+    \end{align*}
 \end{mysatz}
 
-\begin{mysatz}
-    Strahlensatz (\textsc{Thales})
+\begin{mysatz}\textit{Strahlensatz} (\textsc{Thales}\footnote{Thales von Milet (* um 624 v. Chr. in Milet, Kleinasien; $\dagger$ um 546 v. Chr.), griechischer Naturphilosoph, Staatsmann, Mathematiker, Astronom und Ingenieur.})
+
+    Schneiden sich 2 Geraden $G_1 \neq G_2$ in einem Punkt $P$ und seien $R_1, Q_1 \in G_1$ und $R_2, Q_2 \in G_2$, dann gilt
+    \begin{align*}
+        G(R_1 R_2) \parallel G(Q_1 Q_2) \quad \Leftrightarrow \quad \TV\left( R_1, Q_1; P \right) = \TV\left( R_2, Q_2; P \right)
+    \end{align*}
+    \begin{minipage}{0.6\textwidth}
+        \begin{itemize}
+            \item[,,$\Rightarrow$'']
+                \begin{align*}
+                    \ora{R_1 R_2} & = \lambda \ora{Q_1 Q_2}\\
+                    \mu_1 & = \TV\left( R_1, Q_1; P \right)\\
+                    \mu_2 & = \TV\left( R_2, Q_2; P \right)\\
+                    \ora{R_1 P} & = \mu_1 \ora{Q_1 P}\\
+                    \ora{R_2 P} & = \mu_2 \ora{Q_2 P}
+                \end{align*}
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{center}
+        \begin{tikzpicture}
+            \draw (0,1) coordinate (Q1) node[anchor=south east] {$Q_1$};
+            \draw (1,2) coordinate (R1) node[anchor=south east] {$R_1$};
+            \draw (2,3) coordinate (P) node[anchor=west] {$P$};
+            \draw (2,0) coordinate (Q2) node[anchor=west] {$Q_2$};
+            \draw (2,1.5) coordinate (R2) node[anchor=west] {$R_2$};
+            \fill (Q1) circle (1pt);
+            \fill (R1) circle (1pt);
+            \fill (P) circle (1pt);
+            \fill (Q2) circle (1pt);
+            \fill (R2) circle (1pt);
+            \draw (-0.5,0.5) -- (2.3,3.3);
+            \draw (2,3.5) -- (2,-0.5);
+            \draw[color=blue,thick] (R1) -- (R2);
+            \draw[color=blue,thick] (Q1) -- (Q2);
+        \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{align*}
+        \ora{PQ_2} & = \ora{PQ_1} + \ora{Q_1 Q_2}\\
+        \ora{PR_2} & = \ora{PR_1} + \ora{R_1 R_2} = \ora{PR_1} + \lambda \ora{Q_1 Q_2}\\
+        \lambda \ora{PQ_2} - \ora{PR_2} = \lambda \ora{PQ_1} - \ora{PR_1}\\
+        \lambda \ora{PQ_2} + \mu_2 \ora{Q_2 P} & = \lambda \ora{PQ_1} + \mu_1 \ora{Q_1 P}\\
+        \left( la - \mu_2 \right) \ora{PQ_2} + \left( \lambda - \mu_1 \right) \ora{PQ_1} & = 0\\
+        \Rightarrow \quad \lambda - \mu_2 = \lambda - \mu_1 = 0 \quad & \Rightarrow \quad \lambda = \mu_1 = \mu_2\\
+    \end{align*}
+    \begin{itemize}
+        \item[,,$\Leftarrow$'']
+            \begin{align*}
+                \ora{R_1 P} = \mu \ora{Q_1 P} \quad & \wedge \quad \ora{R_2 P} = \mu \ora{Q_2 P}\\
+                \ora{R_1 R_2} = \ora{R_1 P} + \ora{PR_2} \quad & = \quad \mu \ora{Q_1 P} - \mu \ora{Q_2 P} = \mu \ora{Q_1 Q_2}\\
+                \Rightarrow \quad G(R_1 R_2) \ & \parallel \ G(Q_1 Q_2)
+            \end{align*}
+    \end{itemize}
 \end{mysatz}
 
 %\newpage
 
-\begin{mysatz}
-    Satz von \textsc{Menelaos}\footnote{* um 70 in Alexandria; $\dagger$ um 140 vermutlich in Rom}
+\begin{mysatz}\textit{Satz von} \textsc{Menelaos}\footnote{* um 70 in Alexandria; $\dagger$ um 140 vermutlich in Rom}
 
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.6\textwidth}
         Gegeben sei ein Dreieck $ABC$ und eine Gerade $G$, die nicht durch einen Eckpunkt geht.
         Seien $A'$ der Schnittpunkt von $G$ mit $G(BC)$, $B'$ der Schnittpunkt von $G$ mit $G(AC)$ und $C'$ der Schnittpunkt von $G$ mit $G(AB)$, dann gilt
     \end{minipage}
-    \begin{minipage}{0.55\textwidth}
+    \begin{minipage}{0.4\textwidth}
         \begin{center}
             \begin{tikzpicture}
                 \draw (0,0) coordinate(as) node[anchor=east] {$A'$};
@@ -579,7 +677,7 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
                 \fill (cs) circle (1pt);
                 \draw (a) -- (b) -- (c) -- (a);
                 \draw[dashed] (as) -- (c);
-                \draw (as) -- (bs) -- (cs);
+                \draw[color=blue] (as) -- (bs) -- (cs);
             \end{tikzpicture}
         \end{center}
     \end{minipage}
@@ -593,17 +691,13 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \end{align*}
     \textit{Beweis:}
     \begin{align*}
-        \ora{AC'} & = v \cdot \ora{BC'} = \frac{v}{v-1} \ora{AB}\\
-        \ora{BA'} & = w \cdot \ora{CA'} = \frac{w}{w-1} \ora{BC}\\
-        \ora{CB'} & = u \cdot \ora{AB'} = \frac{u}{u-1} \ora{CA}\\
-        \ora{AB} & =\ : c\\
-        \ora{AC} & =\ : b\\
-        \ora{AC'} & = \frac{v}{v-1} c\\
-        \ora{AB'} & = \frac{-1}{u-1} b\\
-        \ora{AA'} & = \ora{AB} + \ora{BA'} = c + \frac{w}{w-1} \ora{BC}\\
+        \ora{AC'} & = v \cdot \ora{BC'} = \frac{v}{v-1} \ora{AB} \qquad \ora{BA'} = w \cdot \ora{CA'} = \frac{w}{w-1} \ora{BC} \qquad \ora{CB'} = u \cdot \ora{AB'} = \frac{u}{u-1} \ora{CA}
+        \intertext{Nun definieren wir:}
+        \ora{AB} & =\ : c \qquad \ora{AC} =\ : b
+        \intertext{Daraus folgt:}
+        \ora{AC'} & = \frac{v}{v-1} c \qquad \ora{AB'} = \frac{-1}{u-1} b \qquad \ora{AA'} = \ora{AB} + \ora{BA'} = c + \frac{w}{w-1} \ora{BC}\\
         \frac{w}{w-1} b & - \frac{1}{w-1} c = c + \frac{w}{w-1} \left( b-c \right)\\
-        \ora{A'B'} & = \ora{A'A} + \ora{AB'} = \frac{-w}{w-1} b + \frac{1}{w-1} c - \frac{1}{u-1} b\\
-        \ora{A'C'} & = \ora{A'A} + \ora{AC'} = \frac{-w}{w-1} b + \frac{1}{w-1} c + \frac{v}{v-1} c
+        \ora{A'B'} & = \ora{A'A} + \ora{AB'} = \frac{-w}{w-1} b + \frac{1}{w-1} c - \frac{1}{u-1} b \qquad \ora{A'C'} = \ora{A'A} + \ora{AC'} = \frac{-w}{w-1} b + \frac{1}{w-1} c + \frac{v}{v-1} c
     \end{align*}
     weil $A',B',C' \in G \Rightarrow \exists !\ \lambda :\ \lambda \ora{A'B'} = \ora{A'C'}$
     \begin{align*}
@@ -626,12 +720,12 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \end{align*}
 \end{mysatz}
 
-\begin{mysatz} Satz von \textsc{Ceva}\footnote{Giovanni Ceva, * 7. Dezember 1647 in Mailand; $\dagger$ 15. Juni 1734 in Mantua}
+\begin{mysatz}\textit{Satz von} \textsc{Ceva}\footnote{Giovanni Ceva, * 7. Dezember 1647 in Mailand; $\dagger$ 15. Juni 1734 in Mantua}
 
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.6\textwidth}
         Schneiden sich die 3 Ecktransversalen eines Dreiecks $ABC$ in einem Punkt $P$ und seien $A',B',C'$ wie oben, dann gilt
     \end{minipage}
-    \begin{minipage}{0.55\textwidth}
+    \begin{minipage}{0.4\textwidth}
         \begin{center}
             \begin{tikzpicture}
                 %\draw[help lines] (0,0) grid (3,3);
@@ -650,9 +744,9 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
                 \fill (as) circle (1pt);
                 \fill (bs) circle (1pt);
                 \draw (a) -- (b) -- (c) -- (a);
-                \draw (c) -- (cs);
-                \draw (a) -- (as);
-                \draw (b) -- (bs);
+                \draw[color=blue] (c) -- (cs);
+                \draw[color=blue] (a) -- (as);
+                \draw[color=blue] (b) -- (bs);
             \end{tikzpicture}
         \end{center}
     \end{minipage}
@@ -661,12 +755,12 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \end{align*}
     \textit{Beweis:} Übungsaufgabe
 \end{mysatz}
-\begin{mysatz} Satz von \textsc{Pappos}\footnote{um 300, Alexandria}
+\begin{mysatz}\textit{Satz von} \textsc{Pappos}\footnote{um 300, Alexandria}
 
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.6\textwidth}
         $G,G'$ verschiedene Geraden in einer affinen Ebene und $P_1,P_2,P_3 \in G$ und $P'_1,P'_2,P'_3 \in G'$, dann gilt:
     \end{minipage}
-    \begin{minipage}{0.55\textwidth}
+    \begin{minipage}{0.4\textwidth}
         \begin{center}
             \begin{tikzpicture}
                 %\draw[help lines] (0,0) grid (4,3);
@@ -720,14 +814,12 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \end{enumerate}
 \end{mysatz}
 
-\begin{mydef}
-    Euklidischer Punktraum
+\begin{mydef}\textit{Euklidischer Punktraum}\medskip
 
     Ein affiner Raum heißt euklidisch, wenn der zugehörige Vektorraum euklidisch ist.
 \end{mydef}
 
-\begin{mydef}
-    Abstand
+\begin{mydef}\textit{Abstand}\medskip
 
     Seien $P$ und $Q$ Punkte des euklidischen Punktraumes $\mathcal{A}_n$, dann heißt
     \begin{align*}
@@ -740,8 +832,7 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     (Falls $M_1,M_2$ affine Teilräume sind, definiert sich der Abstand durch das Minimum)
 \end{mydef}
 
-\begin{mysatz}
-    Für den Abstand von Punkten gelten folgende Eigenschaften:
+\begin{mysatz}\textit{Für den Abstand von Punkten gelten folgende Eigenschaften:}
     \begin{itemize}
         \item[(i)] $d(P,Q) = d(Q,P)$
         \item[(ii)] $d(P,Q) \geq 0$
@@ -751,8 +842,7 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \textit{Beweis:} siehe Norm.
 \end{mysatz}
 
-\begin{mylemma}
-    \textsc{Hesse}sche Form\footnote{Ludwig Otto Hesse, * 22. April 1811 in Königsberg (Preußen); $\dagger$ 4. August 1874 in München}
+\begin{mylemma}\textsc{Hesse}\textit{sche Form}\footnote{Ludwig Otto Hesse, * 22. April 1811 in Königsberg (Preußen); $\dagger$ 4. August 1874 in München}
 
     Sei $G$ eine Gerade mit $G = \left\{ X : X = P+t \cdot a \right\}$ in der Ebene $\mathcal{A}_2$ und $n$ der Stellungsvektor der Geraden, d.h. $\left\langle n,a \right\rangle=0$, dann gilt
     \begin{align*}
@@ -797,8 +887,7 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \text{HF}\\
     -\frac{4}{5} x + \frac{3}{5} y - \frac{2}{5} = 0 \Rightarrow \text{HNF}
 \end{align*}
-\begin{mylemma}
-    Abstand: Punkt-Gerade $\big( d(Q,G) \big)$\\
+\begin{mylemma}\textit{Abstand: Punkt-Gerade} $\big( d(Q,G) \big)$\\
 
     \begin{minipage}{0.6\textwidth}
         Sei $G = \left\{ X : X = P+t \cdot a \right\}$ eine Gerade und $Q$ ein Punkt, dann ist
