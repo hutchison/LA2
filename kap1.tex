@@ -4,7 +4,7 @@ Sei $V$ ein $n$-dimensionaler Vektorraum über dem Körper $\K$.
 
 %---------------------------------------------Definition 1.3------------------------------------------------
 %----------------------------------------Eigenwert, Eigenvektor---------------------------------------------
-\begin{mydef} \textit{Eigenwert und Eigenvektor}
+\begin{mydef}\textit{Eigenwert und Eigenvektor}\medskip
 
     Sei $\alpha$ ein Endomorphismus des $\K$-VR V und $\lambda\in \K$. $\lambda$ heißt genau dann Eigenwert von $\alpha$, wenn ein Vektor $v\in 
     V\backslash\lbrace0\rbrace$ existiert mit
@@ -15,7 +15,7 @@ Sei $V$ ein $n$-dimensionaler Vektorraum über dem Körper $\K$.
 \end{mydef}
 
 %-----------------------------------------------Beispiel---------------------------------------------------
-\textit{Beispiel:}
+\textit{Beispiel:}\medskip
 
 Sei $V=\R^2$ und der Endomorphismus $\alpha:(x,y)\mapsto (x+y,x+y)$.
 \begin{align*}
@@ -90,7 +90,7 @@ Dazu betrachte man $A$ bzgl. der Eigenvektorbasis $\left\langle (1,1),(1,-1) \ri
 %----------------------------------------------------------------------------------------------------------
 %-----------------------------------------------Satz 1.2---------------------------------------------------
 %----------------------------------------------------------------------------------------------------------
-\begin{mysatz}\ \\
+\begin{mysatz}\ \\\medskip
     Sei $\alpha$ ein Endomorphismus von $V$, dann sind folgende Aussagen äqiuvalent
     \begin{enumerate}
         \item $\lambda$ ist Eigenwert von $\alpha$
@@ -102,7 +102,7 @@ Dazu betrachte man $A$ bzgl. der Eigenvektorbasis $\left\langle (1,1),(1,-1) \ri
 
 %---------------------------------------------Definition 1.3------------------------------------------------
 %----------------------------------------charakteristisches Polynom-----------------------------------------
-\begin{mydef}\label{charpol} \textit{charakteristisches Polynom}
+\begin{mydef}\label{charpol}\textit{charakteristisches Polynom}
     \begin{enumerate}
         \item Sei $A$ eine $n\times n$-Matrix. Das charakteristische Polynom von $A$ (charpol $A$) ist das Polynom
             \begin{align*}
@@ -141,7 +141,7 @@ Dazu betrachte man $A$ bzgl. der Eigenvektorbasis $\left\langle (1,1),(1,-1) \ri
     & \Rightarrow \text{keine Eigenwerte}
 \end{align*}
 
-\textit{Anmerkung:}
+\textit{Anmerkung:}\medskip
 
 Für die Fälle $n=2$ und $n=3$ existieren Formeln für das charakteristische Polynom:
 \begin{align*}
@@ -261,7 +261,7 @@ Für die Fälle $n=2$ und $n=3$ existieren Formeln für das charakteristische Po
 
 %---------------------------------------------Definition 1.4------------------------------------------------
 %------------------------------------------------Eigenraum--------------------------------------------------
-\begin{mydef}\label{eigenraum} \textit{Eigenraum}
+\begin{mydef}\label{eigenraum}\textit{Eigenraum}\medskip
 
     Sei $\alpha:V\to V$ ein Endomorphismus und $\lambda \in \K$ ein Eigenwert von $\alpha$, dann heißt
     \begin{align*}
@@ -290,12 +290,12 @@ Für die Fälle $n=2$ und $n=3$ existieren Formeln für das charakteristische Po
 \end{mydef}
 
 %-----------------------------------------------Bemerkung---------------------------------------------------
-\textit{Bemerkung:}
+\textit{Bemerkung:}\medskip
 
 Der Endomorphismus $\alpha$ ist genau dann diagonalisierbar, wenn es eine Basis von $V$ gibt, welche aus Eigenvektoren von $\alpha$ besteht. Die verschiedenen Einträge auf der Diagonalen sind dann genau di Eigenwerte von $\alpha$.\\
 
 %-----------------------------------------------Beispiel---------------------------------------------------
-\textit{Beispiel:}
+\textit{Beispiel:}\medskip
 
 Gegeben sei $V=\R^3$ und ein Endomorphismus in $V$, welcher bzgl. der Standardbasis die folgende Abbildungsmatrix besitzt:
 \begin{align*}
@@ -357,30 +357,31 @@ Demnach ist die Matrix $A$ ähnlich zu der Matrix
 In der Transformationsmatrix $T$ stehen spaltenweise die Eigenvektoren.\\
 
 %-----------------------------------------------Bemerkung---------------------------------------------------
-\textit{Bemerkung:}
+\textit{Bemerkung:}\medskip
 
 Die Summe der Eigenwerte einer Matrix (mit der Vielfachheit genommen) entspricht der Spur der Matrix. Sei $A\in \R^{n \times n}$ ähnlich zu der 
 Matrix $D=T^{-1}AT$ dann ist $D$ eine Diagonalmatrix und es gilt
 \begin{align*}
-    Sp D = Sp(T^{-1}(AT))=Sp(T^{-1}TA)=Sp(A)
+    \Sp D = \Sp (T^{-1}(AT)) = \Sp (T^{-1}TA) = \Sp (A)
 \end{align*}
 %\end{bem}
 %-----------------------------------------------Lemma 1.6---------------------------------------------------
 %-----------------------------------------------------------------------------------------------------------
-\begin{mylemma}\label{lemdiag}\ \\
-    Seien $v_1,\ldots,v_s$ Eigenvektoren zu verschiedenen Eigenwerten $\lambda_1,\ldots,\lambda_s$ eines Endomorphimus $\alpha$ von $V$. Dann ist
+\begin{mylemma}\label{lemdiag}\ \medskip
+
+    Seien $v_1, \ldots, v_s$ Eigenvektoren zu verschiedenen Eigenwerten $\lambda_1, \ldots, \lambda_s$ eines Endomorphimus $\alpha$ von $V$. Dann ist
     \begin{align*}
         \sum_{i=1}^s v_i \neq 0
     \end{align*}
 
     \textit{Beweis:}
     Induktion über $s$.
-    
-    Klar für $s=1$, da per Definition $0$ kein Eigenvektor ist.
-    
-    Sei $s>1$ und $w_i=(\lambda_s-\lambda_i)\cdot v_i$ für $i=1,\ldots,s-1$. Dann ist $w_i$ ebenfalls ein Eigenvektor zum Eigenwert $\lambda_i$, denn
+
+    Klar für $s = 1$, da per Definition $0$ kein Eigenvektor ist.
+
+    Sei $s > 1$ und $w_i = (\lambda_s - \lambda_i) \cdot v_i$ für $i = 1, \ldots, s-1$. Dann ist $w_i$ ebenfalls ein Eigenvektor zum Eigenwert $\lambda_i$, denn
     \begin{align*}
-        \alpha(w_i)=\alpha((\lambda_s-\lambda_i)\cdot v_i)=(\lambda_s-\lambda_i)\cdot \alpha(v_i)= \lambda_i\cdot (\lambda_s-\lambda_i)\cdot v_i
+        \alpha(w_i) = \alpha((\lambda_s - \lambda_i) \cdot v_i)=(\lambda_s - \lambda_i) \cdot \alpha(v_i)= \lambda_i \cdot (\lambda_s - \lambda_i) \cdot v_i
     \end{align*}
     Nun folgt für den Induktionsschritt
     \begin{align*}
@@ -392,7 +393,8 @@ Matrix $D=T^{-1}AT$ dann ist $D$ eine Diagonalmatrix und es gilt
 %----------------------------------------------------------------------------------------------------------
 %-----------------------------------------------Satz 1.7---------------------------------------------------
 %----------------------------------------------------------------------------------------------------------
-\begin{mysatz}\ \\
+\begin{mysatz}\ \medskip
+
     Sei $\alpha$ ein Endomorphismus von $V$ und $\lambda_1,\ldots,\lambda_s$ verschiedene Eigenwerte von $\alpha$ in $\K$. Für $j=1,\ldots,s$ sei $d_j=\dim E(\lambda_j)$. Dann gilt:
     \begin{enumerate}
         \item $\sum\limits_{j=1}^s d_j \leq n$
@@ -413,10 +415,8 @@ Matrix $D=T^{-1}AT$ dann ist $D$ eine Diagonalmatrix und es gilt
     \end{enumerate}
 \end{mysatz}
 
-%\newpage
-
 %-----------------------------------------------Bemerkung---------------------------------------------------
-\textit{Bemerkung:}
+\textit{Bemerkung:}\medskip
 
 Sind die Eigenwerte eines Endomorphismus $\alpha$ alle verschieden, dann ist $\alpha$ diagonalisierbar.
 \begin{center}
@@ -429,7 +429,7 @@ Falls $\alpha$ diagonalisierbar ist, so ist $V=\sum\limits_{i=1}^s E(\lambda_i) 
 
 %---------------------------------------------Definition 1.8------------------------------------------------
 %----------------------------------------direkte Summe, Projektion------------------------------------------
-\begin{mydef} \textit{Direkte Summe, Projektion}
+\begin{mydef}\textit{Direkte Summe, Projektion}\medskip
 
     Sei $V$ ein Vektorraum über $\K$ und $U_1,\ldots,U_s$ Unterräume von $V$. Man nennt $V$ die direkte Summe der $U_i$ genau dann, wenn jeder Vektor $v$ aus $V$ sich eindeutig als Summe
     \begin{align*}
@@ -461,8 +461,10 @@ Falls $\alpha$ diagonalisierbar ist, so ist $V=\sum\limits_{i=1}^s E(\lambda_i) 
 %----------------------------------------------------------------------------------------------------------
 %-----------------------------------------------Satz 1.9---------------------------------------------------
 %----------------------------------------------------------------------------------------------------------
-\begin{mysatz}\ \\
-    Seien $\alpha$ und $\beta$ diagonalisierbare Endomorphismen, welche miteinander kommutieren (d.h. $\alpha\beta = \beta\alpha$). Dann sind $\alpha$ und $\beta$ gemeinsam diagonalisierbar, d.h. es gibt eine Basis aus Eigenvektoren von $\alpha$ und $\beta$.
+\begin{mysatz}\ \medskip
+
+    Seien $\alpha$ und $\beta$ diagonalisierbare Endomorphismen, welche miteinander kommutieren (d.h. $\alpha\beta = \beta\alpha$).
+    Dann sind $\alpha$ und $\beta$ gemeinsam diagonalisierbar, d.h. es gibt eine Basis aus Eigenvektoren von $\alpha$ und $\beta$.
 
     \textit{Beweis:}
     $\alpha$ ist diagonalisierbar $\Rightarrow \lambda_1,\ldots,\lambda_s$ seien verschiedene Eigenwerte und $U_1,\ldots,U_s$ die dazugehörigen Eigenräume mit $V = U_1 \oplus \ldots \oplus U_s$.
@@ -478,7 +480,7 @@ Falls $\alpha$ diagonalisierbar ist, so ist $V=\sum\limits_{i=1}^s E(\lambda_i) 
 \end{mysatz}
 
 %-----------------------------------------------Beispiel---------------------------------------------------
-\textit{Beispiel:}
+\textit{Beispiel:}\medskip
 
 Gegeben Sei $V=\R^2$ und die Endomorphismen $\alpha,\beta$, die bzgl. der Standardbasis die folgenen Abbildungsmatrizen besitzen.
 \begin{align*}
