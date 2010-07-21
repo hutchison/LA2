@@ -554,26 +554,26 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \end{minipage}
     \begin{minipage}{0.4\textwidth}
         \begin{center}
-        \begin{tikzpicture}
-            \draw (0,0) coordinate (A) node[anchor=north east] {$A$};
-            \draw (2,2) coordinate (B) node[anchor=south] {$B$};
-            \draw (5,0) coordinate (C) node[anchor=west] {$C$};
-            \draw (1,1) coordinate (Mc) node[anchor=south, above=5pt] {$M_c$};
-            \draw (2.5,0) coordinate (Mb) node[anchor=north west] {$M_b$};
-            \draw (3.5,1) coordinate (Ma) node[anchor=south, above=5pt] {$M_a$};
-            \draw[color=blue] (7/3,2/3) coordinate (S) node[anchor=south west] {$S$};
-            \fill (A) circle (1pt);
-            \fill (B) circle (1pt);
-            \fill (C) circle (1pt);
-            \fill (Ma) circle (1pt);
-            \fill (Mb) circle (1pt);
-            \fill (Mc) circle (1pt);
-            \fill[color=blue] (S) circle (1pt);
-            \draw (A) -- (B) -- (C) -- (A);
-            \draw[color=blue] (A) -- (Ma) -- (4.5,9/7) node[anchor=south] {$S_a$};
-            \draw[color=blue] (C) -- (Mc) -- (0,5/4) node[anchor=south] {$S_c$};
-            \draw[color=blue] (B) -- (Mb) -- (2.625,-0.5) node[anchor=east] {$S_b$};;
-        \end{tikzpicture}
+            \begin{tikzpicture}
+                \draw (0,0) coordinate (A) node[anchor=north east] {$A$};
+                \draw (2,2) coordinate (B) node[anchor=south] {$B$};
+                \draw (5,0) coordinate (C) node[anchor=west] {$C$};
+                \draw (1,1) coordinate (Mc) node[anchor=south, above=5pt] {$M_c$};
+                \draw (2.5,0) coordinate (Mb) node[anchor=north west] {$M_b$};
+                \draw (3.5,1) coordinate (Ma) node[anchor=south, above=5pt] {$M_a$};
+                \draw[color=blue] (7/3,2/3) coordinate (S) node[anchor=south west] {$S$};
+                \fill (A) circle (1pt);
+                \fill (B) circle (1pt);
+                \fill (C) circle (1pt);
+                \fill (Ma) circle (1pt);
+                \fill (Mb) circle (1pt);
+                \fill (Mc) circle (1pt);
+                \fill[color=blue] (S) circle (1pt);
+                \draw (A) -- (B) -- (C) -- (A);
+                \draw[color=blue] (A) -- (Ma) -- (4.5,9/7) node[anchor=south] {$S_a$};
+                \draw[color=blue] (C) -- (Mc) -- (0,5/4) node[anchor=south] {$S_c$};
+                \draw[color=blue] (B) -- (Mb) -- (2.625,-0.5) node[anchor=east] {$S_b$};;
+            \end{tikzpicture}
         \end{center}
     \end{minipage}
     \begin{align*}
@@ -616,22 +616,22 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \end{minipage}
     \begin{minipage}{0.4\textwidth}
         \begin{center}
-        \begin{tikzpicture}
-            \draw (0,1) coordinate (Q1) node[anchor=south east] {$Q_1$};
-            \draw (1,2) coordinate (R1) node[anchor=south east] {$R_1$};
-            \draw (2,3) coordinate (P) node[anchor=west] {$P$};
-            \draw (2,0) coordinate (Q2) node[anchor=west] {$Q_2$};
-            \draw (2,1.5) coordinate (R2) node[anchor=west] {$R_2$};
-            \fill (Q1) circle (1pt);
-            \fill (R1) circle (1pt);
-            \fill (P) circle (1pt);
-            \fill (Q2) circle (1pt);
-            \fill (R2) circle (1pt);
-            \draw (-0.5,0.5) -- (2.3,3.3);
-            \draw (2,3.5) -- (2,-0.5);
-            \draw[color=blue,thick] (R1) -- (R2);
-            \draw[color=blue,thick] (Q1) -- (Q2);
-        \end{tikzpicture}
+            \begin{tikzpicture}
+                \draw (0,1) coordinate (Q1) node[anchor=south east] {$Q_1$};
+                \draw (1,2) coordinate (R1) node[anchor=south east] {$R_1$};
+                \draw (2,3) coordinate (P) node[anchor=west] {$P$};
+                \draw (2,0) coordinate (Q2) node[anchor=west] {$Q_2$};
+                \draw (2,1.5) coordinate (R2) node[anchor=west] {$R_2$};
+                \fill (Q1) circle (1pt);
+                \fill (R1) circle (1pt);
+                \fill (P) circle (1pt);
+                \fill (Q2) circle (1pt);
+                \fill (R2) circle (1pt);
+                \draw (-0.5,0.5) -- (2.3,3.3);
+                \draw (2,3.5) -- (2,-0.5);
+                \draw[color=blue,thick] (R1) -- (R2);
+                \draw[color=blue,thick] (Q1) -- (Q2);
+            \end{tikzpicture}
         \end{center}
     \end{minipage}
     \begin{align*}
@@ -936,8 +936,215 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \left| -\frac{8}{5} + \frac{9}{5} - \frac{2}{5}  \right| = \frac{1}{5}
 \end{align*}
 
-\begin{mylemma}
+\begin{mylemma}\textsc{Hesse}sche Form\medskip
 
+    Sei $E:= \left\{ X = P + t_1 a_1 + t_2 a_2 \mid t_{1,2} \in \R \right\}$ eine Ebene $n$ ihr Stellungsvektor, d.h. $\left\langle n, a_1 \right\rangle = \left\langle n, a_2 \right\rangle = 0$, dann gilt:
+    \begin{align*}
+        X \in E \quad \Leftrightarrow \quad \left\langle \ora{PX}, n \right\rangle = 0
+    \end{align*}
+    \textit{Beweis:}
+    \begin{align*}
+        \left\langle u \right\rangle^{\bot} & = \left\langle a_1, a_2 \right\rangle\\
+        \left\langle \ora{PX}, n \right\rangle & = 0 \Leftrightarrow \ora{PX} = t_1 a_1 + t_2 a_2 \Leftrightarrow X = P = t_1 a_1 + t_2 a_2 \Leftrightarrow X \in E\\
+        \text{HNF: } n_0 & = \frac{n}{\| n \|} \qquad \left\langle \ora{PX}, n_0 \right\rangle = 0
+    \end{align*}
 \end{mylemma}
 
+\begin{mylemma}\ \medskip
+
+    Sei $E$ eine Ebene wie oben und $Q \in \mathcal{A}_3$, dann gilt
+    \begin{align*}
+        d\left( Q, E \right) = \left| \left\langle \ora{PQ}, n_0 \right\rangle \right|
+    \end{align*}
+    \textit{Beweis:}
+    \begin{align*}
+        d\left( Q, E \right) & = \left| \ora{Q^{*}Q} \right| = \left| \lambda \right|\\
+        \ora{Q^{*}Q} & = \lambda n_0\\
+        \ora{PQ} & = \ora{PQ} + \ora{Q^{*}Q}\\
+        \left\langle \ora{PQ}, n_0 \right\rangle & = \left\langle \ora{PQ} + \ora{Q^{*}Q}, n_0 \right\rangle = \left\langle \ora{PQ}, n_0 \right\rangle + \left\langle \ora{Q^{*}Q}, n_0 \right\rangle = \lambda \left\langle n_0, n_0 \right\rangle = \lambda
+    \end{align*}
+\end{mylemma}
+
+\textit{Beispiel:}
+\begin{align*}
+    X & =
+    \begin{pmatrix}
+        1\\ 2\\ 3
+    \end{pmatrix}
+    + t_1
+    \begin{pmatrix}
+        1\\ 0\\ 1
+    \end{pmatrix}
+    + t_2
+    \begin{pmatrix}
+        1\\ -1\\ 1
+    \end{pmatrix}
+    \qquad Q =
+    \begin{pmatrix}
+        4\\ 6\\ 1
+    \end{pmatrix}\\
+    n_0 & = \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        1\\ 0\\ 1
+    \end{pmatrix}
+    \intertext{HNF:}
+    \left\langle
+    \begin{pmatrix}
+        1 - x_1\\
+        2 - x_2\\
+        3 - x_3
+    \end{pmatrix}
+    , n_0
+    \right\rangle & = 0\\
+    d\left( Q, E\right) & =
+    \left|
+    \left\langle
+    \begin{pmatrix}
+        -3\\ -4\\ 2
+    \end{pmatrix}
+    , \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        1\\ 0\\ -1
+    \end{pmatrix}
+    \right\rangle
+    \right|
+    =
+    \left|
+    - \frac{5}{\sqrt{2}}
+    \right|
+    = \frac{5}{\sqrt{2}}
+    \intertext{$d(Q,G)$ im $\mathcal{A}_3$}
+    G:\ X & = P + t a\\
+    Q^{*} & \in G \quad G \quad \left\langle \ora{QQ^{*}}, a \right\rangle = 0\\
+    \left| \ora{QQ^{*}} \right| & = d\left( Q,G \right)
+\end{align*}
+
+\begin{mylemma}\textit{Abstand windschiefer Geraden}\medskip
+
+    Seien $G_1 = \left\{ X = P_1 + t_1 a_1 \mid t_1 \in \R \right\}$ und $G_2 = \left\{ X = P_2 + t_2 a_2 \mid t_2 \in \R \right\}$ zwei windschiefe Geraden und $Q_1 \in G_1$ und $Q_2 \in G_2$ derart, 
+    dass $\left\langle \ora{Q_1 Q_2}, a_1 \right\rangle = \left\langle \ora{Q_1 Q_2}, a_2 \right\rangle = 0$ ist, dann ist
+    \begin{align*}
+        d\left( G_1, G_2 \right) = \left| \ora{Q_1 Q_2} \right|
+    \end{align*}
+    \textit{Beweis:} $X_1 \in G_1, X_2 \in G_2$
+    \begin{align*}
+        X_1 & = Q_1 + t_1 a_1 \quad X_2 = Q_2 + t_2 a_2\\
+        \left| \ora{X_1 X_2} \right|^{2} & = \left\langle \ora{X_1 Q_1} + \ora{Q_1 Q_2} + \ora{Q_2 X_2}, \ora{X_1 Q_1} + \ora{Q_1 Q_2} + \ora{Q_2 X_2} \right\rangle\\
+        & = \left\langle - t_1 a_1 + \ora{Q_1 Q_2} + t_2 a_2, - t_1 a_1 + \ora{Q_1 Q_2} + t_2 a_2 \right\rangle\\
+        & = t_1^2 \left\langle a_1, a_2 \right\rangle - 2 t_1 t_2 \left\langle a_1, a_2 \right\rangle + \left\langle \ora{Q_1 Q_2}, \ora{Q_1 Q_2} \right\rangle + t_2^2 \left\langle a_2, a_2 \right\rangle\\
+        & = \left\langle t_1 a_1 - t_2 a_2, t_1 a_1 - t_2 a_2 \right\rangle + \left\langle \ora{Q_1 Q_2}, \ora{Q_1 Q_2} \right\rangle\\
+        \left| \ora{X_1 X_2} \right|^{2} & \geq \left| \ora{Q_1 Q_2} \right| \quad \wedge \quad \left| \ora{X_1 X_2} \right|^{2} = \left| \ora{Q_1 Q_2} \right| \Leftrightarrow t_1 a_1 - t_2 a_2 = 0\\
+        & \Leftrightarrow t_1 = t_2 = 0, \text{ weil } \left\{ a_1, a_2 \right\} \text{ linear unabhängig sind.}
+    \end{align*}
+\end{mylemma}
+
+\textit{Beispiel:}\medskip
+
+\begin{align*}
+    G_1:\ & X =
+    \begin{pmatrix}
+        1\\ 1\\ 1
+    \end{pmatrix}
+    + t_1
+    \begin{pmatrix}
+        2\\ 4\\ 4
+    \end{pmatrix}\\
+    G_2:\ & X =
+    \begin{pmatrix}
+        -1\\ 0\\ -1
+    \end{pmatrix}
+    + t_2
+    \begin{pmatrix}
+        -1\\ 0\\ 2
+    \end{pmatrix}\\
+    E:\ & X =
+    \begin{pmatrix}
+        -1\\ 0\\ -1
+    \end{pmatrix}
+    + s
+    \begin{pmatrix}
+        2\\ 4\\ 2
+    \end{pmatrix}
+    + t
+    \begin{pmatrix}
+        -1\\ 0\\ 2
+    \end{pmatrix}
+    \qquad
+    n =
+    \begin{pmatrix}
+        2\\ -2\\ 1
+    \end{pmatrix}\\
+    d(G_1, G_2) & = d(P_1, E) = \left| \frac{2 x_1 - 2 y_1 + z_1 + 3}{3} \right| = \frac{4}{3}
+\end{align*}
+
+\begin{mylemma}\textit{Höhen}\medskip
+
+    \begin{minipage}{0.6\textwidth}
+        Die Höhen in einem Dreieck $ABC$ schneiden sich in einem Punkt $H$.\medskip
+
+        \textit{Beweis:}\medskip
+
+        Die Höhen durch $A$ und durch $B$ schneiden sich in $H$.\medskip
+
+        Zu zeigen: $\ora{CH}\ \bot\ \ora{AB}$
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw (0,0) coordinate (A) node[anchor=north east] {$A$};
+                \draw (3,0) coordinate (B) node[anchor=west] {$B$};
+                \draw (1,2) coordinate (C) node[anchor=south] {$C$};
+                \draw (1,0) coordinate (HC);
+                \draw (3/2,3/2) coordinate (HA);
+                \draw (3/5,6/5) coordinate (HB);
+                \fill (A) circle (1pt);
+                \fill (B) circle (1pt);
+                \fill (C) circle (1pt);
+                \draw (A) -- (B) -- (C) -- (A);
+                \draw[color=blue] (C) -- (HC);
+                \draw[color=blue] (A) -- (HA);
+                \draw[color=blue] (B) -- (HB);
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{align*}
+        \left\langle \ora{CH}, \ora{AC} + \ora{CB} \right\rangle & = \left\langle \ora{CB} + \ora{BH}, \ora{AC} + \ora{CB} \right\rangle\\
+        & = \left\langle \ora{CB}, \ora{AC} \right\rangle + \left\langle \ora{CB}, \ora{CB} \right\rangle + \left\langle \ora{BH}, \ora{AC} \right\rangle + \left\langle \ora{BH}, \ora{CB} \right\rangle\\
+        & = \left\langle \ora{AC} + \ora{CB} + \ora{BH}, \ora{CB} \right\rangle = 0
+    \end{align*}
+\end{mylemma}
+
+\begin{mylemma}\textit{Mittelsenkrechte}\medskip
+
+    \begin{minipage}{0.6\textwidth}
+        Sei $m_{AB}$ die Mittelsenkrechte der Strecke $\ora{AB}$, dann gilt
+        \begin{align*}
+            X \in m_{AB} \quad \Leftrightarrow \quad d(X,A) = d(X,B)
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw (0,0) coordinate (A) node[anchor=north east] {$A$};
+                \draw (3,0) coordinate (B) node[anchor=north west] {$B$};
+                \draw (1.5,1) coordinate (X) node[anchor=south west] {$X$};
+                \fill (A) circle (1pt);
+                \fill (B) circle (1pt);
+                \fill (X) circle (1pt);
+                \draw (-0.5,0) -- (3.5,0);
+                \draw[color=blue] (1.5,1.5) -- (1.5,-0.5);
+                \draw[dotted] (A) -- (X);
+                \draw[dotted] (B) -- (X);
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{align*}
+        d(A,X)^2 & = d(B,X)^2 \quad \Leftrightarrow \quad \left\langle \ora{AX}, \ora{AX} \right\rangle = \left\langle \ora{BX}, \ora{BX} \right\rangle\\
+        \ora{AX} & = \ora{AB} + \ora{BX}\\
+        \left\langle \ora{AX}, \ora{AX} \right\rangle & = \left\langle \ora{AB} + \ora{BX}, \ora{AB} + \ora{BX} \right\rangle\\
+        & = \left\langle \ora{AB}, \ora{AB} \right\rangle + 2 \left\langle \ora{AB}, \ora{BX} \right\rangle + \left\langle \ora{BX}, \ora{BX} \right\rangle\\
+        & \Leftrightarrow \left\langle \ora{AB}, 2 \ora{BX} \right\rangle + \left\langle \ora{AB}, \ora{AB} \right\rangle = 0\\
+        & \Leftrightarrow \left\langle \ora{AB}, 2 \underbrace{\left( \ora{BX}, \frac{1}{2} \ora{AB} \right)}_{\ora{MX}} \right\rangle = 0 \quad \Rightarrow \quad X \in m_{AB}
+    \end{align*}
+\end{mylemma}
 % section Affine und Euklidische (Punkt-)Räume (end)
