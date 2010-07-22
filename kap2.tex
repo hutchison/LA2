@@ -3,20 +3,20 @@
 Ein Menge $R$ mit zwei Verknüpfungen $(+)$ und $(\cdot)$ heißt Ring, falls folgende Axiome gelten:
 \begin{enumerate}
     \item $(R,+)$ ist eine kommutative Gruppe
-    \item $(R,\cdot)$ ist assoziativ, d.h. $(ab)c=a(bc)$ für alle $a,b,c\in R$
-    \item $(a+b)c=ac+ab$ und $c(a+b)=ca+cb$ für alle $a,b,c\in R$. Diese Eigenschaft nennt man Distibutivität.
+    \item $(R,\cdot)$ ist assoziativ, d.h. $(a b) c = a (b c)$ für alle $a, b, c \in R$
+    \item $(a + b) c = a c + a b$ und $c (a + b) = c a + c b$ für alle $a, b, c \in R$. Diese Eigenschaft nennt man Distributivität.
 \end{enumerate}
 Gilt zu den genannten Axiomen zusätzlich noch
 \begin{enumerate}
-    \item $ab=ba$ für alle $a,b \in R$, so heißt $R$ kommutativer Ring.
-    \item $\exists e\in R$ mit $ea=ae=a$ für alle $a\in R$, so heißt $R$ Ring mit Einselement.
+    \item $a b = b a$ für alle $a, b \in R$, so heißt $R$ kommutativer Ring.
+    \item $\exists e \in R$ mit $e a = a e = a$ für alle $a \in R$, so heißt $R$ Ring mit Einselement.
 \end{enumerate}
 
 %---------------------------------------------Definition 2.1------------------------------------------------
 %--------------------------------------Linksideal, Rechtsideal,Ideal----------------------------------------
-\begin{mydef} \textit{Linksideal, Rechtsideal, Ideal}
+\begin{mydef} \textit{Linksideal, Rechtsideal, Ideal}\medskip
 
-    Sei $R$ ein Ring und $I$ eine Untergruppe von $(R,+)$. Mann nennt $I$ Linksideal genau dann, wenn
+    Sei $R$ ein Ring und $I$ eine Untergruppe von $(R,+)$. Man nennt $I$ Linksideal genau dann, wenn
     \begin{align*}
         rx \in I \quad \forall r \in R \ \forall x \in I
     \end{align*}
@@ -24,7 +24,7 @@ Gilt zu den genannten Axiomen zusätzlich noch
     \begin{align*}
         xr \in I \quad \forall r \in R \ \forall x \in I
     \end{align*}
-    und Ideal, falls $I$ sowohl Rechts-, als auch Linksideal ist. In diesem Fall schreibt man $I\lhd R$.
+    und Ideal, falls $I$ sowohl Rechts-, als auch Linksideal ist. In diesem Fall schreibt man $I \lhd R$.
 \end{mydef}
 
 %-----------------------------------------------Bemerkung---------------------------------------------------
@@ -43,7 +43,7 @@ Gilt zu den genannten Axiomen zusätzlich noch
 
 %---------------------------------------------Definition 2.2------------------------------------------------
 %--------------------------------------Hauptideal, Hauptidealring-------------------------------------------
-\begin{mydef} \textit{Hauptideal, Hauptidealring}
+\begin{mydef}\textit{Hauptideal, Hauptidealring}\medskip
 
     Sei $R$ ein kommutativer Ring und $I$ ein Ideal von $R$. Man nennt $I$ Hauptideal, wenn ein $a \in R$ existiert mit
     \begin{align*}
@@ -55,7 +55,7 @@ Gilt zu den genannten Axiomen zusätzlich noch
 %-----------------------------------------------Lemma 2.3---------------------------------------------------
 %-----------------------------------------Z ist Hauptidealring----------------------------------------------
 
-\begin{mylemma} \textit{$\Z$ ist Hauptidealring}
+\begin{mylemma} \textit{$\Z$ ist Hauptidealring}\medskip
 
     Falls $I=\{ 0 \}$ so ist die Behauptung trivial. Nehmen wir an $I \neq \{ 0 \}$ und $0 \neq x \in I$. Dann ist auch $-x \in I$. Also ist entweder $x$ oder $-x$ positiv und daher aus $\N$. Daher ist $I \cap \N \neq \emptyset$.
     Sei $m$ die kleinste pos. Zahl in $I$. Dann ist $m \Z \subseteq I$, weil $m \in I \Rightarrow k \cdot m \in I$. Umgekehrt ist $I \subseteq m\Z$, denn sei $a \in I \Rightarrow a = q \cdot m + r$ mit $0 \leq r<m$. Dann ist $a-q\cdot m=r$. Da $a-q\cdot m \in I$ ist, muss auch $r \in I$ sein. Da aber $a$ die kleinste positive Zahl aus $i$ ist, folgt, dass $r=0$ ist. Damit bleibt $a=q\cdot m = (m)$.
@@ -64,14 +64,14 @@ Gilt zu den genannten Axiomen zusätzlich noch
 %-----------------------------------------------Definition 2.4-----------------------------------------------
 %--------------------------------------------Grad eines Polynoms---------------------------------------------
 
-\begin{mydef}\textit{Grad eines Polynoms}
+\begin{mydef}\textit{Grad eines Polynoms}\medskip
 
     Sei $\K$ ein Körper und $p \in \K[x]$ ein Polynom mit $p = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0$ und $a_n \neq 0$, dann heißt $n$ der Grad des Polynoms $(\deg p)$. Das Nullpolynom hat den Grad $-\infty$
 \end{mydef}
 
 %-----------------------------------------------Lemma 2.5---------------------------------------------------
 %----------------------------------------------Gradformeln--------------------------------------------------
-\begin{mylemma}\label{gradformeln} \textit{Gradformeln}
+\begin{mylemma}\label{gradformeln}\textit{Gradformeln}
     \begin{itemize}
         \item $\deg p \cdot q = \deg p + \deg q$
         \item $\deg(p + q) = \max \left\{ \deg p, \deg q \right\}$
@@ -80,7 +80,7 @@ Gilt zu den genannten Axiomen zusätzlich noch
 
 %-----------------------------------------------Lemma 2.6---------------------------------------------------
 %--------------------------------------------Division mit Rest----------------------------------------------
-\begin{mylemma}\label{divRestK[x]} \textit{Division mit Rest}
+\begin{mylemma}\label{divRestK[x]}\textit{Division mit Rest}\medskip
 
     Seien $p , q \in \K[x]$, dann existieren eindeutig bestimmte Polynome $t, r \in \K[x]$ mit $p = t \cdot q + r$, wobei $\deg r < \deg q$ und $q\neq0$.
 
@@ -119,7 +119,9 @@ Gilt zu den genannten Axiomen zusätzlich noch
             \begin{align*}
                 \deg r \geq \deg(r - r') = \deg ((t' - t) \cdot q) = \deg(t' - t) + \deg q
             \end{align*}
-            Dann wäre $\deg q \leq \deg r$. Widerspruch. Demnach muss $\deg(t' - t)= -\infty \Rightarrow t' - t \mbox{ ist nach }$ \ref{gradformeln} das Nullpolynom. Somit folgt $t' = t$ und damit schließlich $r' = r$.
+            Dann wäre $\deg q \leq \deg r$. Widerspruch.
+            Demnach muss $\deg(t' - t)= -\infty \Rightarrow t' - t \mbox{ ist nach }$ \ref{gradformeln} das Nullpolynom.
+            Somit folgt $t' = t$ und damit schließlich $r' = r$.
     \end{itemize}
 \end{mylemma}
 
@@ -127,21 +129,28 @@ Gilt zu den genannten Axiomen zusätzlich noch
 %-----------------------------------------------Satz 2.7---------------------------------------------------
 %------------------------------------------K[x] ist Hauptidealring-----------------------------------------
 
-\begin{mysatz} \textit{$\K[x]$ ist  Hauptidealring} 
+\begin{mysatz}\textit{$\K[x]$ ist  Hauptidealring}\medskip
 
     $\K[x]$ ist kommutativ mit Eins und Nullteilerfremd.
 
     Letzteres gilt, weil aus $0 \neq p, q \in \K[x]$ folgt, dass $\deg (p \cdot q) = \deg p + \deg q \geq 0$ und daher $pq \neq 0$.
 
-    Sei $I \neq \{ 0 \}$, für diesen Fall ist die Aussage klar, ein Ideal von $\K[x]$. Dann enthält $I$ mindestens ein Polynom $p \neq 0$. Sei $q \in \K[x]$ ein Polynom mit kleinstem in $I$ auftretenden Grad. Dann ist klar, dass $q \cdot \K[x] \subseteq I$, weil $q \in I$.
+    Sei $I \neq \{ 0 \}$, für diesen Fall ist die Aussage klar, ein Ideal von $\K[x]$.
+    Dann enthält $I$ mindestens ein Polynom $p \neq 0$.
+    Sei $q \in \K[x]$ ein Polynom mit kleinstem in $I$ auftretenden Grad.
+    Dann ist klar, dass $q \cdot \K[x] \subseteq I$, weil $q \in I$.
 
-    Umgekehrt sei $p \in I$, d.h. $p = t \cdot q + r$ mit geeignetem $t, r \in \K[x]$. Diese existieren nach \ref{divRestK[x]} mit $\deg r < \deg q$. Umstellen liefert $I \ni p - tq = r$. Damit liegt auch $r \in I$ und wegen $\deg r < \deg q$ bleibt für $r$ nur das Nullpolynom übrig. Es folgt, dass $p = tq \in q \cdot \K[x]$ und daher ist $I = q \cdot \K[x]$ ein Hauptideal.
+    Umgekehrt sei $p \in I$, d.h. $p = t \cdot q + r$ mit geeignetem $t, r \in \K[x]$.
+    Diese existieren nach \ref{divRestK[x]} mit $\deg r < \deg q$.
+    Umstellen liefert $I \ni p - tq = r$.
+    Damit liegt auch $r \in I$ und wegen $\deg r < \deg q$ bleibt für $r$ nur das Nullpolynom übrig.
+    Es folgt, dass $p = tq \in q \cdot \K[x]$ und daher ist $I = q \cdot \K[x]$ ein Hauptideal.
 \end{mysatz}
 
 %-----------------------------------------------Definition 2.8-----------------------------------------------
 %------------------------------------------------------------------------------------------------------------
 
-\begin{mydef} \textit{Einheit, Inverse, Vielfaches, kongruent, irreduzibel, teilerfremd, Primideal, Primelement, maximales Ideal}
+\begin{mydef}\textit{Einheit, Inverse, Vielfaches, kongruent, irreduzibel, teilerfremd, Primideal, Primelement, maximales Ideal}\medskip
 
     Sei $R$ ein kommutativer Ring mit Einselement.
     \begin{enumerate}
@@ -175,7 +184,8 @@ Gilt zu den genannten Axiomen zusätzlich noch
 
             Sei $p$ Primelement mit $p = a \cdot b \Rightarrow P = pR$ ist Primideal und $ab \in P.$
 
-            O.B.d.A.: $b \in P \Rightarrow b = p \cdot c$. Dann ist $p = a \cdot p \cdot c \Rightarrow (1 - ac)p = 0$ und somit $a \cdot c = 1 \Rightarrow a$ ist Einheit und damit $p$ irreduzibel.
+            O.B.d.A.: $b \in P \Rightarrow b = p \cdot c$.
+            Dann ist $p = a \cdot p \cdot c \Rightarrow (1 - ac)p = 0$ und somit $a \cdot c = 1 \Rightarrow a$ ist Einheit und damit $p$ irreduzibel.
         \item $p$ Primelement $\Leftrightarrow P = p \cdot R$ ist Primideal.\label{lem2.9.4}
 
             \textit{Beweis:}
@@ -191,7 +201,7 @@ Gilt zu den genannten Axiomen zusätzlich noch
 %-----------------------------------------------Satz 2.10--------------------------------------------------
 %----------------------------------------------------------------------------------------------------------
 
-\begin{mysatz}\label{zornschelemma}
+\begin{mysatz}\label{zornschelemma}\ \medskip
 
     Sei $R$ ein Hauptidealring und $0 \neq p \in R$.
     \begin{enumerate}
@@ -204,8 +214,7 @@ Gilt zu den genannten Axiomen zusätzlich noch
                 \item $Rp$ ist Primideal
             \end{enumerate}
     \end{enumerate}
-    Für den vollständigen Beweis von \ref{zornschelemma}.\ref{zli1} benötigt man das 
-    \textsc{Zorn}sche \footnote{Max August Zorn, * 6. Juni 1906 in Krefeld; $\dagger$ 9. März 1993 in Bloomington, Indiana, USA, US-amerikanischer Professor der Mathematik deutscher Abstammung} Lemma. 
+    Für den vollständigen Beweis von \ref{zornschelemma}.\ref{zli1} benötigt man das \textsc{Zorn}sche\footnote{Max August Zorn, * 6. Juni 1906 in Krefeld; $\dagger$ 9. März 1993 in Bloomington, Indiana, USA, US-amerikanischer Professor der Mathematik deutscher Abstammung} Lemma.
     Daher beschränken wir uns beim Beweis auf die beiden Spezialfälle $R = \Z$ und $R = \K[x]$.
     \begin{itemize}
         \item Sei $\mathcal{M}$ eine nichtleere Menge von Idealen, die nicht nur das Nullideal enthält. Für diesen Fall wäre nichts zu zeigen.
