@@ -654,7 +654,7 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
 
 %\newpage
 
-\begin{mysatz}\textit{Satz von} \textsc{Menelaos}\footnote{* um 70 in Alexandria; $\dagger$ um 140 vermutlich in Rom}
+\begin{mysatz}\textit{Satz von} \textsc{Menelaos}\footnote{Menelaos, * um 70 in Alexandria; $\dagger$ um 140 vermutlich in Rom, Mathematiker und Astronom}
 
     \begin{minipage}{0.6\textwidth}
         Gegeben sei ein Dreieck $ABC$ und eine Gerade $G$, die nicht durch einen Eckpunkt geht.
@@ -755,7 +755,7 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
     \end{align*}
     \textit{Beweis:} Übungsaufgabe
 \end{mysatz}
-\begin{mysatz}\textit{Satz von} \textsc{Pappos}\footnote{um 300, Alexandria}
+\begin{mysatz}\textit{Satz von} \textsc{Pappos}\footnote{Pappos von Alexandria, um 300 n. Chr., griechischer Geometer}
 
     \begin{minipage}{0.6\textwidth}
         $G,G'$ verschiedene Geraden in einer affinen Ebene und $P_1,P_2,P_3 \in G$ und $P'_1,P'_2,P'_3 \in G'$, dann gilt:
@@ -1146,5 +1146,110 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
         & \Leftrightarrow \left\langle \ora{AB}, 2 \ora{BX} \right\rangle + \left\langle \ora{AB}, \ora{AB} \right\rangle = 0\\
         & \Leftrightarrow \left\langle \ora{AB}, 2 \underbrace{\left( \ora{BX}, \frac{1}{2} \ora{AB} \right)}_{\ora{MX}} \right\rangle = 0 \quad \Rightarrow \quad X \in m_{AB}
     \end{align*}
+\end{mylemma}
+
+\begin{mylemma}\ \medskip
+
+    \begin{minipage}{0.6\textwidth}
+        Die Mittelsenkrechten in einem Dreieck $ABC$ schneiden sich in einem Punkt $M$.\medskip
+
+        \textit{Beweis:}
+
+        Sei $M = m_{AB} \cap m_{AC}$
+        \begin{align*}
+            & d(M,C) = d(M,A) = d(M,B)\\
+            \Rightarrow & d(M,C) = d(M,B) \Rightarrow M \in m_{BC}
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw (0,0) coordinate (A) node[anchor=north east] {$A$};
+                \draw (3,0) coordinate (B) node[anchor=west] {$B$};
+                \draw (1,2) coordinate (C) node[anchor=south] {$C$};
+                \draw (0,5/4) coordinate (MB1);
+                \draw (3,-1/4) coordinate (MB2);
+                \draw (1.5,-0.5) coordinate (MC1);
+                \draw (1.5,2) coordinate (MC2);
+                \draw (1/2,-1/2) coordinate (MA1);
+                \draw (2.5,1.5) coordinate (MA2);
+                \fill (A) circle (1pt);
+                \fill (B) circle (1pt);
+                \fill (C) circle (1pt);
+                \draw (A) -- (B) -- (C) -- (A);
+                \draw[color=blue] (MA1) -- (MA2);
+                \draw[color=blue] (MB1) -- (MB2);
+                \draw[color=blue] (MC1) -- (MC2);
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+\end{mylemma}
+
+\textbf{Zusammenhang zwischen $M$ und $H$}\medskip
+
+\begin{minipage}{0.6\textwidth}
+    o.B.d.A.: $H \notin \overline{AC}$
+    \begin{align*}
+        m_{AB}:\ X & = A + \frac{1}{2} \ora{AB} + \lambda_1 \ora{CH}\\
+        m_{BC}:\ X & = B + \frac{1}{2} \ora{BC} + \lambda_2 \ora{AH}
+    \end{align*}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (0,0) coordinate (A) node[anchor=north east] {$A$};
+            \draw (5,0) coordinate (B) node[anchor=north west] {$B$};
+            \draw (1,3) coordinate (C) node[anchor=south west] {$C$};
+            \draw (1,0) coordinate (HC);
+            \draw (1/2,3/2) coordinate (HB);
+            \draw (1.8,2.4) coordinate (HA);
+            \draw (1,4/3) coordinate (H) node[anchor=north west] {$H$};
+            \draw (2.5,-0.5) coordinate (MC1);
+            \draw (2.5,1.5) coordinate (MC2);
+            \draw (2,1/6) coordinate (MA1);
+            \draw (3.5,13/6) coordinate (MA2);
+            \draw (2.5,5/6) coordinate (M) node[anchor=north west] {$M$};
+            \fill (A) circle (1pt);
+            \fill (B) circle (1pt);
+            \fill (C) circle (1pt);
+            \fill[color=blue] (H) circle (1pt);
+            \fill[color=violet] (M) circle (1pt);
+            \draw (A) -- (B) -- (C) -- (A);
+            \draw[color=blue] (C) -- (HC);
+            \draw[color=blue] (B) -- (HB);
+            \draw[color=blue] (A) -- (HA);
+            \draw[color=violet] (MC1) -- (MC2);
+            \draw[color=violet] (MA1) -- (MA2);
+        \end{tikzpicture}
+    \end{center}
+\end{minipage}
+$m_{AB} \cap m_{BC}:$
+\begin{align*}
+    A + \frac{1}{2} \ora{AB} + \lambda_1 \ora{CH} & = B + \frac{1}{2} \ora{BC} + \lambda_2 \ora{AH}\\
+    A + \frac{1}{2} \ora{AB} + \lambda_1 \ora{CH} & = A + \ora{AB} + \frac{1}{2} \left( \ora{BA} + \ora{AC} \right) + \lambda_2 \ora{AH}\\
+    \frac{1}{2} \ora{AB} + \lambda_1 \ora{CH} & = \ora{AB} - \frac{1}{2} \ora{AB} + \frac{1}{2} \ora{AC} + \lambda_2 \ora{AH}\\
+    \lambda_1 \ora{CH} & = \frac{1}{2} \ora{AC} + \lambda_2 \ora{AH}\\
+    \lambda_1 \ora{CH} + \lambda_2 \ora{HA} & = \frac{1}{2} \ora{AC}\\
+    \lambda_1\left( \ora{CH} + \ora{HA} \right) + \left( \lambda_2 - \lambda_1 \right) \ora{HA} & = \frac{1}{2} \ora{AC}\\
+    \left( \lambda_2 - \lambda_1 \right) \ora{HA} & = \left( \frac{1}{2} + \lambda_1 \right) \ora{AC}
+    \intertext{und da $\ora{HA}$ und $\ora{AC}$ linear unabhängig sind, folgt:}
+    \lambda_1 & = \lambda_2 = -\frac{1}{2} \qquad\\
+    & \Rightarrow \quad \boxed{ M = A + \frac{1}{2} \ora{AB} - \frac{1}{2} \ora{CH} }\\
+    M_{/_{K}} & = A_{/_{K}} + \frac{1}{2} B_{/_{K}} - \frac{1}{2} A_{K} - \frac{1}{2} H_{/_{K}} + \frac{1}{2} C_{K}\\
+    & \Rightarrow \quad \boxed{ M_{/_{K}} = \frac{A_{/_{K}} + B_{/_{K}} + C_{K} - H_{K}}{2}  }
+\end{align*}
+
+\begin{mylemma}\textit{\textsc{Euler}sche Gerade}\footnote{Leonhard Euler, * 15. April 1707 in Basel; $\dagger$ 18. September 1783 in Sankt Petersburg, der wahrscheinlich bedeutendste Mathematiker aller Zeiten}\medskip
+
+    In einem Dreieck $ABC$ liegen die Punkte
+    \begin{itemize}
+        \item $S$ (Schnittpunkt der Seitenhalbierenden)
+        \item $H$ (Schnittpunkt der Höhen) und
+        \item $M$ (Schnittpunkt der Mittelsenkrechten)
+    \end{itemize}
+    auf einer Geraden, die ``\textsc{Euler}sche Gerade'' genannt wird.
+    Es gilt: $S = H + \frac{2}{3} \ora{HM}$\medskip
+
+    \textit{Beweis:} Übungsaufgabe
 \end{mylemma}
 % section Affine und Euklidische (Punkt-)Räume (end)
