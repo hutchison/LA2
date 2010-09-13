@@ -407,12 +407,12 @@ Orthonormale Mengen sind stets linear unabhängig, solange der Nullvektor nicht 
     und
     \textsc{Schmidt}\footnote{Erhard Schmidt (* 13. Januar 1876 in Dorpat (heutiges Tartu, Estland); $\dagger$ 6. Dezember 1959 in Berlin), dt. Mathematiker}}
 
-    Jeder endlich dimensionale euklidische Vektorraum besitzt eine Orthonormalbasis, kurz ON-Basis.
+    Jeder endlich dimensionale euklidische Vektorraum besitzt eine Orthonormalbasis, kurz ON-Basis.\medskip
 
     \textit{Beweis:} Induktion über die Dimension $n$.
 
     \begin{itemize}
-        \item $n = 1$: Sei $V=\left\langle b \right\rangle$. Dann ist $\{ e=\frac{b}{\| b \|}\}$ eine ON-Basis.\par \medskip
+        \item $n = 1$: Sei $V=\left\langle b \right\rangle$. Dann ist $\left\{ e = \frac{b}{\| b \|} \right\}$ eine ON-Basis.
         \item $n - 1 \rightarrow n$: Sei dazu $\{ e_1, \ldots, e_{n-1} \}$ eine ON-Basis von $U \subset V$.
             Dann kann man mit einem geeigenten $b_n\in V$ die Menge $\{ e_1, \ldots, e_{n-1}, b_n \}$ zu einer Basis von $V$ ergänzen.
             Setze nun
@@ -530,7 +530,7 @@ Sei $\{ e_1, \ldots, e_n \}$ eine ON-Basis von $V$ und $v \in V$, dann sind die 
 %---------------------------------------Definition 4.15-------------------------------------------
 %-----------------------------------isometrische Abbildungen--------------------------------------
 
-\begin{mydef}\textit{Isometrische Abbildungen}
+\begin{mydef}\textit{Isometrische Abbildungen}\medskip
 
     Eine lineare Abbildung $f$ eines euklidischen VR $V$ in einen euklidischen Vektorraum $W$ heißt genau dann isometrisch, wenn
     \begin{align*}
@@ -554,6 +554,7 @@ Die lineare Abbildung $f:V\rightarrow W$ ist genau dann eine isometrische Abbild
     Isometrische Abbildungen sind injektiv.\medskip
 
     \textit{Beweis:}
+
     Sei $v \in \ker f$. Dann ist $fv = 0$ und daher
     \begin{align*}
         \left\langle fv,fv \right\rangle = 0 \Leftrightarrow \left\langle v,v \right\rangle = 0 \Leftrightarrow v = 0
@@ -628,9 +629,8 @@ Eine quadratische Matrix heißt genau dann orthogonal, wenn die Spaltenvektoren 
 
 %-----------------------------------------Beispiel-------------------------------------------------
 
-\textit{Beispiel:}\medskip
-
-\textit{Beschreibung von orthogonalen Abbildungen in $\R^2$}
+\textit{Beispiel:}
+\textit{Beschreibung von orthogonalen Abbildungen in $\R^2$}\medskip
 
 Sei $V = \R^2$ mit dem Standardskalarprodukt.
 Gesucht ist eine Matrix $A \in \R^{2\times 2}$ die orthogonal ist. Nach \ref{orthogonaleMatrix}.\ref{oM-3} muss für $A$ gelten:
@@ -709,9 +709,9 @@ Sei $f$ eine orthogonale Abbildung. Dann nehmen die Eigenwerte von $f$, falls di
             0 & & & \cdots & \cdots & & & 0 & A_1
         \end{pmatrix}
     \end{align*}
-    besitzt.
+    besitzt.\medskip
 
-    \textit{Beweis:} \medskip
+    \textit{Beweis:}
 
     Induktion über $n$
 \end{mysatz}

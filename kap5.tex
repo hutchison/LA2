@@ -394,9 +394,9 @@ $T_1 =
     \begin{align*}
         T & = \bigcap\limits_{\substack{\scriptscriptstyle P1, \ldots, P_{n+1} \in T_i\\ \scriptscriptstyle T_i \text{ist Teilraum}}} T_i
     \end{align*}
-    $T$ heißt der von $P_1, P_2, \ldots, P_n, P_{n+1}$ aufgespannte Teilraum. $T = P_1 + W$ mit $\left\langle \ora{P_1 P_2}, \ldots, \ora{P_1 P_{n+1}} \right\rangle = W$
+    $T$ heißt der von $P_1, P_2, \ldots, P_n, P_{n+1}$ aufgespannte Teilraum. $T = P_1 + W$ mit $\left\langle \ora{P_1 P_2}, \ldots, \ora{P_1 P_{n+1}} \right\rangle = W$\medskip
 
-    \textit{Beweis:}\medskip
+    \textit{Beweis:}
 
     Nach Satz \ref{Schnitte} ist $T$ ein affiner Teilraum und kleinstmöglich.
     Da für den zugehörigen Unterraum $U$ gilt, dass $\ora{P_i P_j} \ \left( i,j \in \left\{ 1, \ldots, n+1 \right\} \right)$ in $U$ enthalten sind, ist $W$ in $U$.
@@ -1183,9 +1183,12 @@ Im folgenden ist $\mathcal{A}_n$ stets über $V = \R^n$.
             \end{tikzpicture}
         \end{center}
     \end{minipage}
-\end{mylemma}
+\end{mylemma}\medskip
 
-\textbf{Zusammenhang zwischen $M$ und $H$}\medskip
+%\textbf{Zusammenhang zwischen $M$ und $H$}\medskip
+
+\subsubsection*{Zusammenhang zwischen $M$ und $H$} % (fold)
+\label{ssub:Zusammenhang zwischen $M$ und $H$}
 
 \begin{minipage}{0.6\textwidth}
     o.B.d.A.: $H \notin \overline{AC}$
@@ -1239,6 +1242,8 @@ $m_{AB} \cap m_{BC}:$
     & \Rightarrow \quad \boxed{ M_{/_{K}} = \frac{A_{/_{K}} + B_{/_{K}} + C_{K} - H_{K}}{2}  }
 \end{align*}
 
+% subsubsection Zusammenhang zwischen $M$ und $H$ (end)
+
 \begin{mylemma}\textit{\textsc{Euler}sche Gerade}\footnote{Leonhard Euler, * 15. April 1707 in Basel; $\dagger$ 18. September 1783 in Sankt Petersburg, der wahrscheinlich bedeutendste Mathematiker aller Zeiten}\medskip
 
     In einem Dreieck $ABC$ liegen die Punkte
@@ -1252,4 +1257,259 @@ $m_{AB} \cap m_{BC}:$
 
     \textit{Beweis:} Übungsaufgabe
 \end{mylemma}
+
+\subsection*{Winkel} % (fold)
+\label{sub:Winkel}
+
+\begin{minipage}{0.6\textwidth}
+    \begin{align*}
+        \sphericalangle(G_1,G_2) & = \min\left\{ \sphericalangle(a_1,a_2), \sphericalangle(a_1,-a_2) \right\}\\
+        \sphericalangle(E_1,E_2) & = \min\left\{ \sphericalangle(n_1,n_2), \sphericalangle(n_1,-n_2) \right\}\\
+        \sphericalangle(E,G) & = 90^{\circ} - \min\left\{ \sphericalangle(a,n), \sphericalangle(a,-n) \right\}
+    \end{align*}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (0,0) coordinate (A);
+            \draw (4,2) coordinate (B) node[anchor=west] {$G_2$};
+            \draw (0,2) coordinate (C);
+            \draw (4,0) coordinate (D) node[anchor=west] {$G_1$};
+            \draw (3,1.5) node[anchor=south] {$a_1$};
+            \draw (3,0.5) node[anchor=north] {$a_2$};
+            \draw[>=latex,->] (A) -- (B);
+            \draw[>=latex,->] (C) -- (D);
+            \draw (2.5,0.75) arc (-30:30:0.5);
+        \end{tikzpicture}
+    \end{center}
+\end{minipage}
+
+\begin{mydef}\textit{Winkelhalbierende}\medskip
+
+    Seien $G_1$ und $G_2$ Geraden mit den Richtungsvektoren $a_1$ und $a_2$, die sich im Punkt $O$ schneiden, dann ist die Winkelhalbierende diejenige Gerade $W$, die durch $O$ geht und für die gilt
+    \begin{align*}
+        \sphericalangle(a_1,w) = \sphericalangle(w,a_2)
+    \end{align*}
+    wobei $w$ der Richtungsvektor von $W$ ist.
+\end{mydef}
+
+\textit{Bemerkung:}
+
+Seien $G_1:\ X = O + t_1 a_1$ und $G_2:\ X = O + t_2 a_2$ mit
+\begin{align*}
+    \|a_1\| & = \|a_2\| = 1 \qquad \Rightarrow \qquad W = O + t\left( a_1 + a_2 \right)\\
+    \cos \sphericalangle(a_1, a_1 + a_2) & = \frac{\left\langle a_1, a_1 + a_2 \right\rangle}{\|a_1 + a_2\| \cdot \|a_1\|} = \frac{1 + \left\langle a_1, a_2 \right\rangle}{\|a_1 + a_2\|}\\
+    \cos \sphericalangle(a_1 + a_2, a_1) & = \frac{\left\langle a_1 + a_2, a_2 \right\rangle}{\|a_1 + a_2\| \cdot \|a_2\|} = \frac{\left\langle a_1, a_2 \right\rangle + 1}{\|a_1 + a_2\|}\\
+\end{align*}
+
+\begin{mylemma}\textit{Winkelhalbierende}\medskip
+
+    Seien $G_1$ und $G_2$ orientierte Geraden, dann gilt
+    \begin{align*}
+        X \in W \quad \Leftrightarrow \quad d\left( X, G_1 \right) = d\left( X, G_2 \right)
+    \end{align*}
+    \textit{Beweis:}
+    \begin{align*}
+        G_1:\ X =
+        \begin{pmatrix}
+            x_0\\ y_0
+        \end{pmatrix}
+        + t_1
+        \begin{pmatrix}
+            a\\ b
+        \end{pmatrix}
+        \qquad
+        G_2:\ X & =
+        \begin{pmatrix}
+            x_0\\ y_0
+        \end{pmatrix}
+        + t_2
+        \begin{pmatrix}
+            c\\ d
+        \end{pmatrix}\\
+        a^2 + b^2 = c^2 + d^2 & = 1\\
+        -b x + a y + b x_0 - a y_0 & = 0 & (HNF)\\
+        d x - c y - d x_0 + c y_0 & = 0\\
+        (b + d)x - (a + c)y - (b + d)x_0 + (a + c)y_0 & = 0\\
+        d\left( X, G_1 \right) = d\left( X, G_2 \right) & \Leftrightarrow\\
+        \left.
+        \begin{matrix}
+            -b x + a y + b x_0 - a y_0 & = & \lambda\\
+            d x - c y - d x_0 + c y_0 & = & \lambda
+        \end{matrix}
+        \right\} & (b + d) x - (a + c) y - (b + d) x_0 + (a + c) y_0 = 0\\
+        & \Leftrightarrow
+        \begin{pmatrix}
+            x\\ y
+        \end{pmatrix}
+        \in W
+    \end{align*}
+\end{mylemma}
+
+\begin{mylemma}\textit{Winkelhalbierende der Innenwinkel}\medskip
+
+    Die Winkelhalbierenden der Innenwinkel eines Dreiecks $ABC$ schneiden sich in einem Punkt $W$.\medskip
+
+    \textit{Beweis:} $W_A \cap W_B = W$
+    \begin{align*}
+        d\left( W, G_{AB} \right) & = d\left( W, G_{AC} \right)\\
+        d\left( W, G_{AB} \right) & = d\left( W, G_{BC} \right)\\
+        & \Rightarrow W \in W_C
+    \end{align*}
+\end{mylemma}
+% subsection Winkel (end)
+
+\begin{mydef}\textit{Kreis}\medskip
+
+    \begin{minipage}{0.7\textwidth}
+        Die Menge aller Punkte, die von einem Punkt $M$ den Abstand $r$ haben, heißt Kreis.
+        $M$ heißt \textit{Mittelpunkt} und $r$ \textit{Radius} des Kreises.
+    \end{minipage}
+    \begin{minipage}{0.3\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw (0,0) coordinate (M) node[anchor=east] {$M$};
+                \draw (M) -- (1,0) node[midway, below] {$r$};
+                \fill (M) circle (1pt);
+                \draw (M) circle (1cm);
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    Damit gilt:
+    \begin{itemize}
+        \item $X \in K \ \Leftrightarrow \ \left\langle \ora{MX}, \ora{MX} \right\rangle = \left( x - x_m \right)^2 + \left( y - y_m \right)^2 = r^2$
+        \item 3 nicht kollineare Punkte bestimmen einen Kreis (Schnittpunkt der Mittelsenkrechten $M$ ist Mittelpunkt).
+    \end{itemize}
+\end{mydef}
+\subsubsection*{Lagebeziehung Kreis-Gerade} % (fold)
+\label{ssub:Lagebeziehung Kreis-Gerade}
+\begin{align*}
+    K: \qquad & \left\langle \ora{MX}, \ora{MX} \right\rangle = r^2\\
+    G: \qquad & X = P + t a \qquad \left\langle \ora{PM}, a \right\rangle = 0 & \|a\| = 1\\
+    K \cap G: \qquad & \ora{MX} = \ora{MP} + t a\\
+    \Rightarrow & \left\langle \ora{MP} + t a, \ora{MP} + t a \right\rangle = r^2\\
+    & \left\langle \ora{MP}, \ora{MP} \right\rangle + 2 t \underbrace{\left\langle a, \ora{MP} \right\rangle}_{=0} + t^2 \underbrace{\left\langle a,a \right\rangle}_{=1} = r^2
+\end{align*}
+\begin{itemize}
+    \item[1. Fall:] $\left\langle \ora{MP}, \ora{MP} \right\rangle > r^2 \Rightarrow$ keine Lösung: $G$ ist \textit{Passante}.
+    \item[2. Fall:] $\left\langle \ora{MP}, \ora{MP} \right\rangle < r^2 \Rightarrow$ 2 Lösungen: $G$ ist \textit{Sekante}.
+    \item[3. Fall:] $\left\langle \ora{MP}, \ora{MP} \right\rangle = r^2 \Rightarrow$ eine Lösung $t = 0 \Rightarrow G \cap K = P$ und dann heißt $G$ \textit{Tangente}.
+\end{itemize}
+\begin{minipage}{0.6\textwidth}
+    \begin{align*}
+        t: \quad \left\langle \ora{MP}, \ora{PX} \right\rangle & = 0\\
+        \ora{XP} = \ora{XM} + \ora{MP} & \\
+        \left\langle \ora{MP}, \ora{XM} \right\rangle + \underbrace{\left\langle \ora{MP}, \ora{MP} \right\rangle}_{r^2} & = 0\\
+        \Rightarrow \ \left\langle \ora{MP}, \ora{MX} \right\rangle & = r^2
+    \end{align*}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (0,0) coordinate (M) node[anchor=north west] {$M$};
+            \fill (M) circle (1pt);
+            \draw (M) circle (3/2);
+            \draw ({-3/sqrt(8)},{-3/sqrt(8)}) coordinate (P) node[anchor=north east] {$P$};
+            \fill (P) circle (1pt);
+            \draw ({-6/sqrt(8)},0) -- (0,{-6/sqrt(8)});
+        \end{tikzpicture}
+    \end{center}
+\end{minipage}
+\begin{align*}
+    \boxed{\left( x_{0} - x_{m} \right)\left( x - x_{m} \right) + \left( y_{0} - y_{m} \right)\left( y - y_{m} \right) = r^2}
+\end{align*}
+\textit{Beispiel:} gesucht sind die Schnittpunkte der Tangenten durch $P$ am Kreis $K$.
+
+\begin{minipage}{0.6\textwidth}
+    \begin{align*}
+        K: \ \left( x - 1 \right)^2 + \left( y - 3 \right)^2 = 1 \qquad P & =
+        \begin{pmatrix}
+            2\\ 5
+        \end{pmatrix}\\
+        t:\ \left( 2 - 1 \right)\left( x - 1 \right) + \left( 5 - 3 \right)\left( y - 3 \right) & = 1\\
+        x + 2 y - 8 & = 0
+    \end{align*}
+    Die letzte Gleichung beschreibt die Gerade, welche $K$ in genau den Punkten schneidet, durch die auch die Tangenten führen.
+
+    Eine andere Methode zur Bestimmung der Schnittpunkte ist rechts skizziert: man bestimme den Mittelpunkt zwischen $M$ und $P$ und zeichne einen Kreis so, dass sowohl $P$ als auch $M$ darauf liegen (in der Skizze der gestrichelte Kreis).
+
+    Die Schnittpunkte mit $K$ sind die Berührpunkte der Tangenten an $K$.
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (1,3) coordinate (M) node[anchor=north east] {$M$};
+            \draw (2,5) coordinate (P) node[anchor=south west] {$P$};
+            \fill (M) circle (1pt);
+            \draw (M) circle (1);
+            \fill (P) circle (1pt);
+            \draw[dotted] (0,4) -- (5/2,2.75);
+            \draw (2,3) coordinate (S1);
+            \fill (S1) circle (1pt);
+            \draw (2/5,3.8) coordinate (S2);
+            \fill (S2) circle (1pt);
+            \draw (P) -- (2,2);
+            \draw (P) -- (-0.5,25/8);
+            \draw[dotted] (M) -- (P);
+            \draw (3/2,4) coordinate (MP);
+            \fill (MP) circle (1pt);
+            \draw[dashed] (MP) circle ({sqrt(5)/2});
+        \end{tikzpicture}
+    \end{center}
+\end{minipage}\ \medskip
+
+\textit{Bemerkung:}
+
+\begin{minipage}{0.6\textwidth}
+    \begin{align*}
+        P & \notin K\\
+        G:\ X & = P + s a & \| a \| = 1\\
+        \ora{MX} & = \ora{MP} + \ora{PX} = \ora{MP} + s a\\
+        \left\langle \ora{MP} + s a \right. & , \left. \ora{MP} + s a \right\rangle = r^2\\
+        \left\langle \ora{MP}, \ora{MP} \right\rangle & + 2 s \left\langle \ora{MP}, a \right\rangle + s^2 = r^2\\
+        s^2 + 2 s & \left\langle \ora{MP}, a \right\rangle + \left\langle \ora{MP}, \ora{MP} \right\rangle - r^2 = 0
+    \end{align*}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (1,3) coordinate (M) node[anchor=east] {$M$};
+            \draw (2,5) coordinate (P) node[anchor=south west] {$P$};
+            \fill (M) circle (1pt);
+            \draw (M) circle (1);
+            \fill (P) circle (1pt);
+            \draw (P) -- (1.5,1);
+            \draw (P) -- (-0.5,2.5);
+            \draw (1.55,1.4) coordinate (X) node[anchor=south east] {$X$};
+            \fill (X) circle (1pt);
+            %Hier wird's richtig lustig, aber für tikz kein Problem :)
+            \draw ({1/65*(113+sqrt(29))},{8*1/65*(113+sqrt(29))-11}) coordinate (Q1) node[anchor=east] {$Q_1$};
+            \draw ({1/65*(113-sqrt(29))},{8*1/65*(113-sqrt(29))-11}) coordinate (Q2) node[anchor=south east] {$Q_2$};;
+            \fill (Q1) circle (1pt);
+            \fill (Q2) circle (1pt);
+            \draw [gray,decorate,decoration={brace,amplitude=5pt}] (P) -- (Q1) node [black,midway,right=4pt] {$s_1$};
+            \draw [gray,decorate,decoration={brace,amplitude=5pt},xshift=18pt,yshift=-1.5pt] (2,5) -- ({1/65*(113-sqrt(29))},{8*1/65*(113-sqrt(29))-11}) node [black,midway,right=4pt] {$s_2$};
+        \end{tikzpicture}
+    \end{center}
+\end{minipage}\ \medskip
+
+Falls die Lösungen $s_1, s_2$ existieren, dann gilt
+\begin{align*}
+    \boxed{s_1 \cdot s_2 = \left\langle \ora{MP}, \ora{MP} \right\rangle - r^2}
+\end{align*}
+
+\begin{mysatz}\textit{Sehnensatz}\medskip
+
+    Schneidet eine beliebige Gerade durch den Punkt $P$ einen Kreis in den Punkten $Q_1$ und $Q_2$, so ist das Produkt $\| P Q_1 \| \cdot \| P Q_2 \|$ konstant.
+
+    Diese Konstante, die nur von $K$ und $P$ abhängt, heißt \textit{Potenz} von $P$ bzgl. des Kreises $K$.
+
+    Insbesondere gilt: sind $G_1$ und $G_2$ Geraden durch $P$, die den Kreis in $Q_1, Q_2$ bzw. $R_1, R_2$ schneiden, dann gilt:
+    \begin{align*}
+        \frac{\| P R_1 \|}{\| P Q_1 \|} = \frac{\| P Q_2 \|}{\| P R_2 \|}
+    \end{align*}
+\end{mysatz}
+
+% subsubsection Lagebeziehung Kreis-Gerade (end)
+
 % section Affine und Euklidische (Punkt-)Räume (end)
