@@ -1510,6 +1510,57 @@ Falls die Lösungen $s_1, s_2$ existieren, dann gilt
     \end{align*}
 \end{mysatz}
 
+\begin{mysatz}\textit{Sehnen-Tangenten-Satz}\medskip
+
+    Sei $K$ ein Kreis und $P$ ein Punkt außerhalb des Kreises und $P^{*}$ der Berührungspunkt der Tangenten von $P$ an dem Kreis, dann gilt
+    \begin{align*}
+        \left\| \ora{PP^{*}} \right\|^{2} & = \left\langle \ora{PP^{*}}, \ora{PP^{*}} \right\rangle = \left( \left\| \ora{PQ_{1}} \right\| \cdot \left\| \ora{PQ_{2}} \right\| \right)
+    \end{align*}
+    ist die Potenz von $P$ bzgl. $K$.\medskip
+
+    \textit{Beweis:} $P_{1}, P_{2}$ seien die Berührungspunkte der Tangenten von $P \notin K$ an $K$.
+
+    \begin{minipage}{0.4\textwidth}
+        \begin{align*}
+            t_1: \ \left\langle \ora{MP_{1}}, \ora{MX} \right\rangle & = r^2\\
+            P \in t_{1} & \\
+            \left\langle \ora{MP_{1}}, \ora{MP_{2}} \right\rangle & = r^2\\
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{align*}
+            t_2: \ \left\langle \ora{MP_{2}}, \ora{MX} \right\rangle & = r^2\\
+            P \in t_{2} & \\
+            \left\langle \ora{MP_{2}}, \ora{MP} \right\rangle & = r^2\\
+        \end{align*}
+    \end{minipage}
+
+    $\left\langle \ora{MX}, \ora{MP} \right\rangle = r^2$ ist Geradengleichung einer Geraden, die $P_{1}$ und $P_{2}$ enthält.
+
+    Diese Gerade heißt \textit{Polare} von $P$ und $K$.
+\end{mysatz}
+
+\textit{Beispiel:}
+\begin{align*}
+    \left( x - 2 \right)^{2} & + \left( y - 1 \right)^{2} = 4 \qquad P =
+    \begin{pmatrix}
+        4 \\ 3
+    \end{pmatrix}\\
+    \left\langle \ora{MX}, \ora{MP} \right\rangle & = r^{2} = \left( x - x_{m} \right)\left( x_{0} - x_{m} \right) + \left( y - y_{m} \right)\left( y_{0} - y_{m} \right) = r^{2}\\
+    \left( 4 - 2 \right)\left( x - 2 \right) & + \left( 3 - 1 \right)\left( y - 1 \right) = 4 & \left( \text{Polare} \right)\\
+    x + y & = 5\\
+    y & = 5 - x\\
+    \left( x - 2 \right)^{2} & + \left( \left( 5 - x \right) - 1 \right)^{2} = 4\\
+    x^{2} & - 6 x + 8 = 0 \qquad P_{1} =
+    \begin{pmatrix}
+        4\\ 1
+    \end{pmatrix}\\
+    x_{1,2} & = 4;2 \qquad\qquad\ \ \ P_{2} =
+    \begin{pmatrix}
+        2\\ 3
+    \end{pmatrix}
+\end{align*}
+
 % subsubsection Lagebeziehung Kreis-Gerade (end)
 
 % section Affine und Euklidische (Punkt-)Räume (end)
